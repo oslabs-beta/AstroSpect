@@ -1,0 +1,14 @@
+name: branch-check
+
+on:
+  pull_request:
+    types: [opened, sychronize]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check main branch
+        if: github.event.pull_request.base.ref == 'main'
+        run: echo "Are you sure you want to merge into main?"
