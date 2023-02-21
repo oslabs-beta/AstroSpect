@@ -1,3 +1,6 @@
+#banish DS store
+.DS_Store
+
 # Logs
 logs
 *.log
