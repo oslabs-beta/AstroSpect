@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Astro Dev Tools Experiment",
+  "version": "0.0.1",
+  "devtools_page": "devtools.html",
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["./main.js"]
+    }
+  ]
+}
