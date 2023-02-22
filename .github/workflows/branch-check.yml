@@ -1,15 +1,28 @@
+# basic workflow that checks to see if a PR is being made into the main branch; if it is, GitHub throws an error if the PR is not from the dev branch
 name: branch-check
+
+# check the condition (merging into main)
 on:
   pull_request:
     branches:
       - main
     types: [opened, edited, reopened]
+    
+# execute the workflow if the condition is met
 jobs:
   branch-check:
     runs-on: ubuntu-latest
     steps:
+
+      # check out the current repo to run the test
       - name: Check out the code
         uses: actions/checkout@v2
+        
+      # if merging from dev, all good; if not, throw an error
+
+      - name: Check out the code
+        uses: actions/checkout@v2
+
       - name: Check branch name
         run: |
           if [[ "$GITHUB_HEAD_REF" == "dev" ]]; then
