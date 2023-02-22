@@ -13,11 +13,16 @@ jobs:
   branch-check:
     runs-on: ubuntu-latest
     steps:
+
       # check out the current repo to run the test
       - name: Check out the code
         uses: actions/checkout@v2
         
       # if merging from dev, all good; if not, throw an error
+
+      - name: Check out the code
+        uses: actions/checkout@v2
+
       - name: Check branch name
         run: |
           if [[ "$GITHUB_HEAD_REF" == "dev" ]]; then
