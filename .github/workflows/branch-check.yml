@@ -1,14 +1,21 @@
 name: branch-check
-
 on:
   pull_request:
-    types: [opened, sychronize]
-
+    branches:
+      - main
+    types: [opened, edited, reopened]
 jobs:
-  check:
+  branch-check:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check main branch
-        if: github.event.pull_request.base.ref == 'main'
-        run: echo "Are you sure you want to merge into main?"
+      - name: Check out the code
+        uses: actions/checkout@v2
+      - name: Check branch name
+        run: |
+          if [[ "$GITHUB_HEAD_REF" == "dev" ]]; then
+            echo "Merging from dev branch is allowed"
+            exit 0
+          else
+            echo "Merging from branch other than dev is not allowed"
+            exit 1
+          fi
