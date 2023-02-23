@@ -1,0 +1,59 @@
+---
+import ReactCounter from '../components/ReactCounter.jsx';
+import ReactFooter from '../components/ReactFooter.jsx';
+import ReactStatic from '../components/ReactStatic.jsx';
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/kirby-icon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<header style={{textAlign: 'center'}}>
+			<a href='/header'>This is the header of the page and is static</a>
+		</header>
+		<div id='row'>
+			<div>
+				<ReactStatic/>
+				<p>without</p>
+			</div>
+			<div>
+				<ReactStatic client:load/>
+				<p>with client:load</p>
+			</div>
+		</div>
+		<div id='row'>
+			<div>
+				<ReactCounter/>
+				<p>without</p>
+			</div>
+			<div>
+				<ReactCounter client:load/>
+				<p>with client:load</p>
+			</div>
+		</div>
+		<div id='row'>
+			<div>
+				<ReactCounter client:idle/>
+				<p>with client:idle</p>
+			</div>
+			<div>
+				<ReactCounter client:only="react" />
+				<p>with client:only</p>
+			</div>
+		</div>
+		<footer>
+			<ReactFooter client:visible/>
+		</footer>
+	</body>
+</html>
+
+<style>
+	#row {
+		display: flex;
+		justify-content: center;
+	}
+</style>
