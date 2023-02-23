@@ -1,0 +1,25 @@
+{
+  "name": "astro-dev-tools",
+  "version": "1.0.0",
+  "description": "Astro Dev Tools OSP",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oslabs-beta/astro-dev-tools.git"
+  },
+  "author": "Evan Jones, Nicholas Park, John Roman, Jackson Ta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oslabs-beta/astro-dev-tools/issues"
+  },
+  "homepage": "https://github.com/oslabs-beta/astro-dev-tools#readme",
+  "dependencies": {
+    "sass": "^1.58.3"
+  }
+}
