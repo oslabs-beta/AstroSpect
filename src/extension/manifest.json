@@ -3,10 +3,16 @@
   "name": "Astro Dev Tools Experiment",
   "version": "0.0.1",
   "devtools_page": "devtools.html",
+  "host_permissions": ["<all_urls>"],
+  "permissions": ["tabs"],
   "content_scripts": [
     {
-      "matches": ["*://*/*"],
-      "js": ["./main.js"]
+      "matches": ["<all_urls>"],
+      "js": ["./main.js"],
+      "run_at": "document_end"
     }
-  ]
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
 }
