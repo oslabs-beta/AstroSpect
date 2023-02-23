@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/oslabs-beta/astro-dev-tools#readme",
   "dependencies": {
+    "jsdom": "^21.1.0",
+    "prettier": "^2.8.4",
     "sass": "^1.58.3"
   }
 }
