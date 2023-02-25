@@ -1,3 +1,8 @@
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!*******************************!*\
+  !*** ./src/extension/main.js ***!
+  \*******************************/
 // // should access code of website in the current window
 
 // // tests for console
@@ -69,3 +74,6 @@
 //     islands[0].indexOf('client=') + 11
 //   )
 // );
+/******/ })()
+;
+//# sourceMappingURL=content.bundle.js.map
