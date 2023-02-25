@@ -34,19 +34,6 @@ chrome.devtools.panels.create(
           const html = await getTargetPageHTML();
           const domTreeContainer = window.document.getElementById('dom-tree');
           console.log('html:', html);
-          // const parser = new DOMParser();
-          // const doc = parser.parseFromString(html, 'text/html');
-          // const elements = doc.querySelectorAll('*');
-          // const filteredHtml = Array.from(elements)
-          //   .filter((el) => el.nodeType === Node.ELEMENT_NODE)
-          //   .map((el) => el.outerHTML)
-          //   .join('\n');
-          //   const prettierHtml = await window.prettier.format(filteredHtml, {
-          //     parser: 'html',
-          //     printWidth: 80,
-          //     tabWidth: 2,
-          //     useTabs: false,
-          //   });
           const codeElement = window.document.createElement('code');
           codeElement.textContent = html;
           codeElement.style.whiteSpace = 'pre-wrap';
