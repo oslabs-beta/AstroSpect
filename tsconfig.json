@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    // "outDir": "./src/",
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "module": "CommonJS",
+    // "target": "es6",
+    "watch": true,
+    "jsx": "react",
+    // "allowJs": true,
+    // "moduleResolution": "node",
+    "esModuleInterop": true
+  }
+  // "include": ["src/**/*"],
+  // "exclude": ["node_modules"]
+}
