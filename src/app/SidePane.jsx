@@ -1,7 +1,7 @@
 import React from 'react';
 
 // side pane for displaying props and client
-function SidePane() {
+const SidePane = () => {
   return (
     <div className={'side-pane'}>
       <p>Type: React Component</p>
@@ -11,6 +11,6 @@ function SidePane() {
       <p>Client Directive: client:load</p>
     </div>
   );
-}
+};
 
 export default SidePane;
