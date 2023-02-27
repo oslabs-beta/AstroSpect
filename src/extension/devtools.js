@@ -36,12 +36,34 @@ chrome.devtools.panels.create(
           //parse through to convert string to document model
           const domParser = new DOMParser();
           const doc = domParser.parseFromString(html, 'text/html');
-          // Serialize the Document object into an XML string
-          const serializer = new XMLSerializer();
-          const xml = serializer.serializeToString(doc);
           // Use DOMParser again to create DOM nodes from the XML string
           // const domParser2 = new DOMParser();
           // const doc2 = domParser2.parseFromString(xml, 'application/xml');
+
+          const filteredData = [];
+          const filterDom = () => {
+            const walker = doc.createTreeWalker(
+              doc.body,
+              NodeFilter.SHOW_ELEMENT
+            );
+            let node = walker.firstChild();
+            while (node) {
+              //filter out the all script elements
+              if (node.tagName === 'script') {
+                node.remove();
+                continue;
+              }
+              //filter out style attributes
+              if (node.hasAttribute('style')) {
+                node.removeAttribute('style');
+                continue;
+              }
+
+              //if the node has a child node, recurse?
+              console.log('node:', node);
+              node = walker.nextSibling();
+            }
+          };
 
           const domTreeContainer = window.document.getElementById('dom-tree');
           console.log('doc', doc);
@@ -49,7 +71,7 @@ chrome.devtools.panels.create(
           console.log('html:', html);
           console.log('typeof:', typeof html);
           // const codeElement = window.document.createElement('code');
-          domTreeContainer.textContent = xml;
+          // domTreeContainer.textContent = xml;
           // codeElement.style.whiteSpace = 'pre-wrap';
           // domTreeContainer.appendChild(xml);
         } catch (error) {
