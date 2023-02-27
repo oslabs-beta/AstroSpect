@@ -6,19 +6,18 @@ import TreeItem from '@mui/lab/TreeItem';
 
 // create TS type for panel props
 
-const Panel = () => {
-  // creates treewalker for window DOM (not correct document)
-  const walker = document.createTreeWalker(
-    document.body,
-    NodeFilter.SHOW_ELEMENT
-  );
-
-  // array of parent level tree components
+const Panel = (props) => {
+  const { body } = props;
   const treeArray = [
     <TreeItem nodeId={99} label={'test-parent'}>
       <TreeItem nodeId={98} label={'test-child'} />
     </TreeItem>,
   ];
+  // creates treewalker for window DOM (not correct document)
+  console.log('this is the body in panel', body);
+  const walker = body.createTreeWalker(body, NodeFilter.SHOW_ELEMENT);
+
+  // array of parent level tree components
 
   // fills treeArray with HTML elements from document
   const treeMaker = (node = walker.nextNode(), counter = 10) => {
@@ -30,7 +29,9 @@ const Panel = () => {
     // if (node.hasChildNodes()) {
     //   // return
     //   const parent = (
-    //     <TreeItem nodeId={counter} label={node.tagName}></TreeItem>
+    //     <TreeItem nodeId={counter} label={node.tagName}>
+    //       // do something recursive
+    //     </TreeItem>
     //   );
     // } else {
     //   const elem = <TreeItem nodeId={counter} label={node.tagName} />;
@@ -44,7 +45,6 @@ const Panel = () => {
   };
 
   treeMaker(walker.nextNode());
-
   // returns the completed tree
   return (
     <TreeView
