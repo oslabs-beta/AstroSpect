@@ -6,45 +6,45 @@ import TreeItem from '@mui/lab/TreeItem';
 
 // create TS type for panel props
 
-const Panel = () => {
-  // creates treewalker for window DOM (not correct document)
-  const walker = document.createTreeWalker(
-    document.body,
-    NodeFilter.SHOW_ELEMENT
-  );
-
-  // array of parent level tree components
+const Panel = (props) => {
+  const { body } = props;
   const treeArray = [
     <TreeItem nodeId={99} label={'test-parent'}>
       <TreeItem nodeId={98} label={'test-child'} />
     </TreeItem>,
   ];
+  // creates treewalker for window DOM (not correct document)
+  if (body !== null) {
+    console.log(body);
+    const walker = body.createTreeWalker(body, NodeFilter.SHOW_ELEMENT);
 
-  // fills treeArray with HTML elements from document
-  const treeMaker = (node = walker.nextNode(), counter = 10) => {
-    // once branch (or whole tree) is complete, return
-    if (!node) return;
-    const elem = <TreeItem nodeId={counter} label={node.tagName} />;
+    // array of parent level tree components
 
-    // // if elem has child, make new array, within array
-    // if (node.hasChildNodes()) {
-    //   // return
-    //   const parent = (
-    //     <TreeItem nodeId={counter} label={node.tagName}></TreeItem>
-    //   );
-    // } else {
-    //   const elem = <TreeItem nodeId={counter} label={node.tagName} />;
-    // }
+    // fills treeArray with HTML elements from document
+    const treeMaker = (node = walker.nextNode(), counter = 10) => {
+      // once branch (or whole tree) is complete, return
+      if (!node) return;
+      const elem = <TreeItem nodeId={counter} label={node.tagName} />;
 
-    // else if elem does not contain child, move
+      // // if elem has child, make new array, within array
+      // if (node.hasChildNodes()) {
+      //   // return
+      //   const parent = (
+      //     <TreeItem nodeId={counter} label={node.tagName}></TreeItem>
+      //   );
+      // } else {
+      //   const elem = <TreeItem nodeId={counter} label={node.tagName} />;
+      // }
 
-    treeArray.push(elem);
-    //
-    treeMaker(walker.nextNode(), ++counter);
-  };
+      // else if elem does not contain child, move
 
-  treeMaker(walker.nextNode());
+      treeArray.push(elem);
+      //
+      treeMaker(walker.nextNode(), ++counter);
+    };
 
+    treeMaker(walker.nextNode());
+  }
   // returns the completed tree
   return (
     <TreeView
