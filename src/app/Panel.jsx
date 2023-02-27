@@ -4,34 +4,48 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import TreeItem from '@mui/lab/TreeItem';
 
+// create TS type for panel props
+
 const Panel = () => {
-  // creates treewalker for window DOM
-  const walker = window.document.createTreeWalker(
-    document.documentElement,
+  // creates treewalker for window DOM (not correct document)
+  const walker = document.createTreeWalker(
+    document.body,
     NodeFilter.SHOW_ELEMENT
   );
-  console.log(walker);
 
-  // while (walker.nextNode()) {
-  //   let current = walker.currentNode;
-  //   if (current.tagName === 'ASTRO-ISLAND') {
-  //     console.log(
-  //       current.tagName,
-  //       [...current.attributes]
-  //         .map(({ value, name }) => `${name}=${value}`)
-  //         .join()
-  //     );
+  // array of parent level tree components
+  const treeArray = [
+    <TreeItem nodeId={99} label={'test-parent'}>
+      <TreeItem nodeId={98} label={'test-child'} />
+    </TreeItem>,
+  ];
 
-  //     islands.push(
-  //       [...current.attributes]
-  //         .map(({ value, name }) => `${name}=${value}`)
-  //         .join()
-  //     );
-  //   }
-  // }
+  // fills treeArray with HTML elements from document
+  const treeMaker = (node = walker.nextNode(), counter = 10) => {
+    // once branch (or whole tree) is complete, return
+    if (!node) return;
+    const elem = <TreeItem nodeId={counter} label={node.tagName} />;
 
-  // traverses window DOM and adds tree items for each HTML element
+    // // if elem has child, make new array, within array
+    // if (node.hasChildNodes()) {
+    //   // return
+    //   const parent = (
+    //     <TreeItem nodeId={counter} label={node.tagName}></TreeItem>
+    //   );
+    // } else {
+    //   const elem = <TreeItem nodeId={counter} label={node.tagName} />;
+    // }
 
+    // else if elem does not contain child, move
+
+    treeArray.push(elem);
+    //
+    treeMaker(walker.nextNode(), ++counter);
+  };
+
+  treeMaker(walker.nextNode());
+
+  // returns the completed tree
   return (
     <TreeView
       aria-label='file system navigator'
@@ -39,15 +53,16 @@ const Panel = () => {
       defaultExpandIcon={<ChevronRightIcon />}
       sx={{ height: 240, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
     >
-      <TreeItem nodeId='1' label='Applications'>
-        <TreeItem nodeId='2' label='Calendar' />
+      <TreeItem nodeId='1' label='A'>
+        <TreeItem nodeId='2' label='A1' />
       </TreeItem>
-      <TreeItem nodeId='5' label='Documents'>
-        <TreeItem nodeId='10' label='OSS' />
-        <TreeItem nodeId='6' label='MUI'>
-          <TreeItem nodeId='8' label='index.js' />
+      <TreeItem nodeId='5' label='B'>
+        <TreeItem nodeId='10' label='B1' />
+        <TreeItem nodeId='6' label='B2'>
+          <TreeItem nodeId='8' label='B2A' />
         </TreeItem>
       </TreeItem>
+      {treeArray}
     </TreeView>
   );
 };

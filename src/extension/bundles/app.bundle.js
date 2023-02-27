@@ -9958,69 +9958,90 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _mui_lab_TreeView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/lab/TreeView */ "./node_modules/@mui/lab/TreeView/TreeView.js");
-/* harmony import */ var _mui_icons_material_ExpandMore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/icons-material/ExpandMore */ "./node_modules/@mui/icons-material/ExpandMore.js");
-/* harmony import */ var _mui_icons_material_ChevronRight__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/icons-material/ChevronRight */ "./node_modules/@mui/icons-material/ChevronRight.js");
-/* harmony import */ var _mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/lab/TreeItem */ "./node_modules/@mui/lab/TreeItem/TreeItem.js");
+/* harmony import */ var _mui_lab_TreeView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/lab/TreeView */ "./node_modules/@mui/lab/TreeView/TreeView.js");
+/* harmony import */ var _mui_icons_material_ExpandMore__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/icons-material/ExpandMore */ "./node_modules/@mui/icons-material/ExpandMore.js");
+/* harmony import */ var _mui_icons_material_ChevronRight__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/icons-material/ChevronRight */ "./node_modules/@mui/icons-material/ChevronRight.js");
+/* harmony import */ var _mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/lab/TreeItem */ "./node_modules/@mui/lab/TreeItem/TreeItem.js");
 
 
 
 
+
+
+// create TS type for panel props
 
 var Panel = function Panel() {
-  // creates treewalker for window DOM
-  var walker = window.document.createTreeWalker(document.documentElement, NodeFilter.SHOW_ELEMENT);
-  console.log(walker);
+  // creates treewalker for window DOM (not correct document)
+  var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT);
 
-  // while (walker.nextNode()) {
-  //   let current = walker.currentNode;
-  //   if (current.tagName === 'ASTRO-ISLAND') {
-  //     console.log(
-  //       current.tagName,
-  //       [...current.attributes]
-  //         .map(({ value, name }) => `${name}=${value}`)
-  //         .join()
-  //     );
+  // array of parent level tree components
+  var treeArray = [/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    nodeId: 99,
+    label: 'test-parent'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    nodeId: 98,
+    label: 'test-child'
+  }))];
 
-  //     islands.push(
-  //       [...current.attributes]
-  //         .map(({ value, name }) => `${name}=${value}`)
-  //         .join()
-  //     );
-  //   }
-  // }
+  // fills treeArray with HTML elements from document
+  var treeMaker = function treeMaker() {
+    var node = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : walker.nextNode();
+    var counter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 10;
+    // once branch (or whole tree) is complete, return
+    if (!node) return;
+    var elem = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      nodeId: counter,
+      label: node.tagName
+    });
 
-  // traverses window DOM and adds tree items for each HTML element
+    // // if elem has child, make new array, within array
+    // if (node.hasChildNodes()) {
+    //   // return
+    //   const parent = (
+    //     <TreeItem nodeId={counter} label={node.tagName}></TreeItem>
+    //   );
+    // } else {
+    //   const elem = <TreeItem nodeId={counter} label={node.tagName} />;
+    // }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeView__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    // else if elem does not contain child, move
+
+    treeArray.push(elem);
+    //
+    treeMaker(walker.nextNode(), ++counter);
+  };
+  treeMaker(walker.nextNode());
+
+  // returns the completed tree
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeView__WEBPACK_IMPORTED_MODULE_2__["default"], {
     "aria-label": "file system navigator",
-    defaultCollapseIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_ExpandMore__WEBPACK_IMPORTED_MODULE_2__["default"], null),
-    defaultExpandIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_ChevronRight__WEBPACK_IMPORTED_MODULE_3__["default"], null),
+    defaultCollapseIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_ExpandMore__WEBPACK_IMPORTED_MODULE_3__["default"], null),
+    defaultExpandIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_ChevronRight__WEBPACK_IMPORTED_MODULE_4__["default"], null),
     sx: {
       height: 240,
       flexGrow: 1,
       maxWidth: 400,
       overflowY: 'auto'
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
     nodeId: "1",
-    label: "Applications"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    label: "A"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
     nodeId: "2",
-    label: "Calendar"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    label: "A1"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
     nodeId: "5",
-    label: "Documents"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    label: "B"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
     nodeId: "10",
-    label: "OSS"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    label: "B1"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
     nodeId: "6",
-    label: "MUI"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    label: "B2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
     nodeId: "8",
-    label: "index.js"
-  }))));
+    label: "B2A"
+  }))), treeArray);
 };
 
 // displays tree
