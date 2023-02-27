@@ -31,13 +31,27 @@ chrome.devtools.panels.create(
       // Call the getTargetPageHTML() function and render the HTML in the dev tools panel
       (async () => {
         try {
+          //retrieve html contents as string
           const html = await getTargetPageHTML();
+          //parse through to convert string to document model
+          const domParser = new DOMParser();
+          const doc = domParser.parseFromString(html, 'text/html');
+          // Serialize the Document object into an XML string
+          const serializer = new XMLSerializer();
+          const xml = serializer.serializeToString(doc);
+          // Use DOMParser again to create DOM nodes from the XML string
+          // const domParser2 = new DOMParser();
+          // const doc2 = domParser2.parseFromString(xml, 'application/xml');
+
           const domTreeContainer = window.document.getElementById('dom-tree');
+          console.log('doc', doc);
+          console.log('typeofDoc', typeof doc);
           console.log('html:', html);
-          const codeElement = window.document.createElement('code');
-          codeElement.textContent = html;
-          codeElement.style.whiteSpace = 'pre-wrap';
-          domTreeContainer.appendChild(codeElement);
+          console.log('typeof:', typeof html);
+          // const codeElement = window.document.createElement('code');
+          domTreeContainer.textContent = xml;
+          // codeElement.style.whiteSpace = 'pre-wrap';
+          // domTreeContainer.appendChild(xml);
         } catch (error) {
           console.error(error);
         }
