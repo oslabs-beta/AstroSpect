@@ -3,7 +3,7 @@ import Panel from './Panel';
 import SidePane from './SidePane';
 
 // contains Panel and SidePane
-function App() {
+const App = () => {
   return (
     <div>
       <p>In APP.JSX</p>
@@ -11,5 +11,5 @@ function App() {
       <SidePane />
     </div>
   );
-}
+};
 export default App;
