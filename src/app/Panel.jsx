@@ -7,7 +7,7 @@ import TreeItem from '@mui/lab/TreeItem';
 // create TS type for panel props
 
 const Panel = (props) => {
-  const { body } = props;
+  const { body, handleClick } = props;
   const treeArray = [
     <TreeItem nodeId={99} label={'test-parent'}>
       <TreeItem nodeId={98} label={'test-child'} />
@@ -53,16 +53,15 @@ const Panel = (props) => {
       defaultExpandIcon={<ChevronRightIcon />}
       sx={{ height: 240, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
     >
-      <TreeItem nodeId='1' label='A'>
-        <TreeItem nodeId='2' label='A1' />
+      <TreeItem nodeId='1' label='A' onNodeFocus={handleClick}>
+        <TreeItem nodeId='2' label='A1' onNodeFocus={handleClick} />
       </TreeItem>
-      <TreeItem nodeId='5' label='B'>
-        <TreeItem nodeId='10' label='B1' />
-        <TreeItem nodeId='6' label='B2'>
-          <TreeItem nodeId='8' label='B2A' />
+      <TreeItem nodeId='5' label='B' onNodeFocus={handleClick}>
+        <TreeItem nodeId='10' label='B1' onNodeFocus={handleClick} />
+        <TreeItem nodeId='6' label='B2' onNodeFocus={handleClick}>
+          <TreeItem nodeId='A1' label='B2A' onNodeFocus={handleClick} />
         </TreeItem>
       </TreeItem>
-      {treeArray}
     </TreeView>
   );
 };
