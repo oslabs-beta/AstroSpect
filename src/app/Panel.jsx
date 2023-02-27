@@ -14,37 +14,37 @@ const Panel = (props) => {
     </TreeItem>,
   ];
   // creates treewalker for window DOM (not correct document)
-  if (body !== null) {
-    console.log(body);
-    const walker = body.createTreeWalker(body, NodeFilter.SHOW_ELEMENT);
+  console.log('this is the body in panel', body);
+  const walker = body.createTreeWalker(body, NodeFilter.SHOW_ELEMENT);
 
-    // array of parent level tree components
+  // array of parent level tree components
 
-    // fills treeArray with HTML elements from document
-    const treeMaker = (node = walker.nextNode(), counter = 10) => {
-      // once branch (or whole tree) is complete, return
-      if (!node) return;
-      const elem = <TreeItem nodeId={counter} label={node.tagName} />;
+  // fills treeArray with HTML elements from document
+  const treeMaker = (node = walker.nextNode(), counter = 10) => {
+    // once branch (or whole tree) is complete, return
+    if (!node) return;
+    const elem = <TreeItem nodeId={counter} label={node.tagName} />;
 
-      // // if elem has child, make new array, within array
-      // if (node.hasChildNodes()) {
-      //   // return
-      //   const parent = (
-      //     <TreeItem nodeId={counter} label={node.tagName}></TreeItem>
-      //   );
-      // } else {
-      //   const elem = <TreeItem nodeId={counter} label={node.tagName} />;
-      // }
+    // // if elem has child, make new array, within array
+    // if (node.hasChildNodes()) {
+    //   // return
+    //   const parent = (
+    //     <TreeItem nodeId={counter} label={node.tagName}>
+    //       // do something recursive
+    //     </TreeItem>
+    //   );
+    // } else {
+    //   const elem = <TreeItem nodeId={counter} label={node.tagName} />;
+    // }
 
-      // else if elem does not contain child, move
+    // else if elem does not contain child, move
 
-      treeArray.push(elem);
-      //
-      treeMaker(walker.nextNode(), ++counter);
-    };
+    treeArray.push(elem);
+    //
+    treeMaker(walker.nextNode(), ++counter);
+  };
 
-    treeMaker(walker.nextNode());
-  }
+  treeMaker(walker.nextNode());
   // returns the completed tree
   return (
     <TreeView
