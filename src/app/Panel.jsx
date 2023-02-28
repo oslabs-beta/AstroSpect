@@ -7,65 +7,70 @@ import TreeItem from '@mui/lab/TreeItem';
 // create TS type for panel props
 
 const Panel = (props) => {
-  const { body, handleClick } = props;
-  const treeArray = [
-    <TreeItem nodeId='99' label={'test-parent'}>
-      <TreeItem nodeId='98' label={'test-child'} />
-    </TreeItem>,
-  ];
-  // creates treewalker for window DOM (not correct document)
-  console.log('this is the body in panel', body);
-  const walker = body.createTreeWalker(body, NodeFilter.SHOW_ELEMENT);
-
-  // array of parent level tree components
-
-  // fills treeArray with HTML elements from document
-  const treeMaker = (node = walker.nextNode(), counter = 10) => {
-    // once branch (or whole tree) is complete, return
-    if (!node) return;
-    const elem = <TreeItem nodeId={counter.toString()} label={node.tagName} />;
-
-    // // if elem has child, make new array, within array
-    // if (node.hasChildNodes()) {
-    //   // return
-    //   const parent = (
-    //     <TreeItem nodeId={counter} label={node.tagName}>
-    //       // do something recursive
-    //     </TreeItem>
-    //   );
-    // } else {
-    //   const elem = <TreeItem nodeId={counter} label={node.tagName} />;
-    // }
-
-    // else if elem does not contain child, move
-
-    treeArray.push(elem);
-    //
-    treeMaker(walker.nextNode(), ++counter);
+  const { html, handleClick, addIslandData } = props;
+  
+  //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
+  const createTree = (node, id) => {
+    //Inputs all child elements of current node into array
+    const children = Array.from(node.children);
+    //Stores ASTRO-ISLAND data in islandData state (from app)
+    if (node.nodeName === "ASTRO-ISLAND") {
+      addIslandData(node);
+    }
+    //If node has no children, return node
+    if (children.length === 0) {
+      return <TreeItem key={id} nodeId={id} label={node.nodeName} />;
+    }
+    //If node has children, recurse through function with each child node
+    return (
+      <TreeItem key={id} nodeId={id} label={node.nodeName}>
+        {children.map((child, index) => createTree(child, `${id}-${index}`))}
+      </TreeItem>
+    );
   };
 
-  treeMaker(walker.nextNode());
+  const treeJSX = createTree(html.body, '0');
+  
   // returns the completed tree
   return (
     <TreeView
-      aria-label='file system navigator'
+      aria-label="file system navigator"
       defaultCollapseIcon={<ExpandMoreIcon />}
       defaultExpandIcon={<ChevronRightIcon />}
       onNodeSelect={handleClick}
-      sx={{ height: 240, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
+      sx={{
+        height: 240,
+        flexGrow: 1,
+        maxWidth: 400,
+        overflowY: 'auto',
+        fontFamily: 'Roboto mono, monospace',
+      }}
     >
-      <TreeItem nodeId='1' label='A'>
-        <TreeItem nodeId='2' label='A1' />
-      </TreeItem>
-      <TreeItem nodeId='5' label='B'>
-        <TreeItem nodeId='10' label='B1' />
-        <TreeItem nodeId='6' label='B2'>
-          <TreeItem nodeId='A1' label='B2A' />
-        </TreeItem>
-      </TreeItem>
+      {treeJSX.props.children}
     </TreeView>
   );
 };
+
+// const filterDom = () => {
+//   const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_ELEMENT);
+//   let node = walker.firstChild();
+//   while (node) {
+//     //filter out the all script elements
+//     if (node.tagName === 'script') {
+//       node.remove();
+//       continue;
+//     }
+//     //filter out style attributes
+//     if (node.hasAttribute('style')) {
+//       node.removeAttribute('style');
+//       continue;
+//     }
+
+//     //if the node has a child node, recurse?
+//     console.log('node:', node);
+//     node = walker.nextSibling();
+//   }
+// };
 
 // displays tree
 // must import MUI tree components
