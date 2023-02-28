@@ -9,7 +9,7 @@ chrome.devtools.panels.create(
     panel.onShown.addListener((window) => {
       // Retrieve's the target page's HTML
       async function getTargetPageHTML() {
-        console.log('Attempting to retrieve dom tree from target html');
+        // console.log('Attempting to retrieve dom tree from target html');
         // Use chrome.devtools.inspectedWindow.eval() to retrieve the page's HTML
         const html = await new Promise((resolve, reject) => {
           chrome.devtools.inspectedWindow.eval(
@@ -60,16 +60,17 @@ chrome.devtools.panels.create(
               }
 
               //if the node has a child node, recurse?
-              console.log('node:', node);
+              // console.log('node:', node);
               node = walker.nextSibling();
             }
           };
 
           const domTreeContainer = window.document.getElementById('dom-tree');
-          console.log('doc', doc);
-          console.log('typeofDoc', typeof doc);
-          console.log('html:', html);
-          console.log('typeof:', typeof html);
+          // console.log('doc', doc);
+          // console.log('typeofDoc', typeof doc);
+          // console.log('html:', html);
+          // console.log('typeof:', typeof html);
+
           // const codeElement = window.document.createElement('code');
           // domTreeContainer.textContent = xml;
           // codeElement.style.whiteSpace = 'pre-wrap';
