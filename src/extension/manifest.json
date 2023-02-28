@@ -1,10 +1,17 @@
 {
   "manifest_version": 3,
-  "name": "Astro Dev Tools Experiment",
+  "name": "Astro Dev Tools",
   "version": "0.0.1",
+  "icons": {
+    "32": "assets/logo.png"
+  },
+  "browser_action": {
+    "default_icon": "assets/logo.png"
+  },
   "devtools_page": "devtools.html",
   "host_permissions": ["<all_urls>"],
   "permissions": ["tabs"],
+
   "content_scripts": [
     {
       "matches": ["<all_urls>"],

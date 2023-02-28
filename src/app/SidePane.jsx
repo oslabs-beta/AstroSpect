@@ -12,11 +12,14 @@ const SidePane = (props) => {
       {/* // when clicked is Astro Island */}
       {currentComp && (
         <>
-          <p>Type: Astro Island</p>
+          <h3>Type: </h3>
+          <p>Astro Island</p>
           <hr />
-          <p>Props: {currentComp.props} </p>
+          <h3>Props: </h3>
+          <p>{currentComp.props}</p>
           <hr />
-          <p>Client Directive: {currentComp.client}</p>
+          <h3>Client Directive:</h3>
+          <p> {currentComp.client}</p>
         </>
       )}
     </div>

@@ -38,7 +38,13 @@ const Panel = (props) => {
       defaultCollapseIcon={<ExpandMoreIcon />}
       defaultExpandIcon={<ChevronRightIcon />}
       onNodeSelect={handleClick}
-      sx={{ height: 240, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
+      sx={{
+        height: 240,
+        flexGrow: 1,
+        maxWidth: 400,
+        overflowY: 'auto',
+        fontFamily: 'Roboto mono, monospace',
+      }}
     >
       {treeJSX.props.children}
     </TreeView>
