@@ -41,7 +41,6 @@ const App = () => {
 
   return (
     <div>
-      <p>In APP.JSX</p>
       {bodyData && <Panel handleClick={handleClick} body={bodyData} />}
       <SidePane currentComp={currentComp} />
     </div>

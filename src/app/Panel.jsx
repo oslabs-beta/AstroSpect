@@ -52,7 +52,13 @@ const Panel = (props) => {
       defaultCollapseIcon={<ExpandMoreIcon />}
       defaultExpandIcon={<ChevronRightIcon />}
       onNodeSelect={handleClick}
-      sx={{ height: 240, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
+      sx={{
+        height: 240,
+        flexGrow: 1,
+        maxWidth: 400,
+        overflowY: 'auto',
+        fontFamily: 'Roboto Mono',
+      }}
     >
       <TreeItem nodeId='1' label='A'>
         <TreeItem nodeId='2' label='A1' />
@@ -60,7 +66,7 @@ const Panel = (props) => {
       <TreeItem nodeId='5' label='B'>
         <TreeItem nodeId='10' label='B1' />
         <TreeItem nodeId='6' label='B2'>
-          <TreeItem nodeId='A1' label='B2A' />
+          <TreeItem nodeId='A1' label='B2A' sx={{ color: '#ff7300' }} />
         </TreeItem>
       </TreeItem>
     </TreeView>

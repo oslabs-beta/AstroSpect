@@ -1,4 +1,62 @@
+/// COLOR SCHEME VARIABLES
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+// Blues
+$lightestBlue: #f6fbff;
+$lightBlue: #8ab1cf;
+$darkBlue: #24346c;
+$darkestBlue: #313e58;
+
+// Purples
+$lightestPurple: #d5bcef;
+$lightPurple: #5965a4;
+$darkPurple: #445094;
+$darkestPurple: #0b164a;
+
+// Oranges
+$primaryOrange: #ff7300;
+$lightOrange: lighten($primaryOrange, 40%);
+$lightestOrange: lighten($primaryOrange, 49.8%);
+
+// MAIN PANEL
+
 body {
-  background-color: #272039;
-  color: #c7c5d3;
+  background-color: $darkestPurple;
+  color: whitesmoke;
+  font-family: 'Roboto Mono', monospace;
 }
+
+.components-body {
+  width: 60%;
+}
+
+h3 {
+  color: $primaryOrange;
+  // text-shadow: 0 0 0.5px gray;
+}
+
+// adjustable, movable sidepane
+
+// SIDE PANE
+.side-pane {
+  background: $lightestBlue;
+  color: $darkestBlue;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  padding: 20px;
+  color: black;
+  margin: 0;
+  font-size: 15px;
+}
+
+hr {
+  margin: 30px -20px 30px;
+  border: 0;
+  border-top: 1px solid black;
+}
+
+// to do: media queries for side view, bottom view, size changes
+// when too narrow, put sidepane underneath
