@@ -7,7 +7,7 @@ import TreeItem from '@mui/lab/TreeItem';
 // create TS type for panel props
 
 const Panel = (props) => {
-  const { body, handleClick } = props;
+  const { html, handleClick } = props;
   const treeArray = [
     <TreeItem nodeId="99" label={'test-parent'}>
       <TreeItem nodeId="98" label={'test-child'} />
@@ -25,54 +25,72 @@ const Panel = (props) => {
   //div
   //div
 
-  // fills treeArray with HTML elements from document
-  const treeMaker = (node = walker.nextNode(), counter = 10) => {
-    // if (!node) return;
-    // const elem = <TreeItem nodeId={counter} label={node.tagName} />;
-    // treeArray.push(elem);
-    // treeMaker(walker.nextSibling(), ++counter);
+  // // fills treeArray with HTML elements from document
+  // const treeMaker = (node = walker.nextNode(), counter = 10) => {
+  //   // if (!node) return;
+  //   // const elem = <TreeItem nodeId={counter} label={node.tagName} />;
+  //   // treeArray.push(elem);
+  //   // treeMaker(walker.nextSibling(), ++counter);
 
-    // once branch (or whole tree) is complete, return
-    if (!node) return;
-    const elem = <TreeItem nodeId={counter.toString()} label={node.tagName} />;
+  //   // once branch (or whole tree) is complete, return
+  //   if (!node) return;
+  //   const elem = <TreeItem nodeId={counter.toString()} label={node.tagName} />;
 
-    // // if elem has child, make new array, within array
-    // if (node.hasChildNodes()) {
-    const childNodes = [];
-    // let child = node.firstChild(); //child
+  //   // // if elem has child, make new array, within array
+  //   // if (node.hasChildNodes()) {
+  //   const childNodes = [];
+  //   // let child = node.firstChild(); //child
 
-    // put all of node's children into the childNodes array
-    while ((node = walker.nextSibling())) {
-      console.log(childNodes);
+  //   // put all of node's children into the childNodes array
+  //   while ((node = walker.nextSibling())) {
+  //     console.log(childNodes);
 
-      // childNodes.push(treeMaker(child, counter));
-      childNodes.push(<TreeItem nodeId={++counter} label={node.tagName} />);
+  //     // childNodes.push(treeMaker(child, counter));
+  //     childNodes.push(<TreeItem nodeId={++counter} label={node.tagName} />);
+  //   }
+
+  //   const parent = (
+  //     <TreeItem nodeId={counter} label={node.tagName}>
+  //       {childNodes}
+  //     </TreeItem>
+  //   );
+
+  //   treeArray.push(parent);
+
+  //   // recursively call treeMaker passing in the child
+  //   // treeMaker(node.firstChild(), ++counter)
+  //   // } else {
+  //   //   // } else {
+  //   //   //   const elem = <TreeItem nodeId={counter} label={node.tagName} />;
+  //   //   // }
+  //   //   const elem = <TreeItem nodeId={counter} label={node.tagName}></TreeItem>;
+  //   //   // else if elem does not contain child, move
+  //   //   return elem;
+  //   // }
+  //   // treeArray.push(elem);
+  //   // //
+  //   // treeMaker(walker.nextSibling(), ++counter);
+  // };
+
+  // treeMaker();
+
+  const createTree= (node, id) => {
+    console.log(node.children)
+    const children = Array.from(node.children);
+
+    if (children.length === 0) {
+      return <TreeItem key={id} nodeId={id} label={node.nodeName} />;
     }
 
-    const parent = (
-      <TreeItem nodeId={counter} label={node.tagName}>
-        {childNodes}
+    return (
+      <TreeItem key={id} nodeId={id} label={node.nodeName}>
+        {children.map((child, index) => createTree(child, `${id}-${index}`))}
       </TreeItem>
     );
-
-    treeArray.push(parent);
-
-    // recursively call treeMaker passing in the child
-    // treeMaker(node.firstChild(), ++counter)
-    // } else {
-    //   // } else {
-    //   //   const elem = <TreeItem nodeId={counter} label={node.tagName} />;
-    //   // }
-    //   const elem = <TreeItem nodeId={counter} label={node.tagName}></TreeItem>;
-    //   // else if elem does not contain child, move
-    //   return elem;
-    // }
-    // treeArray.push(elem);
-    // //
-    // treeMaker(walker.nextSibling(), ++counter);
   };
 
-  treeMaker();
+  const treeJSX = createTree(html.body, '0');
+  
   // returns the completed tree
   return (
     <TreeView
@@ -91,6 +109,7 @@ const Panel = (props) => {
           <TreeItem nodeId="A1" label="B2A" />
         </TreeItem>
       </TreeItem>
+      {treeJSX}
     </TreeView>
   );
 };
