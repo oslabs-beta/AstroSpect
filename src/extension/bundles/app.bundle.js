@@ -9968,14 +9968,14 @@ var App = function App() {
     _useState6 = _slicedToArray(_useState5, 2),
     currentComp = _useState6[0],
     setCurrentComp = _useState6[1];
-  function handleClick(e) {
+  var handleClick = function handleClick(e, nodeId) {
     // function gets data after running it in panel.jsx
     // get the id of the treeItem clicked
-    var id = e.target.nodeId;
+    var id = nodeId;
     console.log("Clicked ".concat(id));
     // check for id of astro
     if (islands[id]) setCurrentComp(islands[id]);else setCurrentComp(null);
-  }
+  };
 
   // if id is not found, display 'this is static' on the side pane
   // set isClicked to True
@@ -10003,7 +10003,7 @@ var App = function App() {
   // when another element is clicked reset side pane and display a new one with the clicked element
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "In APP.JSX"), bodyData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Panel__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    onClick: handleClick,
+    handleClick: handleClick,
     body: bodyData
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SidePane__WEBPACK_IMPORTED_MODULE_2__["default"], {
     currentComp: currentComp
@@ -10042,10 +10042,10 @@ var Panel = function Panel(props) {
   var body = props.body,
     handleClick = props.handleClick;
   var treeArray = [/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    nodeId: 99,
+    nodeId: "99",
     label: 'test-parent'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    nodeId: 98,
+    nodeId: "98",
     label: 'test-child'
   }))];
   // creates treewalker for window DOM (not correct document)
@@ -10061,7 +10061,7 @@ var Panel = function Panel(props) {
     // once branch (or whole tree) is complete, return
     if (!node) return;
     var elem = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      nodeId: counter,
+      nodeId: counter.toString(),
       label: node.tagName
     });
 
@@ -10089,6 +10089,7 @@ var Panel = function Panel(props) {
     "aria-label": "file system navigator",
     defaultCollapseIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_ExpandMore__WEBPACK_IMPORTED_MODULE_3__["default"], null),
     defaultExpandIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_ChevronRight__WEBPACK_IMPORTED_MODULE_4__["default"], null),
+    onNodeSelect: handleClick,
     sx: {
       height: 240,
       flexGrow: 1,
@@ -10097,28 +10098,22 @@ var Panel = function Panel(props) {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
     nodeId: "1",
-    label: "A",
-    onNodeFocus: handleClick
+    label: "A"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
     nodeId: "2",
-    label: "A1",
-    onNodeFocus: handleClick
+    label: "A1"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
     nodeId: "5",
-    label: "B",
-    onNodeFocus: handleClick
+    label: "B"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
     nodeId: "10",
-    label: "B1",
-    onNodeFocus: handleClick
+    label: "B1"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
     nodeId: "6",
-    label: "B2",
-    onNodeFocus: handleClick
+    label: "B2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
     nodeId: "A1",
-    label: "B2A",
-    onNodeFocus: handleClick
+    label: "B2A"
   }))));
 };
 
@@ -10150,7 +10145,7 @@ var SidePane = function SidePane(props) {
   var currentComp = props.currentComp;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: 'side-pane'
-  }, !currentComp && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "No hydrated component selected"), currentComp && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Type: Astro Island"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Props: ", currentComp.compProps, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Client Directive: ", currentComp.client)));
+  }, !currentComp && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "No hydrated component selected"), currentComp && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Type: Astro Island"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Props: ", currentComp.props, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Client Directive: ", currentComp.client)));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SidePane);
 

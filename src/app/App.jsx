@@ -16,15 +16,15 @@ const App = () => {
   const [islands, setIslands] = useState(initial);
   const [currentComp, setCurrentComp] = useState(null);
 
-  function handleClick(e) {
+  const handleClick = function (e, nodeId) {
     // function gets data after running it in panel.jsx
     // get the id of the treeItem clicked
-    const id = e.target.nodeId;
+    const id = nodeId;
     console.log(`Clicked ${id}`);
     // check for id of astro
     if (islands[id]) setCurrentComp(islands[id]);
     else setCurrentComp(null);
-  }
+  };
 
   // if id is not found, display 'this is static' on the side pane
   // set isClicked to True
@@ -42,7 +42,7 @@ const App = () => {
   return (
     <div>
       <p>In APP.JSX</p>
-      {bodyData && <Panel onClick={handleClick} body={bodyData} />}
+      {bodyData && <Panel handleClick={handleClick} body={bodyData} />}
       <SidePane currentComp={currentComp} />
     </div>
   );

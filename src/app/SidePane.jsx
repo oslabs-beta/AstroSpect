@@ -14,7 +14,7 @@ const SidePane = (props) => {
         <>
           <p>Type: Astro Island</p>
           <hr />
-          <p>Props: {currentComp.compProps} </p>
+          <p>Props: {currentComp.props} </p>
           <hr />
           <p>Client Directive: {currentComp.client}</p>
         </>
