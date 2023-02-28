@@ -1,0 +1,28 @@
+body {
+  background-color: #272039;
+  color: #c7c5d3;
+} /*# sourceMappingURL=styles.css.map */
+
+.components-body {
+  width: 60%;
+}
+
+/* side pane design */
+.side-pane {
+  background: pink;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  padding: 20px;
+  color: black;
+  margin: 0;
+  font-size: 15px;
+}
+
+hr {
+  margin: 30px -20px 30px;
+  border: 0;
+  border-top: 1px solid black;
+}

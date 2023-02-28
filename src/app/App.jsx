@@ -25,12 +25,13 @@ const App = () => {
   //pass down to side pane only when that island is clicked
   // when another element is clicked reset side pane and display a new one with the clicked element
 
+  console.log('body data: ', bodyData);
 
   return (
     <div>
       <p>In APP.JSX</p>
       {bodyData && <Panel body={bodyData} />}
-      <SidePane />
+      <SidePane test={'hello'} />
     </div>
   );
 };
