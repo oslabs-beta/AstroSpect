@@ -2,15 +2,23 @@ import React from 'react';
 
 // side pane for displaying props and client
 const SidePane = (props) => {
-  console.log(props.test);
-  
+  // get the properties from current component
+  const { currentComp } = props;
   return (
     <div className={'side-pane'}>
-      <p>Type: React Component</p>
-      <hr />
-      <p>Props:</p>
-      <hr />
-      <p>Client Directive: client:load</p>
+      {/* // when component is not astro island */}
+      {!currentComp && <p>No hydrated component selected</p>}
+
+      {/* // when clicked is Astro Island */}
+      {currentComp && (
+        <>
+          <p>Type: Astro Island</p>
+          <hr />
+          <p>Props: {currentComp.props} </p>
+          <hr />
+          <p>Client Directive: {currentComp.client}</p>
+        </>
+      )}
     </div>
   );
 };
