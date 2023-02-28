@@ -15,6 +15,7 @@ const App = () => {
   const [bodyData, setBodyData] = useState(null);
   const [islands, setIslands] = useState(initial);
   const [currentComp, setCurrentComp] = useState(null);
+  const [islandData, setIslandData] = useState([]);
 
   const handleClick = function (e, nodeId) {
     // function gets data after running it in panel.jsx
@@ -25,13 +26,21 @@ const App = () => {
     if (islands[id]) setCurrentComp(islands[id]);
     else setCurrentComp(null);
   };
-
+  //function to add astro island nodes to state when parsing dom
+  const addIslandData = (astroIsland) => {
+    setIslandData([...islandData, astroIsland])
+    console.log(islandData)
+  }
   // if id is not found, display 'this is static' on the side pane
   // set isClicked to True
 
-  useEffect(async () => {
-    const data = await parseData();
-    setBodyData(data);
+  useEffect(() => {
+    async function fetchData() {
+      const data = await parseData();
+      console.log('data from useEffect App.jsx', data);
+      setBodyData(data);
+    }
+    fetchData();
   }, []);
 
   //place all astro islands in an object with a unique id (ex A1, A2, A3)
@@ -42,7 +51,7 @@ const App = () => {
   return (
     <div>
       <p>In APP.JSX</p>
-      {bodyData && <Panel handleClick={handleClick} body={bodyData} />}
+      {bodyData && <Panel handleClick={handleClick} html={bodyData} addIslandData={addIslandData} />}
       <SidePane currentComp={currentComp} />
     </div>
   );
