@@ -57,7 +57,7 @@ const Panel = (props) => {
         flexGrow: 1,
         maxWidth: 400,
         overflowY: 'auto',
-        fontFamily: 'Roboto Mono',
+        fontFamily: 'Roboto mono, monospace',
       }}
     >
       <TreeItem nodeId='1' label='A'>

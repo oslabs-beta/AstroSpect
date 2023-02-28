@@ -10095,7 +10095,7 @@ var Panel = function Panel(props) {
       flexGrow: 1,
       maxWidth: 400,
       overflowY: 'auto',
-      fontFamily: 'Roboto Mono'
+      fontFamily: 'Roboto mono, monospace'
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
     nodeId: "1",
@@ -10116,7 +10116,6 @@ var Panel = function Panel(props) {
     nodeId: "A1",
     label: "B2A",
     sx: {
-      bgColor: '#ff7300',
       color: '#ff7300'
     }
   }))));
