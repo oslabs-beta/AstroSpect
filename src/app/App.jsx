@@ -5,14 +5,29 @@ import { useState, useEffect } from 'react';
 import parseData from './parser.js';
 
 const App = () => {
-  const [bodyData, setBodyData] = useState(null);
-  const [islands, setIslands] = useState(null);
+  const initial = {
+    A1: {
+      props: 'color',
+      client: 'load',
+    },
+  };
 
-  // handleClick function (e)
-  // const id = e.target.id
-  // get the id of the treeItem clicked
-  // check for id of astro
+  const [bodyData, setBodyData] = useState(null);
+  const [islands, setIslands] = useState(initial);
+  const [currentComp, setCurrentComp] = useState(null);
+
+  const handleClick = function (e, nodeId) {
+    // function gets data after running it in panel.jsx
+    // get the id of the treeItem clicked
+    const id = nodeId;
+    console.log(`Clicked ${id}`);
+    // check for id of astro
+    if (islands[id]) setCurrentComp(islands[id]);
+    else setCurrentComp(null);
+  };
+
   // if id is not found, display 'this is static' on the side pane
+  // set isClicked to True
 
   useEffect(() => {
     async function fetchData() {
@@ -31,9 +46,10 @@ const App = () => {
   return (
     <div>
       <p>In APP.JSX</p>
-      {bodyData && <Panel html={bodyData} />}
-      <SidePane />
+      {bodyData && <Panel handleClick={handleClick} body={bodyData} />}
+      <SidePane currentComp={currentComp} />
     </div>
   );
 };
+
 export default App;

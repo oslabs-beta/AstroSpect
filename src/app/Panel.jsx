@@ -7,10 +7,10 @@ import TreeItem from '@mui/lab/TreeItem';
 // create TS type for panel props
 
 const Panel = (props) => {
-  const { html } = props;
-  let treeArray = [
-    <TreeItem nodeId={99} label={'test-parent'}>
-      <TreeItem nodeId={98} label={'test-child'} />
+  const { body, handleClick } = props;
+  const treeArray = [
+    <TreeItem nodeId="99" label={'test-parent'}>
+      <TreeItem nodeId="98" label={'test-child'} />
     </TreeItem>,
   ];
 
@@ -34,7 +34,8 @@ const Panel = (props) => {
 
     // once branch (or whole tree) is complete, return
     if (!node) return;
-    console.log('node', node);
+    const elem = <TreeItem nodeId={counter.toString()} label={node.tagName} />;
+
     // // if elem has child, make new array, within array
     // if (node.hasChildNodes()) {
     const childNodes = [];
@@ -78,6 +79,7 @@ const Panel = (props) => {
       aria-label="file system navigator"
       defaultCollapseIcon={<ExpandMoreIcon />}
       defaultExpandIcon={<ChevronRightIcon />}
+      onNodeSelect={handleClick}
       sx={{ height: 240, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
     >
       <TreeItem nodeId="1" label="A">
@@ -86,10 +88,9 @@ const Panel = (props) => {
       <TreeItem nodeId="5" label="B">
         <TreeItem nodeId="10" label="B1" />
         <TreeItem nodeId="6" label="B2">
-          <TreeItem nodeId="8" label="B2A" />
+          <TreeItem nodeId="A1" label="B2A" />
         </TreeItem>
       </TreeItem>
-      {treeArray}
     </TreeView>
   );
 };
