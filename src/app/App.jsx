@@ -23,13 +23,12 @@ const App = () => {
     const id = nodeId;
     console.log(`Clicked ${id}`);
     
-    console.log(islandData);
     if (islandData[id]) {
       console.log(islandData[id]);
     }
 
     // check for id of astro
-    if (islands[id]) setCurrentComp(islands[id]);
+    if (islandData[id]) setCurrentComp(islandData[id]);
     else setCurrentComp(null);
   };
 

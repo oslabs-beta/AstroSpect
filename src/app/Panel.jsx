@@ -18,7 +18,7 @@ const Panel = (props) => {
     if (node.nodeName === "ASTRO-ISLAND") {
       const island = {
         client: node.attributes.client.value,
-        // props: node.attributes.props.value.replace(/&quot;/g, '"'),
+        props: node.attributes.props.value.replace(/&quot;/g, '"'),
       }
 
       addIslandData(island, id);
