@@ -22,13 +22,13 @@ function ReactCounter() {
 
 const styles = {
   div: {
-    color: 'black',
+    color: 'white',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     fontSize: '50px',
     margin: '20px',
-    border: '2px dotted black',
+    border: '2px dotted white',
   },
   button: {
     border: '5px solid pink',
