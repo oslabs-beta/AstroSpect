@@ -13,45 +13,25 @@ import ReactStatic from '../components/ReactStatic.jsx';
 	</head>
 	<body>
 		<header style={{textAlign: 'center'}}>
-			<a href='/header'>This is the header of the page and is static</a>
 		</header>
 		<div id='row'>
-			<div>
-				<ReactStatic/>
-				<p>without</p>
-			</div>
-			<div>
-				<ReactStatic client:load/>
-				<p>with client:load</p>
-			</div>
+				<ReactStatic />
+				<ReactStatic />
+				<ReactStatic />
 		</div>
 		<div id='row'>
-			<div>
-				<ReactCounter/>
-				<p>without</p>
-			</div>
-			<div>
-				<ReactCounter client:load/>
-				<p>with client:load</p>
-			</div>
-		</div>
-		<div id='row'>
-			<div>
-				<ReactCounter client:idle/>
-				<p>with client:idle</p>
-			</div>
-			<div>
-				<ReactCounter client:only="react" />
-				<p>with client:only</p>
-			</div>
-		</div>
-		<footer>
-			<ReactFooter client:visible/>
-		</footer>
+			<ReactStatic />
+			<ReactStatic client:load />
+			<ReactStatic />
+	</div>
 	</body>
 </html>
 
 <style>
+	body {
+		margin-top: 100px;
+		background: url(/space-background.jpeg)
+	}
 	#row {
 		display: flex;
 		justify-content: center;

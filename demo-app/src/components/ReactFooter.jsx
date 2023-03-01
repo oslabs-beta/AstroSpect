@@ -2,9 +2,6 @@ import { useState } from 'react';
 import ReactCounter from './ReactCounter';
 
 function ReactFooter() {
-  const [counter, setCounter] = useState(0);
-  const name = 'React';
-
   return (
     <div style={styles.div}>
       <a href='/secret'>Secret component has client:visible</a>
