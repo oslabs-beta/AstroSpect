@@ -7,7 +7,7 @@ import TreeItem from '@mui/lab/TreeItem';
 // create TS type for panel props
 
 const Panel = (props) => {
-  const { html, handleClick, addIslandData } = props;
+  const { html, handleClick, setIslandData } = props;
   
   //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
   const createTree = (node, id) => {
@@ -15,7 +15,14 @@ const Panel = (props) => {
     const children = Array.from(node.children);
     //Stores ASTRO-ISLAND data in islandData state (from app)
     if (node.nodeName === "ASTRO-ISLAND") {
-      addIslandData(node);
+      // setIslandData(node);
+
+      // push an object to islandData
+      // const island = {
+      //   id: {
+
+      //   }
+      // }
     }
     //If node has no children, return node
     if (children.length === 0) {
@@ -39,9 +46,9 @@ const Panel = (props) => {
       defaultExpandIcon={<ChevronRightIcon />}
       onNodeSelect={handleClick}
       sx={{
-        height: 240,
+        height: '100vh',
         flexGrow: 1,
-        maxWidth: 400,
+        width: 'auto',
         overflowY: 'auto',
         fontFamily: 'Roboto mono, monospace',
       }}
