@@ -26,11 +26,18 @@ const App = () => {
     if (islands[id]) setCurrentComp(islands[id]);
     else setCurrentComp(null);
   };
+
   //function to add astro island nodes to state when parsing dom
   const addIslandData = (astroIsland) => {
-    setIslandData([...islandData, astroIsland])
-    console.log(islandData)
+    const arrayOfKeys = islandData.map(obj => Object.keys(obj)[0]);
+    
+    if (!arrayOfKeys.includes(Object.keys(astroIsland)[0])) {
+      setIslandData([...islandData, astroIsland])
+    }
+    
+    console.log(islandData);
   }
+
   // if id is not found, display 'this is static' on the side pane
   // set isClicked to True
 

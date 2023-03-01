@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import TreeView from '@mui/lab/TreeView';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -7,27 +7,29 @@ import TreeItem from '@mui/lab/TreeItem';
 // create TS type for panel props
 
 const Panel = (props) => {
-  const { html, handleClick, setIslandData } = props;
-  
+  const { html, handleClick, addIslandData } = props;
+
   //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
   const createTree = (node, id) => {
     //Inputs all child elements of current node into array
     const children = Array.from(node.children);
+
     //Stores ASTRO-ISLAND data in islandData state (from app)
     if (node.nodeName === "ASTRO-ISLAND") {
-      // setIslandData(node);
+      const island = {
+        [id]: {
+          node: node,
+        }
+      }
 
-      // push an object to islandData
-      // const island = {
-      //   id: {
-
-      //   }
-      // }
+      addIslandData(island);
     }
+
     //If node has no children, return node
     if (children.length === 0) {
       return <TreeItem key={id} nodeId={id} label={node.nodeName} />;
     }
+
     //If node has children, recurse through function with each child node
     return (
       <TreeItem key={id} nodeId={id} label={node.nodeName}>
@@ -37,6 +39,12 @@ const Panel = (props) => {
   };
 
   const treeJSX = createTree(html.body, '0');
+
+  // let treeJSX;
+
+  // useEffect(() => {
+  //   treeJSX = createTree(html.body, '0');
+  // }, [])
   
   // returns the completed tree
   return (
