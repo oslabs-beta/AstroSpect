@@ -17,12 +17,11 @@ const Panel = (props) => {
     //Stores ASTRO-ISLAND data in islandData state (from app)
     if (node.nodeName === "ASTRO-ISLAND") {
       const island = {
-        [id]: {
-          node: node,
-        }
+        client: node.attributes.client.value,
+        // props: node.attributes.props.value.replace(/&quot;/g, '"'),
       }
 
-      addIslandData(island);
+      addIslandData(island, id);
     }
 
     //If node has no children, return node
@@ -41,7 +40,6 @@ const Panel = (props) => {
   const treeJSX = createTree(html.body, '0');
 
   // let treeJSX;
-
   // useEffect(() => {
   //   treeJSX = createTree(html.body, '0');
   // }, [])

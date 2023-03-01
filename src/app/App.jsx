@@ -15,24 +15,32 @@ const App = () => {
   const [bodyData, setBodyData] = useState(null);
   const [islands, setIslands] = useState(initial);
   const [currentComp, setCurrentComp] = useState(null);
-  const [islandData, setIslandData] = useState([]);
+  const [islandData, setIslandData] = useState({});
 
   const handleClick = function (e, nodeId) {
     // function gets data after running it in panel.jsx
     // get the id of the treeItem clicked
     const id = nodeId;
     console.log(`Clicked ${id}`);
+    
+    console.log(islandData);
+    if (islandData[id]) {
+      console.log(islandData[id]);
+    }
+
     // check for id of astro
     if (islands[id]) setCurrentComp(islands[id]);
     else setCurrentComp(null);
   };
 
   //function to add astro island nodes to state when parsing dom
-  const addIslandData = (astroIsland) => {
-    const arrayOfKeys = islandData.map(obj => Object.keys(obj)[0]);
+  const addIslandData = (astroIsland, key) => {
+    // const arrayOfKeys = islandData.map(obj => Object.keys(obj)[0]);
+    const arrayOfKeys = Object.keys(islandData);
+    console.log(arrayOfKeys)
     
-    if (!arrayOfKeys.includes(Object.keys(astroIsland)[0])) {
-      setIslandData([...islandData, astroIsland])
+    if (!arrayOfKeys.includes(key)) {
+      setIslandData({ ...islandData, [key]: astroIsland });
     }
     
     console.log(islandData);
