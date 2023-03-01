@@ -16,14 +16,48 @@ const Panel = (props) => {
     //Stores ASTRO-ISLAND data in islandData state (from app)
     if (node.nodeName === 'ASTRO-ISLAND') {
       addIslandData(node);
+
+      if (children.length === 0) {
+        return (
+          <TreeItem
+            key={id}
+            nodeId={id}
+            label={`<${node.nodeName}>`}
+            sx={{ color: '#ff7300' }}
+          />
+        );
+      }
+      //If node has children, recurse through function with each child node
+      return (
+        <TreeItem
+          key={id}
+          nodeId={id}
+          label={`<${node.nodeName}>`}
+          sx={{ color: '#ff7300' }}
+        >
+          {children.map((child, index) => createTree(child, `${id}-${index}`))}
+        </TreeItem>
+      );
     }
     //If node has no children, return node
     if (children.length === 0) {
-      return <TreeItem key={id} nodeId={id} label={node.nodeName} />;
+      return (
+        <TreeItem
+          key={id}
+          nodeId={id}
+          label={`<${node.nodeName}>`}
+          sx={{ color: '#F5F5F5' }}
+        />
+      );
     }
     //If node has children, recurse through function with each child node
     return (
-      <TreeItem key={id} nodeId={id} label={node.nodeName}>
+      <TreeItem
+        key={id}
+        nodeId={id}
+        label={`<${node.nodeName}>`}
+        sx={{ color: '#F5F5F5' }}
+      >
         {children.map((child, index) => createTree(child, `${id}-${index}`))}
       </TreeItem>
     );

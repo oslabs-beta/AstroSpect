@@ -9984,6 +9984,7 @@ var App = function App() {
     // check for id of astro
     if (islands[id]) setCurrentComp(islands[id]);else setCurrentComp(null);
   };
+  //function to add astro island nodes to state when parsing dom
   var addIslandData = function addIslandData(astroIsland) {
     setIslandData([].concat(_toConsumableArray(islandData), [astroIsland]));
     console.log(islandData);
@@ -10023,7 +10024,7 @@ var App = function App() {
   //pass down to side pane only when that island is clicked
   // when another element is clicked reset side pane and display a new one with the clicked element
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, bodyData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Panel__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "In APP.JSX"), bodyData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Panel__WEBPACK_IMPORTED_MODULE_1__["default"], {
     handleClick: handleClick,
     html: bodyData,
     addIslandData: addIslandData
@@ -10067,22 +10068,52 @@ var Panel = function Panel(props) {
 
   //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
   var createTree = function createTree(node, id) {
-    //
+    //Inputs all child elements of current node into array
     var children = Array.from(node.children);
-    if (node.nodeName === "ASTRO-ISLAND") {
+    //Stores ASTRO-ISLAND data in islandData state (from app)
+    if (node.nodeName === 'ASTRO-ISLAND') {
       addIslandData(node);
+      if (children.length === 0) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: id,
+          nodeId: id,
+          label: "<".concat(node.nodeName, ">"),
+          sx: {
+            color: '#ff7300'
+          }
+        });
+      }
+      //If node has children, recurse through function with each child node
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        key: id,
+        nodeId: id,
+        label: "<".concat(node.nodeName, ">"),
+        sx: {
+          color: '#ff7300'
+        }
+      }, children.map(function (child, index) {
+        return createTree(child, "".concat(id, "-").concat(index));
+      }));
     }
+    //If node has no children, return node
     if (children.length === 0) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
         key: id,
         nodeId: id,
-        label: node.nodeName
+        label: "<".concat(node.nodeName, ">"),
+        sx: {
+          color: '#F5F5F5'
+        }
       });
     }
+    //If node has children, recurse through function with each child node
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: id,
       nodeId: id,
-      label: node.nodeName
+      label: "<".concat(node.nodeName, ">"),
+      sx: {
+        color: '#F5F5F5'
+      }
     }, children.map(function (child, index) {
       return createTree(child, "".concat(id, "-").concat(index));
     }));
@@ -10096,10 +10127,7 @@ var Panel = function Panel(props) {
     defaultExpandIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_ChevronRight__WEBPACK_IMPORTED_MODULE_4__["default"], null),
     onNodeSelect: handleClick,
     sx: {
-      height: 240,
       flexGrow: 1,
-      maxWidth: 400,
-      overflowY: 'auto',
       fontFamily: 'Roboto mono, monospace'
     }
   }, treeJSX.props.children);

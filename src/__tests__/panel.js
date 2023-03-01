@@ -27,26 +27,27 @@ const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT)
 const astroIslands = [];
 
 // parse through a tree of nodes and return a nested JSX structure that we can plug in to MUI
-const createTree = (node, id) => {
+const createTree = (node, id, astroCount = 0) => {
   console.log(node)
   const children = Array.from(node.children);
   console.log(children)
   if (node.nodeName === "ASTRO-ISLAND") {
     astroIslands.push(node);
+    astroCount++
   }
   if (children.length === 0) {
-    return <TreeItem key={id} nodeId={id} label={node.nodeName} />;
+    return <TreeItem key={id} nodeId={id} label={`<${node.nodeName}>`} />;
   }
 
   return (
-    <TreeItem key={id} nodeId={id} label={node.nodeName}>
+    <TreeItem key={id} nodeId={id} label={`<${node.nodeName}>`}>
       {children.map((child, index) => createTree(child, `${id}-${index}`))}
     </TreeItem>
   );
 };
 
 const treeJSX = createTree(document.body, '0');
-
+console.log(treeJSX)
 // expect astroIslands length to be ___
 
 // console.log(astroIslands)
