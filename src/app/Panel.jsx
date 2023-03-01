@@ -8,13 +8,13 @@ import TreeItem from '@mui/lab/TreeItem';
 
 const Panel = (props) => {
   const { html, handleClick, addIslandData } = props;
-  
+
   //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
   const createTree = (node, id) => {
     //Inputs all child elements of current node into array
     const children = Array.from(node.children);
     //Stores ASTRO-ISLAND data in islandData state (from app)
-    if (node.nodeName === "ASTRO-ISLAND") {
+    if (node.nodeName === 'ASTRO-ISLAND') {
       addIslandData(node);
     }
     //If node has no children, return node
@@ -30,7 +30,7 @@ const Panel = (props) => {
   };
 
   const treeJSX = createTree(html.body, '0');
-  
+
   // returns the completed tree
   return (
     <TreeView
@@ -39,10 +39,7 @@ const Panel = (props) => {
       defaultExpandIcon={<ChevronRightIcon />}
       onNodeSelect={handleClick}
       sx={{
-        height: 240,
         flexGrow: 1,
-        maxWidth: 400,
-        overflowY: 'auto',
         fontFamily: 'Roboto mono, monospace',
       }}
     >
