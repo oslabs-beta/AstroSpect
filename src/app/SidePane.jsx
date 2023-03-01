@@ -16,7 +16,7 @@ const SidePane = (props) => {
           <p>Astro Island</p>
           <hr />
           <h3>Props: </h3>
-          <p>{currentComp.props}</p>
+          <p>{JSON.stringify(currentComp.props)}</p>
           <hr />
           <h3>Client Directive:</h3>
           <p> {currentComp.client}</p>

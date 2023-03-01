@@ -6,8 +6,30 @@ import TreeItem from '@mui/lab/TreeItem';
 
 // create TS type for panel props
 
+
 const Panel = (props) => {
   const { html, handleClick, addIslandData } = props;
+
+
+  const propsParser = (attribute) => {
+
+    console.log(`attribute is: ${attribute} with typeof: ${typeof attribute}`);
+
+    const parsed = JSON.parse(attribute);
+  
+    const spreader = (obj) => {
+      for (const key in obj) {
+        if (Array.isArray(obj[key])) {
+          let newVal = obj[key].slice(1);
+          obj[key] = newVal[0];
+          spreader(obj[key])
+        }
+      }
+    }
+    spreader(parsed);
+    console.log('this is parsed',parsed)
+    return {parsed};
+  }
 
   //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
   const createTree = (node, id) => {
@@ -16,9 +38,10 @@ const Panel = (props) => {
 
     //Stores ASTRO-ISLAND data in islandData state (from app)
     if (node.nodeName === "ASTRO-ISLAND") {
+      const parsedProps = propsParser(node.attributes.props.value);
       const island = {
         client: node.attributes.client.value,
-        props: node.attributes.props.value.replace(/&quot;/g, '"'),
+        props: parsedProps
       }
 
       addIslandData(island, id);

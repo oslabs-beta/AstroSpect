@@ -21,11 +21,6 @@ const App = () => {
     // function gets data after running it in panel.jsx
     // get the id of the treeItem clicked
     const id = nodeId;
-    console.log(`Clicked ${id}`);
-    
-    if (islandData[id]) {
-      console.log(islandData[id]);
-    }
 
     // check for id of astro
     if (islandData[id]) setCurrentComp(islandData[id]);
