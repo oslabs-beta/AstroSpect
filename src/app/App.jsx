@@ -49,7 +49,7 @@ const App = () => {
   // when another element is clicked reset side pane and display a new one with the clicked element
 
   return (
-    <div>
+    <>
       {bodyData && (
         <Panel
           handleClick={handleClick}
@@ -58,7 +58,7 @@ const App = () => {
         />
       )}
       <SidePane currentComp={currentComp} />
-    </div>
+    </>
   );
 };
 

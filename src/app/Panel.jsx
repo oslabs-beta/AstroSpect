@@ -32,7 +32,7 @@ const Panel = (props) => {
           <TreeItem
             key={id}
             nodeId={id}
-            label={`${node.nodeName.toLowerCase()} | ${componentFile}`}
+            label={`${node.nodeName.toLowerCase()} (${componentFile})`}
             sx={{ color: '#ff7300' }}
           />
         );
@@ -78,7 +78,6 @@ const Panel = (props) => {
   // returns the completed tree
   return (
     <div id="main-panel">
-      <h1>Traverse the Astro Plane...</h1>
       <TreeView
         aria-label="file system navigator"
         defaultCollapseIcon={<ExpandMoreIcon sx={{ color: '#d5bcef' }} />}
