@@ -31,13 +31,13 @@ const App = () => {
   const addIslandData = (astroIsland, key) => {
     // const arrayOfKeys = islandData.map(obj => Object.keys(obj)[0]);
     const arrayOfKeys = Object.keys(islandData);
-    console.log(arrayOfKeys)
+    // console.log(arrayOfKeys)
     
     if (!arrayOfKeys.includes(key)) {
       setIslandData({ ...islandData, [key]: astroIsland });
     }
     
-    console.log(islandData);
+    // console.log(islandData);
   }
 
   // if id is not found, display 'this is static' on the side pane
@@ -46,7 +46,7 @@ const App = () => {
   useEffect(() => {
     async function fetchData() {
       const data = await parseData();
-      console.log('data from useEffect App.jsx', data);
+      // console.log('data from useEffect App.jsx', data);
       setBodyData(data);
     }
     fetchData();

@@ -13,7 +13,7 @@ const Panel = (props) => {
 
   const propsParser = (attribute) => {
 
-    console.log(`attribute is: ${attribute} with typeof: ${typeof attribute}`);
+    // console.log(`attribute is: ${attribute} with typeof: ${typeof attribute}`);
 
     const parsed = JSON.parse(attribute);
   
@@ -27,8 +27,8 @@ const Panel = (props) => {
       }
     }
     spreader(parsed);
-    console.log('this is parsed',parsed)
-    return {parsed};
+    // console.log('this is parsed',parsed)
+    return parsed;
   }
 
   //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
