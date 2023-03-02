@@ -2,6 +2,8 @@
 import ReactCounter from '../components/ReactCounter.jsx';
 import ReactFooter from '../components/ReactFooter.jsx';
 import ReactStatic from '../components/ReactStatic.jsx';
+import ReactComponent from '../components/ReactComponent.jsx';
+import SvelteComponent from '../components/SvelteComponent.svelte'
 ---
 <html lang="en">
 	<head>
@@ -20,8 +22,8 @@ import ReactStatic from '../components/ReactStatic.jsx';
 				<ReactStatic />
 		</div>
 		<div id='row'>
-			<ReactStatic />
-			<ReactStatic client:load />
+			<SvelteComponent client:visible />
+			<ReactComponent client:load />
 			<ReactStatic />
 	</div>
 	</body>
