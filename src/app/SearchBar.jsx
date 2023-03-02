@@ -51,6 +51,7 @@ const styles = {
     width: '50%',
     fontSize: '20px',
     marginLeft: '10px',
+    marginBottom: '10px',
   },
 };
 export default SearchBar;

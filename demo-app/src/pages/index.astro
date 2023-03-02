@@ -3,7 +3,9 @@ import ReactCounter from '../components/ReactCounter.jsx';
 import ReactFooter from '../components/ReactFooter.jsx';
 import ReactStatic from '../components/ReactStatic.jsx';
 import ReactComponent from '../components/ReactComponent.jsx';
-import SvelteComponent from '../components/SvelteComponent.svelte'
+import SvelteComponent from '../components/SvelteComponent.svelte';
+
+let password = 'iloveobiwankenobi'
 ---
 <html lang="en">
 	<head>
@@ -22,8 +24,8 @@ import SvelteComponent from '../components/SvelteComponent.svelte'
 				<ReactStatic />
 		</div>
 		<div id='row'>
-			<SvelteComponent client:visible />
-			<ReactComponent client:load />
+			<SvelteComponent client:visible password='darthvaderiscool' darthVaderEnemy='Kirby'/>
+			<ReactComponent client:load password={password} isDarkSide='true' yodaRules='false' palpatineRules='true' planetsDestroyed='9,184,090,402,693'/>
 			<ReactStatic />
 	</div>
 	</body>
