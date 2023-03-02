@@ -28,7 +28,7 @@ const Panel = (props) => {
   };
 
   //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
-  const createTree = (node, id) => {
+  const createTree = (node, id, fontColor = '#F5F5F5') => {
     //Inputs all child elements of current node into array
     const children = Array.from(node.children);
 
@@ -66,10 +66,12 @@ const Panel = (props) => {
         <TreeItem
           key={id}
           nodeId={id}
-          label={`${node.nodeName.toLowerCase()} | ${componentFile}`}
+          label={`${node.nodeName.toLowerCase()} (${componentFile})`}
           sx={{ color: '#ff7300' }}
         >
-          {children.map((child, index) => createTree(child, `${id}-${index}`))}
+          {children.map((child, index) =>
+            createTree(child, `${id}-${index}`, '#e29353')
+          )}
         </TreeItem>
       );
     }
@@ -80,7 +82,7 @@ const Panel = (props) => {
           key={id}
           nodeId={id}
           label={`${node.nodeName.toLowerCase()}`}
-          sx={{ color: '#F5F5F5' }}
+          sx={{ color: fontColor }}
         />
       );
     }
@@ -91,9 +93,11 @@ const Panel = (props) => {
         key={id}
         nodeId={id}
         label={`${node.nodeName.toLowerCase()}`}
-        sx={{ color: '#F5F5F5' }}
+        sx={{ color: fontColor }}
       >
-        {children.map((child, index) => createTree(child, `${id}-${index}`))}
+        {children.map((child, index) =>
+          createTree(child, `${id}-${index}`, fontColor)
+        )}
       </TreeItem>
     );
   };
@@ -102,10 +106,10 @@ const Panel = (props) => {
 
   // returns the completed tree
   return (
-    <div id='main-panel'>
+    <div id="main-panel">
       <SearchBar />
       <TreeView
-        aria-label='file system navigator'
+        aria-label="file system navigator"
         defaultCollapseIcon={<ExpandMoreIcon sx={{ color: '#d5bcef' }} />}
         defaultExpandIcon={<ChevronRightIcon sx={{ color: '#d5bcef' }} />}
         onNodeSelect={handleClick}
