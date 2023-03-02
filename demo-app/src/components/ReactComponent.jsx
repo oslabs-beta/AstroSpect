@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 function ReactComponent() {
   const [password, setPassword] = useState('');
+  const [darthPW, setdarthPW] = useState('iloveobiwankenobi');
 
   const handleButtonClick = () => {
     if (password === 'iloveobiwankenobi') {
