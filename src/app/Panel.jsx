@@ -10,11 +10,7 @@ import TreeItem from '@mui/lab/TreeItem';
 const Panel = (props) => {
   const { html, handleClick, addIslandData } = props;
 
-
   const propsParser = (attribute) => {
-
-    // console.log(`attribute is: ${attribute} with typeof: ${typeof attribute}`);
-
     const parsed = JSON.parse(attribute);
   
     const spreader = (obj) => {
@@ -26,8 +22,8 @@ const Panel = (props) => {
         }
       }
     }
+
     spreader(parsed);
-    // console.log('this is parsed',parsed)
     return parsed;
   }
 
@@ -61,11 +57,6 @@ const Panel = (props) => {
   };
 
   const treeJSX = createTree(html.body, '0');
-
-  // let treeJSX;
-  // useEffect(() => {
-  //   treeJSX = createTree(html.body, '0');
-  // }, [])
   
   // returns the completed tree
   return (
@@ -87,6 +78,7 @@ const Panel = (props) => {
   );
 };
 
+/* for future use: filtering out nodes we don't want */
 // const filterDom = () => {
 //   const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_ELEMENT);
 //   let node = walker.firstChild();

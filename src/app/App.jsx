@@ -5,15 +5,7 @@ import { useState, useEffect } from 'react';
 import parseData from './parser.js';
 
 const App = () => {
-  const initial = {
-    A1: {
-      props: 'color',
-      client: 'load',
-    },
-  };
-
   const [bodyData, setBodyData] = useState(null);
-  const [islands, setIslands] = useState(initial);
   const [currentComp, setCurrentComp] = useState(null);
   const [islandData, setIslandData] = useState({});
 
@@ -29,15 +21,11 @@ const App = () => {
 
   //function to add astro island nodes to state when parsing dom
   const addIslandData = (astroIsland, key) => {
-    // const arrayOfKeys = islandData.map(obj => Object.keys(obj)[0]);
     const arrayOfKeys = Object.keys(islandData);
-    // console.log(arrayOfKeys)
     
     if (!arrayOfKeys.includes(key)) {
       setIslandData({ ...islandData, [key]: astroIsland });
     }
-    
-    // console.log(islandData);
   }
 
   // if id is not found, display 'this is static' on the side pane
@@ -46,7 +34,6 @@ const App = () => {
   useEffect(() => {
     async function fetchData() {
       const data = await parseData();
-      // console.log('data from useEffect App.jsx', data);
       setBodyData(data);
     }
     fetchData();

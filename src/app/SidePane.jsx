@@ -8,8 +8,6 @@ import TreeItem from '@mui/lab/TreeItem';
 const SidePane = (props) => {
   // get the properties from current component
   const { currentComp } = props;
-  // console.log('this is currentComp.props', currentComp.props);
-
   //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
   const createPropsDisplay = (obj, id) => {
     const topLevel = [];
