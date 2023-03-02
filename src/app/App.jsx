@@ -22,11 +22,11 @@ const App = () => {
   //function to add astro island nodes to state when parsing dom
   const addIslandData = (astroIsland, key) => {
     const arrayOfKeys = Object.keys(islandData);
-    
+
     if (!arrayOfKeys.includes(key)) {
       setIslandData({ ...islandData, [key]: astroIsland });
     }
-  }
+  };
 
   // if id is not found, display 'this is static' on the side pane
   // set isClicked to True
@@ -45,11 +45,16 @@ const App = () => {
   // when another element is clicked reset side pane and display a new one with the clicked element
 
   return (
-    <div>
-      <p>In APP.JSX</p>
-      {bodyData && <Panel handleClick={handleClick} html={bodyData} addIslandData={addIslandData} />}
+    <>
+      {bodyData && (
+        <Panel
+          handleClick={handleClick}
+          html={bodyData}
+          addIslandData={addIslandData}
+        />
+      )}
       <SidePane currentComp={currentComp} />
-    </div>
+    </>
   );
 };
 

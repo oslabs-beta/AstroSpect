@@ -21,9 +21,9 @@ $lightestOrange: lighten($primaryOrange, 49.8%);
 // MAIN PANEL
 
 body {
-  background-color: $darkestPurple;
   color: whitesmoke;
   font-family: 'Roboto Mono', monospace;
+  margin: 0;
 }
 
 .components-body {
@@ -37,15 +37,23 @@ h3 {
 
 // adjustable, movable sidepane
 
+#root {
+  display: flex;
+}
+#main-panel {
+  background-color: $darkestPurple;
+  width: 60%;
+  height: 100vh;
+  padding: 20px;
+  margin: 0;
+}
+
 // SIDE PANE
 .side-pane {
   background: $lightestBlue;
   color: $darkestBlue;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 30%;
-  height: 100%;
+  width: 40%;
+  height: 100vh;
   padding: 20px;
   color: black;
   margin: 0;
