@@ -5,39 +5,35 @@ import { useState, useEffect } from 'react';
 import parseData from './parser.js';
 
 const App = () => {
-  const initial = {
-    A1: {
-      props: 'color',
-      client: 'load',
-    },
-  };
-
   const [bodyData, setBodyData] = useState(null);
-  const [islands, setIslands] = useState(initial);
   const [currentComp, setCurrentComp] = useState(null);
-  const [islandData, setIslandData] = useState([]);
+  const [islandData, setIslandData] = useState({});
 
   const handleClick = function (e, nodeId) {
     // function gets data after running it in panel.jsx
     // get the id of the treeItem clicked
     const id = nodeId;
-    console.log(`Clicked ${id}`);
+
     // check for id of astro
-    if (islands[id]) setCurrentComp(islands[id]);
+    if (islandData[id]) setCurrentComp(islandData[id]);
     else setCurrentComp(null);
   };
+
   //function to add astro island nodes to state when parsing dom
-  const addIslandData = (astroIsland) => {
-    setIslandData([...islandData, astroIsland])
-    console.log(islandData)
-  }
+  const addIslandData = (astroIsland, key) => {
+    const arrayOfKeys = Object.keys(islandData);
+
+    if (!arrayOfKeys.includes(key)) {
+      setIslandData({ ...islandData, [key]: astroIsland });
+    }
+  };
+
   // if id is not found, display 'this is static' on the side pane
   // set isClicked to True
 
   useEffect(() => {
     async function fetchData() {
       const data = await parseData();
-      console.log('data from useEffect App.jsx', data);
       setBodyData(data);
     }
     fetchData();
@@ -49,11 +45,16 @@ const App = () => {
   // when another element is clicked reset side pane and display a new one with the clicked element
 
   return (
-    <div>
-      <p>In APP.JSX</p>
-      {bodyData && <Panel handleClick={handleClick} html={bodyData} addIslandData={addIslandData} />}
+    <>
+      {bodyData && (
+        <Panel
+          handleClick={handleClick}
+          html={bodyData}
+          addIslandData={addIslandData}
+        />
+      )}
       <SidePane currentComp={currentComp} />
-    </div>
+    </>
   );
 };
 
