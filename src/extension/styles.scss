@@ -58,5 +58,13 @@ hr {
   border-top: 1px solid black;
 }
 
+#main-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 100%;
+  padding: 20px;
+}
 // to do: media queries for side view, bottom view, size changes
 // when too narrow, put sidepane underneath

@@ -10024,7 +10024,7 @@ var App = function App() {
   //pass down to side pane only when that island is clicked
   // when another element is clicked reset side pane and display a new one with the clicked element
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "In APP.JSX"), bodyData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Panel__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, bodyData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Panel__WEBPACK_IMPORTED_MODULE_1__["default"], {
     handleClick: handleClick,
     html: bodyData,
     addIslandData: addIslandData
@@ -10073,11 +10073,20 @@ var Panel = function Panel(props) {
     //Stores ASTRO-ISLAND data in islandData state (from app)
     if (node.nodeName === 'ASTRO-ISLAND') {
       addIslandData(node);
+      var componentFile = node.attributes['component-url'].value;
+      var lastIndex = null;
+      for (var i = componentFile.length - 1; i > 0; i--) {
+        if (componentFile[i] === '.') lastIndex = i;
+        if (componentFile[i] === '/') {
+          if (lastIndex) componentFile = componentFile.slice(i + 1, lastIndex);else componentFile = componentFile.slice(i + 1);
+          break;
+        }
+      }
       if (children.length === 0) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: id,
           nodeId: id,
-          label: "<".concat(node.nodeName, ">"),
+          label: "".concat(node.nodeName.toLowerCase(), " | ").concat(componentFile),
           sx: {
             color: '#ff7300'
           }
@@ -10087,7 +10096,7 @@ var Panel = function Panel(props) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
         key: id,
         nodeId: id,
-        label: "<".concat(node.nodeName, ">"),
+        label: "".concat(node.nodeName.toLowerCase(), " | ").concat(componentFile),
         sx: {
           color: '#ff7300'
         }
@@ -10100,7 +10109,7 @@ var Panel = function Panel(props) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
         key: id,
         nodeId: id,
-        label: "<".concat(node.nodeName, ">"),
+        label: "".concat(node.nodeName.toLowerCase()),
         sx: {
           color: '#F5F5F5'
         }
@@ -10110,7 +10119,7 @@ var Panel = function Panel(props) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: id,
       nodeId: id,
-      label: "<".concat(node.nodeName, ">"),
+      label: "".concat(node.nodeName.toLowerCase()),
       sx: {
         color: '#F5F5F5'
       }
@@ -10121,16 +10130,26 @@ var Panel = function Panel(props) {
   var treeJSX = createTree(html.body, '0');
 
   // returns the completed tree
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeView__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    id: "main-panel"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Traverse the Astro Plane..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_lab_TreeView__WEBPACK_IMPORTED_MODULE_2__["default"], {
     "aria-label": "file system navigator",
-    defaultCollapseIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_ExpandMore__WEBPACK_IMPORTED_MODULE_3__["default"], null),
-    defaultExpandIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_ChevronRight__WEBPACK_IMPORTED_MODULE_4__["default"], null),
+    defaultCollapseIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_ExpandMore__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      sx: {
+        color: '#d5bcef'
+      }
+    }),
+    defaultExpandIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mui_icons_material_ChevronRight__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      sx: {
+        color: '#d5bcef'
+      }
+    }),
     onNodeSelect: handleClick,
     sx: {
       flexGrow: 1,
       fontFamily: 'Roboto mono, monospace'
     }
-  }, treeJSX.props.children);
+  }, treeJSX.props.children));
 };
 
 // const filterDom = () => {
@@ -10276,7 +10295,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  background-color: #0b164a;\n  color: whitesmoke;\n  font-family: \"Roboto Mono\", monospace;\n}\n\n.components-body {\n  width: 60%;\n}\n\nh3 {\n  color: #ff7300;\n}\n\n.side-pane {\n  background: #f6fbff;\n  color: #313e58;\n  position: fixed;\n  top: 0;\n  right: 0;\n  width: 30%;\n  height: 100%;\n  padding: 20px;\n  color: black;\n  margin: 0;\n  font-size: 15px;\n}\n\nhr {\n  margin: 30px -20px 30px;\n  border: 0;\n  border-top: 1px solid black;\n}", "",{"version":3,"sources":["webpack://./src/extension/styles.scss"],"names":[],"mappings":"AAsBA;EACE,yBAVc;EAWd,iBAAA;EACA,qCAAA;AApBF;;AAuBA;EACE,UAAA;AApBF;;AAuBA;EACE,cAjBc;AAHhB;;AA2BA;EACE,mBArCa;EAsCb,cAnCY;EAoCZ,eAAA;EACA,MAAA;EACA,QAAA;EACA,UAAA;EACA,YAAA;EACA,aAAA;EACA,YAAA;EACA,SAAA;EACA,eAAA;AAxBF;;AA2BA;EACE,uBAAA;EACA,SAAA;EACA,2BAAA;AAxBF","sourcesContent":["/// COLOR SCHEME VARIABLES\n@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');\n\n// Blues\n$lightestBlue: #f6fbff;\n$lightBlue: #8ab1cf;\n$darkBlue: #24346c;\n$darkestBlue: #313e58;\n\n// Purples\n$lightestPurple: #d5bcef;\n$lightPurple: #5965a4;\n$darkPurple: #445094;\n$darkestPurple: #0b164a;\n\n// Oranges\n$primaryOrange: #ff7300;\n$lightOrange: lighten($primaryOrange, 40%);\n$lightestOrange: lighten($primaryOrange, 49.8%);\n\n// MAIN PANEL\n\nbody {\n  background-color: $darkestPurple;\n  color: whitesmoke;\n  font-family: 'Roboto Mono', monospace;\n}\n\n.components-body {\n  width: 60%;\n}\n\nh3 {\n  color: $primaryOrange;\n  // text-shadow: 0 0 0.5px gray;\n}\n\n// adjustable, movable sidepane\n\n// SIDE PANE\n.side-pane {\n  background: $lightestBlue;\n  color: $darkestBlue;\n  position: fixed;\n  top: 0;\n  right: 0;\n  width: 30%;\n  height: 100%;\n  padding: 20px;\n  color: black;\n  margin: 0;\n  font-size: 15px;\n}\n\nhr {\n  margin: 30px -20px 30px;\n  border: 0;\n  border-top: 1px solid black;\n}\n\n// to do: media queries for side view, bottom view, size changes\n// when too narrow, put sidepane underneath\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  background-color: #0b164a;\n  color: whitesmoke;\n  font-family: \"Roboto Mono\", monospace;\n}\n\n.components-body {\n  width: 60%;\n}\n\nh3 {\n  color: #ff7300;\n}\n\n.side-pane {\n  background: #f6fbff;\n  color: #313e58;\n  position: fixed;\n  top: 0;\n  right: 0;\n  width: 30%;\n  height: 100%;\n  padding: 20px;\n  color: black;\n  margin: 0;\n  font-size: 15px;\n}\n\nhr {\n  margin: 30px -20px 30px;\n  border: 0;\n  border-top: 1px solid black;\n}\n\n#main-panel {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 70%;\n  height: 100%;\n  padding: 20px;\n}", "",{"version":3,"sources":["webpack://./src/extension/styles.scss"],"names":[],"mappings":"AAsBA;EACE,yBAVc;EAWd,iBAAA;EACA,qCAAA;AApBF;;AAuBA;EACE,UAAA;AApBF;;AAuBA;EACE,cAjBc;AAHhB;;AA2BA;EACE,mBArCa;EAsCb,cAnCY;EAoCZ,eAAA;EACA,MAAA;EACA,QAAA;EACA,UAAA;EACA,YAAA;EACA,aAAA;EACA,YAAA;EACA,SAAA;EACA,eAAA;AAxBF;;AA2BA;EACE,uBAAA;EACA,SAAA;EACA,2BAAA;AAxBF;;AA2BA;EACE,eAAA;EACA,MAAA;EACA,OAAA;EACA,UAAA;EACA,YAAA;EACA,aAAA;AAxBF","sourcesContent":["/// COLOR SCHEME VARIABLES\n@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');\n\n// Blues\n$lightestBlue: #f6fbff;\n$lightBlue: #8ab1cf;\n$darkBlue: #24346c;\n$darkestBlue: #313e58;\n\n// Purples\n$lightestPurple: #d5bcef;\n$lightPurple: #5965a4;\n$darkPurple: #445094;\n$darkestPurple: #0b164a;\n\n// Oranges\n$primaryOrange: #ff7300;\n$lightOrange: lighten($primaryOrange, 40%);\n$lightestOrange: lighten($primaryOrange, 49.8%);\n\n// MAIN PANEL\n\nbody {\n  background-color: $darkestPurple;\n  color: whitesmoke;\n  font-family: 'Roboto Mono', monospace;\n}\n\n.components-body {\n  width: 60%;\n}\n\nh3 {\n  color: $primaryOrange;\n  // text-shadow: 0 0 0.5px gray;\n}\n\n// adjustable, movable sidepane\n\n// SIDE PANE\n.side-pane {\n  background: $lightestBlue;\n  color: $darkestBlue;\n  position: fixed;\n  top: 0;\n  right: 0;\n  width: 30%;\n  height: 100%;\n  padding: 20px;\n  color: black;\n  margin: 0;\n  font-size: 15px;\n}\n\nhr {\n  margin: 30px -20px 30px;\n  border: 0;\n  border-top: 1px solid black;\n}\n\n#main-panel {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 70%;\n  height: 100%;\n  padding: 20px;\n}\n// to do: media queries for side view, bottom view, size changes\n// when too narrow, put sidepane underneath\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

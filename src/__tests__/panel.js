@@ -14,26 +14,46 @@ const dom = new JSDOM(`
       <header><astro-island uid="Z59tNq" component-url="/src/components/TechStackItem" component-export="default" renderer-url="/node_modules/.vite/deps/@astrojs_react_client__js.js?v=3537a1de" props="{&quot;name&quot;:[0,&quot;Sass&quot;],&quot;desc&quot;:[0,&quot;-- CSS pre-processor&quot;],&quot;link&quot;:[0,&quot;https://sass-lang.com/&quot;],&quot;img&quot;:[0,&quot;https://sass-lang.com/assets/img/styleguide/seal-color-aef0354c.png&quot;]}" ssr="" client="idle" before-hydration-url="/@id/astro:scripts/before-hydration.js" opts="{&quot;name&quot;:&quot;TechStackItemReact&quot;,&quot;value&quot;:true}" await-children=""><li><div><a href="https://sass-lang.com/" target="_blank" rel="noreferrer"><img src="https://sass-lang.com/assets/img/styleguide/seal-color-aef0354c.png" alt="Sass"/><p>Sass</p></a><p class="tech-desc">-- CSS pre-processor</p></div></li></astro-island></header>
       <div><h1></h1></div>
       <p>inner text</p>
-      <astro-island uid="1mSS4I" component-url="/src/components/TechStackItem" component-export="default" renderer-url="/node_modules/.vite/deps/@astrojs_react_client__js.js?v=3537a1de" props="{&quot;name&quot;:[0,&quot;React&quot;],&quot;desc&quot;:[0,&quot;-- UI library&quot;],&quot;link&quot;:[0,&quot;https://reactjs.org/&quot;],&quot;img&quot;:[0,&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png&quot;]}" ssr="" client="visible" before-hydration-url="/@id/astro:scripts/before-hydration.js" opts="{&quot;name&quot;:&quot;TechStackItemReact&quot;,&quot;value&quot;:true}" await-children=""><li><div><a href="https://reactjs.org/" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" alt="React"/><p>React</p></a><p class="tech-desc">-- UI library</p></div></li></astro-island>
+      <astro-island uid="Z2ipzgK" component-url="/_astro/SidebarToggleTabGroup.c5a426dd.js" component-export="default" renderer-url="/_astro/client.bdae2c91.js" props="{&quot;defaultActiveTab&quot;:[0,&quot;learn&quot;],&quot;labels&quot;:[0,{&quot;learn&quot;:[0,&quot;Learn&quot;],&quot;api&quot;:[0,&quot;Reference&quot;]}],&quot;class&quot;:[0,&quot;astro-KQNE5HRN&quot;]}" client="load" opts="{&quot;name&quot;:&quot;SidebarToggleTabGroup&quot;,&quot;value&quot;:true}" await-children=""><div class="TabGroup"><button class="active">Learn</button><button class="">Reference</button></div></astro-island>
       <footer></footer>
     </body>
   </html>
-`)
+`);
 
 const document = dom.window.document;
-const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT);
+const walker = document.createTreeWalker(
+  document.body,
+  NodeFilter.SHOW_ELEMENT
+);
 
 // save all the nodes that are Astro Islands
 const astroIslands = [];
 
 // parse through a tree of nodes and return a nested JSX structure that we can plug in to MUI
 const createTree = (node, id, astroCount = 0) => {
-  console.log(node)
+  console.log(node);
   const children = Array.from(node.children);
-  console.log(children)
-  if (node.nodeName === "ASTRO-ISLAND") {
+  console.log(children);
+  if (node.nodeName === 'ASTRO-ISLAND') {
+    let componentFile = node.attributes['component-url'].value;
+    for (let i = componentFile.length - 1; i > 0; i--) {
+      let lastIndex = null;
+      console.log(componentFile[i]);
+      if (componentFile[i] === '.') {
+        console.log(i);
+        lastIndex = i;
+        console.log(lastIndex);
+      }
+      if (componentFile[i] === '/') {
+        console.log(lastIndex);
+        if (lastIndex) componentFile = componentFile.slice(i + 1, lastIndex);
+        else componentFile = componentFile.slice(i + 1);
+        break;
+      }
+    }
+    console.log(componentFile);
     astroIslands.push(node);
-    astroCount++
+    astroCount++;
   }
   if (children.length === 0) {
     return <TreeItem key={id} nodeId={id} label={`<${node.nodeName}>`} />;
@@ -47,7 +67,7 @@ const createTree = (node, id, astroCount = 0) => {
 };
 
 const treeJSX = createTree(document.body, '0');
-console.log(treeJSX)
+console.log(treeJSX);
 // expect astroIslands length to be ___
 
 // console.log(astroIslands)

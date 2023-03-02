@@ -16,13 +16,23 @@ const Panel = (props) => {
     //Stores ASTRO-ISLAND data in islandData state (from app)
     if (node.nodeName === 'ASTRO-ISLAND') {
       addIslandData(node);
+      let componentFile = node.attributes['component-url'].value;
+      let lastIndex = null;
+      for (let i = componentFile.length - 1; i > 0; i--) {
+        if (componentFile[i] === '.') lastIndex = i;
+        if (componentFile[i] === '/') {
+          if (lastIndex) componentFile = componentFile.slice(i + 1, lastIndex);
+          else componentFile = componentFile.slice(i + 1);
+          break;
+        }
+      }
 
       if (children.length === 0) {
         return (
           <TreeItem
             key={id}
             nodeId={id}
-            label={`<${node.nodeName}>`}
+            label={`${node.nodeName.toLowerCase()} | ${componentFile}`}
             sx={{ color: '#ff7300' }}
           />
         );
@@ -32,7 +42,7 @@ const Panel = (props) => {
         <TreeItem
           key={id}
           nodeId={id}
-          label={`<${node.nodeName}>`}
+          label={`${node.nodeName.toLowerCase()} | ${componentFile}`}
           sx={{ color: '#ff7300' }}
         >
           {children.map((child, index) => createTree(child, `${id}-${index}`))}
@@ -45,7 +55,7 @@ const Panel = (props) => {
         <TreeItem
           key={id}
           nodeId={id}
-          label={`<${node.nodeName}>`}
+          label={`${node.nodeName.toLowerCase()}`}
           sx={{ color: '#F5F5F5' }}
         />
       );
@@ -55,7 +65,7 @@ const Panel = (props) => {
       <TreeItem
         key={id}
         nodeId={id}
-        label={`<${node.nodeName}>`}
+        label={`${node.nodeName.toLowerCase()}`}
         sx={{ color: '#F5F5F5' }}
       >
         {children.map((child, index) => createTree(child, `${id}-${index}`))}
@@ -67,18 +77,21 @@ const Panel = (props) => {
 
   // returns the completed tree
   return (
-    <TreeView
-      aria-label="file system navigator"
-      defaultCollapseIcon={<ExpandMoreIcon />}
-      defaultExpandIcon={<ChevronRightIcon />}
-      onNodeSelect={handleClick}
-      sx={{
-        flexGrow: 1,
-        fontFamily: 'Roboto mono, monospace',
-      }}
-    >
-      {treeJSX.props.children}
-    </TreeView>
+    <div id="main-panel">
+      <h1>Traverse the Astro Plane...</h1>
+      <TreeView
+        aria-label="file system navigator"
+        defaultCollapseIcon={<ExpandMoreIcon sx={{ color: '#d5bcef' }} />}
+        defaultExpandIcon={<ChevronRightIcon sx={{ color: '#d5bcef' }} />}
+        onNodeSelect={handleClick}
+        sx={{
+          flexGrow: 1,
+          fontFamily: 'Roboto mono, monospace',
+        }}
+      >
+        {treeJSX.props.children}
+      </TreeView>
+    </div>
   );
 };
 
