@@ -3,6 +3,7 @@ import TreeView from '@mui/lab/TreeView';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import TreeItem from '@mui/lab/TreeItem';
+import SearchBar from './SearchBar';
 
 // create TS type for panel props
 
@@ -101,9 +102,10 @@ const Panel = (props) => {
 
   // returns the completed tree
   return (
-    <div id="main-panel">
+    <div id='main-panel'>
+      <SearchBar />
       <TreeView
-        aria-label="file system navigator"
+        aria-label='file system navigator'
         defaultCollapseIcon={<ExpandMoreIcon sx={{ color: '#d5bcef' }} />}
         defaultExpandIcon={<ChevronRightIcon sx={{ color: '#d5bcef' }} />}
         onNodeSelect={handleClick}
