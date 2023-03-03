@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import TreeView from '@mui/lab/TreeView';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -8,7 +8,7 @@ import SearchBar from './SearchBar';
 // create TS type for panel props
 
 const Panel = (props) => {
-  const { html, handleClick, addIslandData } = props;
+  const { html, handleClick, addIslandData, idArray, addId } = props;
 
   const propsParser = (attribute) => {
     const parsed = JSON.parse(attribute);
@@ -31,7 +31,8 @@ const Panel = (props) => {
   const createTree = (node, id) => {
     //Inputs all child elements of current node into array
     const children = Array.from(node.children);
-
+    addId(id);
+    console.log(idArray);
     //Stores ASTRO-ISLAND data in islandData state (from app)
     if (node.nodeName === 'ASTRO-ISLAND') {
       const parsedProps = propsParser(node.attributes.props.value);
@@ -116,6 +117,7 @@ const Panel = (props) => {
           overflowY: 'auto',
           fontFamily: 'Roboto mono, monospace',
         }}
+        expanded={idArray}
       >
         {treeJSX.props.children}
       </TreeView>
