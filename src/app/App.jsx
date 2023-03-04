@@ -8,6 +8,8 @@ const App = () => {
   const [bodyData, setBodyData] = useState(null);
   const [currentComp, setCurrentComp] = useState(null);
   const [islandData, setIslandData] = useState({});
+  const [idSet, setIdSet] = useState(new Set());
+  const [idArray, setIdArray] = useState([]);
 
   const handleClick = function (e, nodeId) {
     // function gets data after running it in panel.jsx
@@ -21,10 +23,17 @@ const App = () => {
 
   //function to add astro island nodes to state when parsing dom
   const addIslandData = (astroIsland, key) => {
-    const arrayOfKeys = Object.keys(islandData);
-
-    if (!arrayOfKeys.includes(key)) {
+    if (!islandData[key]) {
       setIslandData({ ...islandData, [key]: astroIsland });
+    }
+  };
+
+  const addId = (id) => {
+    if (!idSet.has(id)) {
+      setIdSet(new Set(idSet.add(id)));
+      const idArray = Array.from(idSet);
+      console.log('this is idArray in addId', idArray);
+      setIdArray([...idArray]);
     }
   };
 
@@ -51,6 +60,8 @@ const App = () => {
           handleClick={handleClick}
           html={bodyData}
           addIslandData={addIslandData}
+          addId={addId}
+          idArray={idArray}
         />
       )}
       <SidePane currentComp={currentComp} />
