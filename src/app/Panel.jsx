@@ -9,6 +9,7 @@ import SearchBar from './SearchBar';
 
 const Panel = (props) => {
   const { html, handleClick, addIslandData, idArray, addId } = props;
+  const [expanded, setExpanded] = React.useState([]);
 
   const propsParser = (attribute) => {
     const parsed = JSON.parse(attribute);
@@ -31,8 +32,8 @@ const Panel = (props) => {
   const createTree = (node, id) => {
     //Inputs all child elements of current node into array
     const children = Array.from(node.children);
+    // adds id to idArray, required for expandAll functionality
     addId(id);
-    console.log(idArray);
     //Stores ASTRO-ISLAND data in islandData state (from app)
     if (node.nodeName === 'ASTRO-ISLAND') {
       const parsedProps = propsParser(node.attributes.props.value);
@@ -101,10 +102,17 @@ const Panel = (props) => {
 
   const treeJSX = createTree(html.body, '0');
 
+  const handleExpandClick = () => {
+    setExpanded((oldExpanded) => (oldExpanded.length === 0 ? idArray : []));
+  };
+
+  // implement TreeView API's expand all demo
+  // but where button is click on Search input?
+
   // returns the completed tree
   return (
     <div id='main-panel'>
-      <SearchBar />
+      <SearchBar handleExpandClick={handleExpandClick} expanded={expanded} />
       <TreeView
         aria-label='file system navigator'
         defaultCollapseIcon={<ExpandMoreIcon sx={{ color: '#d5bcef' }} />}
@@ -117,7 +125,8 @@ const Panel = (props) => {
           overflowY: 'auto',
           fontFamily: 'Roboto mono, monospace',
         }}
-        expanded={idArray}
+        // defaultExpanded={idArray}
+        expanded={expanded}
       >
         {treeJSX.props.children}
       </TreeView>

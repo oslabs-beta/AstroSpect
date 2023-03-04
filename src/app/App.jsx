@@ -23,9 +23,7 @@ const App = () => {
 
   //function to add astro island nodes to state when parsing dom
   const addIslandData = (astroIsland, key) => {
-    const arrayOfKeys = Object.keys(islandData);
-
-    if (!arrayOfKeys.includes(key)) {
+    if (!islandData[key]) {
       setIslandData({ ...islandData, [key]: astroIsland });
     }
   };
