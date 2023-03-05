@@ -39,21 +39,25 @@ h3 {
 
 #root {
   display: flex;
+  flex-direction: column;
 }
-#main-panel {
+#main-container {
+  display: flex;
+}
+#panel-container {
   background-color: $darkestPurple;
   width: 60%;
-  height: 100vh;
+  height: 100%;
   padding: 20px;
   margin: 0;
 }
 
 // SIDE PANE
-.side-pane {
+#sidepane-container {
   background: $lightestBlue;
   color: $darkestBlue;
   width: 40%;
-  height: 100vh;
+  height: 100%;
   padding: 20px;
   color: black;
   margin: 0;

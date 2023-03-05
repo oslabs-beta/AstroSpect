@@ -3,6 +3,7 @@ import Panel from './Panel';
 import SidePane from './SidePane';
 import { useState, useEffect } from 'react';
 import parseData from './parser.js';
+import Header from './Header';
 
 const App = () => {
   const [bodyData, setBodyData] = useState(null);
@@ -46,14 +47,17 @@ const App = () => {
 
   return (
     <>
-      {bodyData && (
-        <Panel
-          handleClick={handleClick}
-          html={bodyData}
-          addIslandData={addIslandData}
-        />
-      )}
-      <SidePane currentComp={currentComp} />
+      <Header />
+      <div id="main-container">
+        {bodyData && (
+          <Panel
+            handleClick={handleClick}
+            html={bodyData}
+            addIslandData={addIslandData}
+          />
+        )}
+        <SidePane currentComp={currentComp} />
+      </div>
     </>
   );
 };

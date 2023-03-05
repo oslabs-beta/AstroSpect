@@ -102,10 +102,10 @@ const Panel = (props) => {
 
   // returns the completed tree
   return (
-    <div id='main-panel'>
+    <section id="panel-container">
       <SearchBar />
       <TreeView
-        aria-label='file system navigator'
+        aria-label="file system navigator"
         defaultCollapseIcon={<ExpandMoreIcon sx={{ color: '#d5bcef' }} />}
         defaultExpandIcon={<ChevronRightIcon sx={{ color: '#d5bcef' }} />}
         onNodeSelect={handleClick}
@@ -119,7 +119,7 @@ const Panel = (props) => {
       >
         {treeJSX.props.children}
       </TreeView>
-    </div>
+    </section>
   );
 };
 

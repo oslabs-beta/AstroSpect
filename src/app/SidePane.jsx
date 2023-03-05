@@ -14,41 +14,30 @@ const SidePane = (props) => {
     for (const propName in obj) {
       let elem;
       let newId = String(id++);
-      const propLabel = `${propName}: ${obj[propName]}`
+      const propLabel = `${propName}: ${obj[propName]}`;
       if (typeof obj[propName] === 'object') {
         elem = (
-          <TreeItem
-            key={newId}
-            nodeId={newId}
-            label={propName}
-          >
+          <TreeItem key={newId} nodeId={newId} label={propName}>
             {createPropsDisplay(obj[propName], `${++newId}`)}
           </TreeItem>
         );
       } else {
-        elem = (
-          <TreeItem
-            key={newId}
-            nodeId={newId}
-            label={propLabel}
-          />
-        );
+        elem = <TreeItem key={newId} nodeId={newId} label={propLabel} />;
       }
       topLevel.push(elem);
     }
-    console.log('this is topLevel', topLevel)
+    console.log('this is topLevel', topLevel);
     return topLevel;
   };
 
   let propsDisplay = [];
-  
- if (currentComp){
-  propsDisplay = createPropsDisplay(currentComp.props, '99');
- } 
 
+  if (currentComp) {
+    propsDisplay = createPropsDisplay(currentComp.props, '99');
+  }
 
   return (
-    <div className={'side-pane'}>
+    <section id="sidepane-container">
       {/* // when component is not astro island */}
       {!currentComp && <p>No hydrated component selected</p>}
 
@@ -63,7 +52,7 @@ const SidePane = (props) => {
           <hr />
           <h3>Props: </h3>
           <TreeView
-            aria-label='file system navigator'
+            aria-label="file system navigator"
             defaultCollapseIcon={<ExpandMoreIcon />}
             defaultExpandIcon={<ChevronRightIcon />}
             sx={{
@@ -79,7 +68,7 @@ const SidePane = (props) => {
           <hr />
         </>
       )}
-    </div>
+    </section>
   );
 };
 
