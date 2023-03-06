@@ -36,9 +36,9 @@ const SearchBar = (props) => {
   return (
     <div className={'search-bar'}>
       <input
-        type='text'
-        id='text-to-search'
-        placeholder='Search Bar'
+        type="text"
+        id="text-to-search"
+        placeholder="Search Bar"
         onChange={handleInputChange}
         style={styles.searchbar}
       />
@@ -49,7 +49,7 @@ const SearchBar = (props) => {
 const styles = {
   searchbar: {
     width: '50%',
-    fontSize: '20px',
+    fontSize: '14px',
     marginLeft: '10px',
     marginBottom: '10px',
   },

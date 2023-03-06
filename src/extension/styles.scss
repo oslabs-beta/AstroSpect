@@ -5,13 +5,13 @@
 $lightestBlue: #f6fbff;
 $lightBlue: #8ab1cf;
 $darkBlue: #24346c;
-$darkestBlue: #313e58;
+$darkestBlue: #0f172a;
 
 // Purples
 $lightestPurple: #d5bcef;
 $lightPurple: #5965a4;
-$darkPurple: #445094;
-$darkestPurple: #0b164a;
+$darkPurple: #372a48;
+$darkestPurple: #1a1429;
 
 // Oranges
 $primaryOrange: #ff7300;
@@ -34,7 +34,9 @@ h3 {
   color: $primaryOrange;
   // text-shadow: 0 0 0.5px gray;
 }
-
+.Mui-focused {
+  background-color: $lightBlue;
+}
 // adjustable, movable sidepane
 
 #root {
@@ -45,21 +47,20 @@ h3 {
   display: flex;
 }
 #panel-container {
-  background-color: $darkestPurple;
+  background-color: $darkestBlue;
   width: 60%;
-  height: 100%;
+  height: 100vh;
   padding: 20px;
   margin: 0;
 }
 
 // SIDE PANE
 #sidepane-container {
-  background: $lightestBlue;
-  color: $darkestBlue;
+  background-color: $darkestBlue;
   width: 40%;
-  height: 100%;
+  height: 100vh;
   padding: 20px;
-  color: black;
+  color: whitesmoke;
   margin: 0;
   font-size: 15px;
 }
