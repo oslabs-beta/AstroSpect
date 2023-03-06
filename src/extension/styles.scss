@@ -21,7 +21,7 @@ $lightestOrange: lighten($primaryOrange, 49.8%);
 // MAIN PANEL
 body {
   color: whitesmoke;
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Roboto Mono';
   margin: 0;
   height: 100%;
 }
@@ -34,9 +34,11 @@ h3 {
   color: $primaryOrange;
   // text-shadow: 0 0 0.5px gray;
 }
+
 .Mui-focused {
   background-color: $lightBlue;
 }
+
 // adjustable, movable sidepane
 
 #root {

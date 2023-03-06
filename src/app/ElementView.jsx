@@ -3,35 +3,28 @@ import TreeView from '@mui/lab/TreeView';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import TreeItem from '@mui/lab/TreeItem';
+import parseProps from './parseProps.js';
 
 // create TS type for panel props
 
 const ElementView = (props) => {
-  const { html, handleClick, addIslandData } = props;
+  const { html, handleClick, addIslandData, addId, expanded, setExpanded } =
+    props;
 
-  const propsParser = (attribute) => {
-    const parsed = JSON.parse(attribute);
-
-    const spreader = (obj) => {
-      for (const key in obj) {
-        if (Array.isArray(obj[key])) {
-          let newVal = obj[key].slice(1);
-          obj[key] = newVal[0];
-          spreader(obj[key]);
-        }
-      }
-    };
-
-    spreader(parsed);
-    return parsed;
+  // updates expanded nodes on toggle of particular nodes
+  const handleToggle = (event, nodeIds) => {
+    setExpanded(nodeIds);
   };
+
+  //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
   const createTree = (node, id, fontColor = '#F5F5F5') => {
     //Inputs all child elements of current node into array
     const children = Array.from(node.children);
-
+    // adds id to idArray, required for expandAll functionality
+    addId(id);
     //Stores ASTRO-ISLAND data in islandData state (from app)
     if (node.nodeName === 'ASTRO-ISLAND') {
-      const parsedProps = propsParser(node.attributes.props.value);
+      const parsedProps = parseProps(node.attributes.props.value);
       const island = {
         client: node.attributes.client.value,
         props: parsedProps,
@@ -63,7 +56,7 @@ const ElementView = (props) => {
         <TreeItem
           key={id}
           nodeId={id}
-          label={`${node.nodeName.toLowerCase()}(${componentFile}`}
+          label={`${node.nodeName.toLowerCase()} (${componentFile})`}
           sx={{ color: '#ff7300' }}
         >
           {children.map((child, index) =>
@@ -109,6 +102,8 @@ const ElementView = (props) => {
         defaultCollapseIcon={<ExpandMoreIcon sx={{ color: '#d5bcef' }} />}
         defaultExpandIcon={<ChevronRightIcon sx={{ color: '#d5bcef' }} />}
         onNodeSelect={handleClick}
+        onNodeToggle={handleToggle}
+        expanded={expanded}
         sx={{
           height: '100vh',
           flexGrow: 1,

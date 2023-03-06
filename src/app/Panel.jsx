@@ -8,13 +8,20 @@ import ComponentView from './ComponentView.jsx';
 // create TS type for panel props
 
 const Panel = (props) => {
-  const { html, handleClick, addIslandData } = props;
+  const { html, handleClick, addIslandData, idArray, addId } = props;
+  const [expanded, setExpanded] = useState([]);
   const [selectedTab, setSelectedTab] = useState(0);
+
+  // alternates between expanding and collapsing all nodes
+  const handleExpandClick = () => {
+    setExpanded((oldExpanded) => (oldExpanded.length === 0 ? idArray : []));
+  };
+
   // returns the completed tree
   return (
     <div id="panel-container">
       <div id="panel-header">
-        <SearchBar />
+        <SearchBar handleExpandClick={handleExpandClick} expanded={expanded} />
         <PanelViewToggle
           selectedTab={selectedTab}
           setSelectedTab={setSelectedTab}
@@ -25,6 +32,10 @@ const Panel = (props) => {
           html={html}
           handleClick={handleClick}
           addIslandData={addIslandData}
+          handleExpandClick={handleExpandClick}
+          expanded={expanded}
+          addId={addId}
+          setExpanded={setExpanded}
         />
       </div>
       <div style={{ display: selectedTab === 1 ? 'flex' : 'none' }}>

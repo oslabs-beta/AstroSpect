@@ -1,9 +1,9 @@
 import React from 'react';
-import TreeView from '@mui/lab/TreeView';
-import TreeItem from '@mui/lab/TreeItem';
+import Button from '@mui/material/Button';
 
 // search bar in panel
 const SearchBar = (props) => {
+  const { handleExpandClick, expanded } = props;
   // searches through the tree to find text that matches the value of the text input
   function search() {
     //   const myTreeView = document.getElementById('tree-view');
@@ -41,7 +41,11 @@ const SearchBar = (props) => {
         placeholder="Search Bar"
         onChange={handleInputChange}
         style={styles.searchbar}
+        onClick={handleExpandClick}
       />
+      <Button onClick={handleExpandClick}>
+        {expanded.length === 0 ? 'Expand all' : 'Collapse all'}
+      </Button>
     </div>
   );
 };
