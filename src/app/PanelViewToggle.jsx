@@ -11,7 +11,7 @@ const PanelViewToggle = (props) => {
   };
 
   return (
-    <Box sx={{ width: '50%' }}>
+    <div id="panel-toggle">
       <Tabs
         value={selectedTab}
         onChange={handleTabChange}
@@ -20,7 +20,7 @@ const PanelViewToggle = (props) => {
         <Tab label="Elements" />
         <Tab label="Components" />
       </Tabs>
-    </Box>
+    </div>
   );
 };
 
