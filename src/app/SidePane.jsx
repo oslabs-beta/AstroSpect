@@ -37,9 +37,13 @@ const SidePane = (props) => {
   }
 
   return (
-    <section id="sidepane-container">
+    <div id="sidepane-container">
       {/* // when component is not astro island */}
-      {!currentComp && <p>No hydrated component selected</p>}
+      {!currentComp && (
+        <>
+          <p>No hydrated component selected</p>
+        </>
+      )}
 
       {/* // when clicked is Astro Island */}
       {currentComp && (
@@ -68,7 +72,7 @@ const SidePane = (props) => {
           <hr />
         </>
       )}
-    </section>
+    </div>
   );
 };
 

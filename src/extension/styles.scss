@@ -19,11 +19,11 @@ $lightOrange: lighten($primaryOrange, 40%);
 $lightestOrange: lighten($primaryOrange, 49.8%);
 
 // MAIN PANEL
-
 body {
   color: whitesmoke;
   font-family: 'Roboto Mono', monospace;
   margin: 0;
+  height: 100%;
 }
 
 .components-body {
@@ -42,23 +42,33 @@ h3 {
 #root {
   display: flex;
   flex-direction: column;
+  overflow: none;
 }
 #main-container {
   display: flex;
+  background-color: $darkestBlue;
+  overflow: none;
 }
 #panel-container {
   background-color: $darkestBlue;
   width: 60%;
-  height: 100vh;
+  height: 100%;
   padding: 20px;
   margin: 0;
+  overflow-x: none;
+  overflow-y: auto;
+  #panel-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 }
 
 // SIDE PANE
 #sidepane-container {
   background-color: $darkestBlue;
   width: 40%;
-  height: 100vh;
+  height: 100%;
   padding: 20px;
   color: whitesmoke;
   margin: 0;
