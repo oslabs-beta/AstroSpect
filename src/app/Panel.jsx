@@ -1,32 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TreeView from '@mui/lab/TreeView';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import TreeItem from '@mui/lab/TreeItem';
 import SearchBar from './SearchBar';
+import parseProps from './parseProps';
 
 // create TS type for panel props
 
 const Panel = (props) => {
   const { html, handleClick, addIslandData, idArray, addId } = props;
-  const [expanded, setExpanded] = React.useState([]);
-
-  const propsParser = (attribute) => {
-    const parsed = JSON.parse(attribute);
-
-    const spreader = (obj) => {
-      for (const key in obj) {
-        if (Array.isArray(obj[key])) {
-          let newVal = obj[key].slice(1);
-          obj[key] = newVal[0];
-          spreader(obj[key]);
-        }
-      }
-    };
-
-    spreader(parsed);
-    return parsed;
-  };
+  const [expanded, setExpanded] = useState([]);
 
   //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
   const createTree = (node, id, fontColor = '#F5F5F5') => {
@@ -36,7 +20,7 @@ const Panel = (props) => {
     addId(id);
     //Stores ASTRO-ISLAND data in islandData state (from app)
     if (node.nodeName === 'ASTRO-ISLAND') {
-      const parsedProps = propsParser(node.attributes.props.value);
+      const parsedProps = parseProps(node.attributes.props.value);
       const island = {
         client: node.attributes.client.value,
         props: parsedProps,
@@ -106,22 +90,26 @@ const Panel = (props) => {
 
   const treeJSX = createTree(html.body, '0');
 
+  // alternates between expanding and collapsing all nodes
   const handleExpandClick = () => {
     setExpanded((oldExpanded) => (oldExpanded.length === 0 ? idArray : []));
   };
 
-  // implement TreeView API's expand all demo
-  // but where button is click on Search input?
+  // updates expanded nodes on toggle of particular nodes
+  const handleToggle = (event, nodeIds) => {
+    setExpanded(nodeIds);
+  };
 
   // returns the completed tree
   return (
     <div id='main-panel'>
       <SearchBar handleExpandClick={handleExpandClick} expanded={expanded} />
       <TreeView
-        aria-label="file system navigator"
+        aria-label='file system navigator'
         defaultCollapseIcon={<ExpandMoreIcon sx={{ color: '#d5bcef' }} />}
         defaultExpandIcon={<ChevronRightIcon sx={{ color: '#d5bcef' }} />}
         onNodeSelect={handleClick}
+        onNodeToggle={handleToggle}
         sx={{
           height: '100vh',
           flexGrow: 1,
@@ -129,7 +117,6 @@ const Panel = (props) => {
           overflowY: 'auto',
           fontFamily: 'Roboto mono, monospace',
         }}
-        // defaultExpanded={idArray}
         expanded={expanded}
       >
         {treeJSX.props.children}
