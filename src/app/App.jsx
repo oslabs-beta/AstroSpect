@@ -2,7 +2,7 @@ import React from 'react';
 import Panel from './Panel';
 import SidePane from './SidePane';
 import { useState, useEffect } from 'react';
-import parseData from './parser.js';
+import parseData from './parseData.js';
 
 const App = () => {
   const [bodyData, setBodyData] = useState(null);
