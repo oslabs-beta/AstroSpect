@@ -5,13 +5,13 @@
 $lightestBlue: #f6fbff;
 $lightBlue: #8ab1cf;
 $darkBlue: #24346c;
-$darkestBlue: #313e58;
+$darkestBlue: #0f172a;
 
 // Purples
 $lightestPurple: #d5bcef;
 $lightPurple: #5965a4;
-$darkPurple: #445094;
-$darkestPurple: #0b164a;
+$darkPurple: #372a48;
+$darkestPurple: #1a1429;
 
 // Oranges
 $primaryOrange: #ff7300;
@@ -19,11 +19,11 @@ $lightOrange: lighten($primaryOrange, 40%);
 $lightestOrange: lighten($primaryOrange, 49.8%);
 
 // MAIN PANEL
-
 body {
   color: whitesmoke;
   font-family: 'Roboto Mono';
   margin: 0;
+  height: 100%;
 }
 
 .components-body {
@@ -43,23 +43,36 @@ h3 {
 
 #root {
   display: flex;
+  flex-direction: column;
+  overflow: none;
 }
-#main-panel {
-  background-color: $darkestPurple;
+#main-container {
+  display: flex;
+  background-color: $darkestBlue;
+  overflow: none;
+}
+#panel-container {
+  background-color: $darkestBlue;
   width: 60%;
-  height: 100vh;
+  height: 100%;
   padding: 20px;
   margin: 0;
+  overflow-x: none;
+  overflow-y: auto;
+  #panel-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 }
 
 // SIDE PANE
-.side-pane {
-  background: $lightestBlue;
-  color: $darkestBlue;
+#sidepane-container {
+  background-color: $darkestBlue;
   width: 40%;
-  height: 100vh;
+  height: 100%;
   padding: 20px;
-  color: black;
+  color: whitesmoke;
   margin: 0;
   font-size: 15px;
 }

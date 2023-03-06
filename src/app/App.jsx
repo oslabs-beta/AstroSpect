@@ -3,6 +3,7 @@ import Panel from './Panel';
 import SidePane from './SidePane';
 import { useState, useEffect } from 'react';
 import parseData from './parseData.js';
+import Header from './Header';
 
 const App = () => {
   const [bodyData, setBodyData] = useState(null);
@@ -46,7 +47,7 @@ const App = () => {
       setBodyData(data);
     }
     fetchData();
-  }, []);
+  }, [bodyData]);
 
   //place all astro islands in an object with a unique id (ex A1, A2, A3)
   // iterate through each island object to find props and client directive
@@ -55,16 +56,19 @@ const App = () => {
 
   return (
     <>
-      {bodyData && (
-        <Panel
-          handleClick={handleClick}
-          html={bodyData}
-          addIslandData={addIslandData}
-          addId={addId}
-          idArray={idArray}
-        />
-      )}
-      <SidePane currentComp={currentComp} />
+      <Header />
+      <div id="main-container">
+        {bodyData && (
+          <Panel
+            handleClick={handleClick}
+            html={bodyData}
+            addIslandData={addIslandData}
+            addId={addId}
+            idArray={idArray}
+          />
+        )}
+        <SidePane currentComp={currentComp} />
+      </div>
     </>
   );
 };
