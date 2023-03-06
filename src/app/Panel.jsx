@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import TreeView from '@mui/lab/TreeView';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -8,7 +8,8 @@ import SearchBar from './SearchBar';
 // create TS type for panel props
 
 const Panel = (props) => {
-  const { html, handleClick, addIslandData } = props;
+  const { html, handleClick, addIslandData, idArray, addId } = props;
+  const [expanded, setExpanded] = React.useState([]);
 
   const propsParser = (attribute) => {
     const parsed = JSON.parse(attribute);
@@ -31,7 +32,8 @@ const Panel = (props) => {
   const createTree = (node, id, fontColor = '#F5F5F5') => {
     //Inputs all child elements of current node into array
     const children = Array.from(node.children);
-
+    // adds id to idArray, required for expandAll functionality
+    addId(id);
     //Stores ASTRO-ISLAND data in islandData state (from app)
     if (node.nodeName === 'ASTRO-ISLAND') {
       const parsedProps = propsParser(node.attributes.props.value);
@@ -104,10 +106,17 @@ const Panel = (props) => {
 
   const treeJSX = createTree(html.body, '0');
 
+  const handleExpandClick = () => {
+    setExpanded((oldExpanded) => (oldExpanded.length === 0 ? idArray : []));
+  };
+
+  // implement TreeView API's expand all demo
+  // but where button is click on Search input?
+
   // returns the completed tree
   return (
-    <div id="main-panel">
-      <SearchBar />
+    <div id='main-panel'>
+      <SearchBar handleExpandClick={handleExpandClick} expanded={expanded} />
       <TreeView
         aria-label="file system navigator"
         defaultCollapseIcon={<ExpandMoreIcon sx={{ color: '#d5bcef' }} />}
@@ -120,6 +129,8 @@ const Panel = (props) => {
           overflowY: 'auto',
           fontFamily: 'Roboto mono, monospace',
         }}
+        // defaultExpanded={idArray}
+        expanded={expanded}
       >
         {treeJSX.props.children}
       </TreeView>
