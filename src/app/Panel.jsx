@@ -115,7 +115,7 @@ const Panel = (props) => {
           flexGrow: 1,
           width: 'auto',
           overflowY: 'auto',
-          fontFamily: 'Roboto mono, monospace',
+          fontFamily: 'Roboto mono',
         }}
         expanded={expanded}
       >
