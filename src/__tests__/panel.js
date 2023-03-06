@@ -67,7 +67,7 @@ const createTree = (node, id, astroCount = 0) => {
 };
 
 const treeJSX = createTree(document.body, '0');
-console.log(treeJSX);
+
 // expect astroIslands length to be ___
 
 // console.log(astroIslands)
