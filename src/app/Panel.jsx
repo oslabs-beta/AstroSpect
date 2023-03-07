@@ -21,13 +21,31 @@ const Panel = (props) => {
   return (
     <div id="panel-container">
       <div id="panel-header">
+        <div id="panel-toggle">
+          <button
+            className={`buttonToggle button0 ${
+              selectedTab === 0 ? 'active' : ''
+            }`}
+            active={selectedTab === 0}
+            onClick={() => setSelectedTab(0)}
+          >
+            Elements
+          </button>
+          <button
+            className={`buttonToggle button1 ${
+              selectedTab === 1 ? 'active' : ''
+            }`}
+            onClick={() => setSelectedTab(1)}
+          >
+            Components
+          </button>
+        </div>
         <SearchBar handleExpandClick={handleExpandClick} expanded={expanded} />
-        <PanelViewToggle
-          selectedTab={selectedTab}
-          setSelectedTab={setSelectedTab}
-        />
       </div>
-      <div style={{ display: selectedTab === 0 ? 'flex' : 'none' }}>
+      <div
+        className="container element"
+        style={{ display: selectedTab === 0 ? 'flex' : 'none' }}
+      >
         <ElementView
           html={html}
           handleClick={handleClick}
@@ -38,7 +56,10 @@ const Panel = (props) => {
           setExpanded={setExpanded}
         />
       </div>
-      <div style={{ display: selectedTab === 1 ? 'flex' : 'none' }}>
+      <div
+        className="container component"
+        style={{ display: selectedTab === 1 ? 'flex' : 'none' }}
+      >
         <ComponentView />
       </div>
     </div>
