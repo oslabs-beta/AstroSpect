@@ -33,7 +33,7 @@ export default function Header() {
           </Typography>
 
           {/* media query that gets rid of the 'GitHub' and 'Site' text? */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <div className='header-element-wrapper'>
             <div className='header-element'>
               <GitHubIcon />
               <Typography
