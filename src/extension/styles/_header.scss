@@ -1,0 +1,9 @@
+.header-element {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &:hover {
+    .MuiTypography-root { text-decoration: underline; }
+  }
+}

@@ -1,22 +1,9 @@
 /// COLOR SCHEME VARIABLES
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
-// Blues
-$lightestBlue: #f6fbff;
-$lightBlue: #8ab1cf;
-$darkBlue: #24346c;
-$darkestBlue: #0f172a;
-
-// Purples
-$lightestPurple: #d5bcef;
-$lightPurple: #5965a4;
-$darkPurple: #372a48;
-$darkestPurple: #1a1429;
-
-// Oranges
-$primaryOrange: #ff7300;
-$lightOrange: lighten($primaryOrange, 40%);
-$lightestOrange: lighten($primaryOrange, 49.8%);
+// import from other scss files
+@import 'variables';
+@import 'header';
 
 // MAIN PANEL
 body {
