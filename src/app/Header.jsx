@@ -45,14 +45,14 @@ export default function Header() {
               </Typography>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div className='header-element'>
               <WebIcon />
               <Typography
                 variant="p"
                 component="div"
                 sx={{ flexGrow: 1, fontFamily: 'sans-serif' }}
               >
-                Site
+                Website
               </Typography>
             </div>
           </div>

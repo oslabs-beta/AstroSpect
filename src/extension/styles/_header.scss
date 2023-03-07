@@ -3,7 +3,23 @@
   align-items: center;
   gap: 8px;
 
+  .MuiTypography-root {
+    display: inline-block;
+    font-size: 1rem;
+    padding: 6px 0;
+    background-image: linear-gradient(#ff7f33 0 0);
+    background-position: 0 100%;
+    background-size: 0% 3.5px;
+    background-repeat: no-repeat;
+    transition:
+    background-size 0.3s,
+    background-position 0s 0.3s;
+  }
+
   &:hover {
-    .MuiTypography-root { text-decoration: underline; }
+    .MuiTypography-root {
+      background-position: 100% 100%;
+      background-size: 100% 3.5px;
+    }
   }
 }
