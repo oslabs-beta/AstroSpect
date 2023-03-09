@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import WebIcon from '@mui/icons-material/Web';
-import Logo from './astrospect-logo.png';
+import Logo from '../../extension/assets/astrospect-logo.png';
 
 export default function Header() {
   return (

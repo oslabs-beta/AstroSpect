@@ -3,72 +3,7 @@
 
 // import from other scss files
 @import 'variables';
+@import 'app';
 @import 'header';
-
-// MAIN PANEL
-body {
-  color: whitesmoke;
-  font-family: 'Roboto Mono';
-  margin: 0;
-  height: 100%;
-}
-
-.components-body {
-  width: 60%;
-}
-
-h3 {
-  color: $primaryOrange;
-  // text-shadow: 0 0 0.5px gray;
-}
-
-.Mui-focused {
-  background-color: $lightBlue;
-}
-
-// adjustable, movable sidepane
-
-#root {
-  display: flex;
-  flex-direction: column;
-  overflow: none;
-}
-#main-container {
-  display: flex;
-  background-color: $darkestBlue;
-  overflow: none;
-}
-#panel-container {
-  background-color: $darkestBlue;
-  width: 60%;
-  height: 100%;
-  padding: 20px;
-  margin: 0;
-  overflow-x: none;
-  overflow-y: auto;
-  #panel-header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-}
-
-// SIDE PANE
-#sidepane-container {
-  background-color: $darkestBlue;
-  width: 40%;
-  height: 100%;
-  padding: 20px;
-  color: whitesmoke;
-  margin: 0;
-  font-size: 15px;
-}
-
-hr {
-  margin: 30px -20px 30px;
-  border: 0;
-  border-top: 1px solid black;
-}
-
-// to do: media queries for side view, bottom view, size changes
-// when too narrow, put sidepane underneath
+@import 'panel';
+@import 'sidePane';

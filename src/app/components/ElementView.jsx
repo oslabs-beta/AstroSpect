@@ -3,7 +3,7 @@ import TreeView from '@mui/lab/TreeView';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import TreeItem from '@mui/lab/TreeItem';
-import parseProps from './parseProps.js';
+import parseProps from '../algorithms/parseProps.js';
 
 // create TS type for panel props
 

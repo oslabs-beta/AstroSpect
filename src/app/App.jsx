@@ -1,9 +1,9 @@
 import React from 'react';
-import Panel from './Panel';
-import SidePane from './SidePane';
+import Panel from './containers/Panel';
+import SidePane from './containers/SidePane';
 import { useState, useEffect } from 'react';
-import parseData from './parseData.js';
-import Header from './Header';
+import parseData from './algorithms/parseData.js';
+import Header from './components/Header';
 
 const App = () => {
   const [bodyData, setBodyData] = useState(null);
