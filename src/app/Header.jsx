@@ -35,25 +35,35 @@ export default function Header() {
           {/* media query that gets rid of the 'GitHub' and 'Site' text? */}
           <div className='header-element-wrapper'>
             <div className='header-element'>
-              <GitHubIcon />
-              <Typography
-                variant="p"
-                component="div"
-                sx={{ flexGrow: 1, fontFamily: 'sans-serif' }}
-              >
-                GitHub
-              </Typography>
+              <a href="https://github.com/oslabs-beta/AstroSpect/tree/main" target="_blank">
+                <GitHubIcon />
+              </a>
+              
+              <a href="https://github.com/oslabs-beta/AstroSpect/tree/main" target="_blank">
+                <Typography
+                  variant="p"
+                  component="div"
+                  sx={{ flexGrow: 1, fontFamily: 'sans-serif' }}
+                >
+                  GitHub
+                </Typography>
+              </a>
             </div>
 
             <div className='header-element'>
-              <WebIcon />
-              <Typography
-                variant="p"
-                component="div"
-                sx={{ flexGrow: 1, fontFamily: 'sans-serif' }}
-              >
-                Website
-              </Typography>
+              <a href="https://github.com/oslabs-beta/AstroSpect/tree/main" target="_blank">
+                <WebIcon />
+              </a>
+
+              <a href="https://github.com/oslabs-beta/AstroSpect/tree/main" target="_blank">
+                <Typography
+                  variant="p"
+                  component="div"
+                  sx={{ flexGrow: 1, fontFamily: 'sans-serif' }}
+                >
+                  Website
+                </Typography>
+              </a>
             </div>
           </div>
         </Toolbar>

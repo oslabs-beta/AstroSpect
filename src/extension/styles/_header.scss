@@ -15,7 +15,7 @@
     padding: 6px 0;
     background-image: linear-gradient(#ff7f33 0 0);
     background-position: 0 100%;
-    background-size: 0% 3.5px;
+    background-size: 0% 3px;
     background-repeat: no-repeat;
 
     transition:
@@ -27,10 +27,14 @@
   &:hover {
     .MuiTypography-root {
       background-position: 100% 100%;
-      background-size: 100% 3.5px;
+      background-size: 100% 3px;
       color: #d7c6ff;
     }
 
     color: #e3e2e9;
   }
+}
+
+a {
+  color: #fff;
 }
