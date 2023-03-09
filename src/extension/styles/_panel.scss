@@ -86,6 +86,9 @@
 @media (max-width: 599px) {
   #panel-container {
     width: 100%;
+    height: calc(50vh - 49px);
+    // height: 35vh;
+    overflow: hidden;
   }
 }
 
