@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@mui/material/Button';
-
+import SearchIcon from '@mui/icons-material/Search';
 // search bar in panel
 const SearchBar = (props) => {
   const { handleExpandClick, expanded } = props;
@@ -34,17 +34,19 @@ const SearchBar = (props) => {
     search();
   }
   return (
-    <div className={'search-bar'}>
+    <div id="search-bar">
+      <SearchIcon className="search-icon" />
       <input
         type="text"
         id="text-to-search"
-        placeholder="Search Bar"
+        placeholder="Filter..."
         onChange={handleInputChange}
         style={styles.searchbar}
         onClick={handleExpandClick}
       />
+      <div className="separator" />
       <Button onClick={handleExpandClick}>
-        {expanded.length === 0 ? 'Expand all' : 'Collapse all'}
+        {expanded.length === 0 ? 'Expand' : 'Collapse'}
       </Button>
     </div>
   );
@@ -52,10 +54,8 @@ const SearchBar = (props) => {
 
 const styles = {
   searchbar: {
-    width: '50%',
+    width: '100%',
     fontSize: '14px',
-    marginLeft: '10px',
-    marginBottom: '10px',
   },
 };
 export default SearchBar;
