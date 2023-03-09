@@ -1,59 +1,7 @@
-/// COLOR SCHEME VARIABLES
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
-
-// Blues
-$lightestBlue: #f6fbff;
-$lightBlue: #8ab1cf;
-$darkBlue: #152642;
-$darkestBlue: #0f172a;
-
-// Purples
-$lightestPurple: #d5bcef;
-$lightPurple: #5965a4;
-$darkPurple: #372a48;
-$darkestPurple: #1a1429;
-
-// Oranges
-$primaryOrange: #ff7300;
-$lightOrange: lighten($primaryOrange, 40%);
-$lightestOrange: lighten($primaryOrange, 49.8%);
-
-// MAIN PANEL
-body {
-  color: whitesmoke;
-  font-family: 'Roboto Mono';
-  margin: 0;
-  height: 100%;
-}
-
 .components-body {
   width: 60%;
 }
 
-h3 {
-  color: $primaryOrange;
-  // text-shadow: 0 0 0.5px gray;
-}
-
-.Mui-focused {
-  background-color: $lightBlue;
-}
-
-// adjustable, movable sidepane
-
-#root {
-  display: flex;
-  flex-direction: column;
-  overflow: none;
-}
-
-#main-container {
-  display: flex;
-  flex-direction: row;
-  background-color: $darkestBlue;
-  overflow: none;
-  border-top: 1px solid #3d424a;
-}
 #panel-container {
   background-color: $darkestBlue;
   width: 60%;
@@ -121,38 +69,9 @@ h3 {
     }
   }
 }
-.container {
-  padding-top: 10px;
-}
+
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #f8f8ff;
   opacity: 0.5; /* Firefox */
 }
-// SIDE PANE
-#sidepane-container {
-  background-color: $darkestBlue;
-  width: 40%;
-  height: 100%;
-  padding: 20px;
-  color: whitesmoke;
-  margin: 0;
-  font-size: 15px;
-}
-
-hr {
-  margin: 30px -20px 30px;
-  border: 0;
-  border-top: 1px solid #3d424a;
-}
-
-.separator {
-  height: 20px;
-  width: 1px;
-  flex: 0 0 1px;
-  margin: 0 0.5rem;
-  background-color: #3d424a;
-}
-
-// to do: media queries for side view, bottom view, size changes
-// when too narrow, put sidepane underneath
