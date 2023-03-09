@@ -1,7 +1,10 @@
 #sidepane-container {
-  background-color: $darkestBlue;
+  // i don't know why this works but it avoids weird scroll behavior; the 105px is a necessary and exact value
+  height: calc(100vh - 105px);
+  overflow-y: auto;
+
   width: 39%;
-  height: 100%;
+  background-color: $darkestBlue;
   padding: 20px;
   color: whitesmoke;
   margin: 0;
