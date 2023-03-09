@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import SearchBar from './SearchBar';
-import PanelViewToggle from './PanelViewToggle';
+import SearchBar from '../components/SearchBar';
+import PanelViewToggle from '../components/PanelViewToggle';
 import { useState } from 'react';
-import ElementView from './ElementView';
-import ComponentView from './ComponentView.jsx';
+import ElementView from '../components/ElementView';
+import ComponentView from '../components/ComponentView.jsx';
 
 // create TS type for panel props
 

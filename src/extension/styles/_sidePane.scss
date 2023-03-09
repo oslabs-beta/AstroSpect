@@ -1,0 +1,20 @@
+#sidepane-container {
+  background-color: $darkestBlue;
+  width: 40%;
+  height: 100%;
+  padding: 20px;
+  color: whitesmoke;
+  margin: 0;
+  font-size: 15px;
+}
+
+hr {
+  margin: 30px -20px 30px;
+  border: 0;
+  border-top: 1px solid #3d424a;
+}
+
+h3 {
+  color: $primaryOrange;
+  // text-shadow: 0 0 0.5px gray;
+}

@@ -1,0 +1,40 @@
+.header-element-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-element {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .MuiTypography-root {
+    display: inline-block;
+    font-size: 1rem;
+    padding: 6px 0;
+    background-image: linear-gradient(#ff7f33 0 0);
+    background-position: 0 100%;
+    background-size: 0% 3px;
+    background-repeat: no-repeat;
+
+    transition:
+      color 0.8s,
+      background-size 0.3s,
+      background-position 0s 0.3s;
+  }
+
+  &:hover {
+    .MuiTypography-root {
+      background-position: 100% 100%;
+      background-size: 100% 3px;
+      color: #d7c6ff;
+    }
+
+    color: #e3e2e9;
+  }
+}
+
+a {
+  color: #fff;
+}
