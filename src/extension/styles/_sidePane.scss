@@ -1,11 +1,20 @@
 #sidepane-container {
   background-color: $darkestBlue;
-  width: 40%;
+  width: 39%;
   height: 100%;
   padding: 20px;
   color: whitesmoke;
   margin: 0;
   font-size: 15px;
+
+  .MuiTreeView-root {
+    height: auto;
+
+    // to avoid horizontal scrolling due to list items taking up too much space
+    li {
+      width: 35vw;
+    }
+  }
 }
 
 hr {
