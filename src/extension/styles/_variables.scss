@@ -14,3 +14,7 @@ $darkestPurple: #1a1429;
 $primaryOrange: #ff7300;
 $lightOrange: lighten($primaryOrange, 40%);
 $lightestOrange: lighten($primaryOrange, 49.8%);
+
+// media query breakpoint values
+$panel-breakpoint: 600px;
+$header-breakpoint: 420px;

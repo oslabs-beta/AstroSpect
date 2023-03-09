@@ -1,4 +1,4 @@
-.astrospect {
+.astrospect-wrapper {
   display: flex;
   gap: 8px;
   flex-grow: 1;
@@ -7,6 +7,10 @@
   &:hover {
     cursor: default;
   }
+}
+
+@media (max-width: $header-breakpoint) {
+  .astrospect-text { display: none; }
 }
 
 .header-element-wrapper {

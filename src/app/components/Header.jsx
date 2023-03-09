@@ -17,15 +17,9 @@ export default function Header() {
           <Typography
             variant='h6'
             component='div'
-            className='astrospect'
-            sx={{
-              display: 'flex',
-              gap: '8px',
-              flexGrow: 1,
-              alignItems: 'center',
-            }}
+            className='astrospect-wrapper'
           >
-            AstroSpect
+            <div class="astrospect-text">AstroSpect</div>
             <img
               width="28px"
               src={Logo}
