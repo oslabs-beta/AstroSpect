@@ -34,3 +34,10 @@ h3 {
   color: $primaryOrange;
   // text-shadow: 0 0 0.5px gray;
 }
+
+@media (max-width: 599px) {
+  #sidepane-container {
+    width: 100%;
+    border-top: 1px solid #3d424a;
+  }
+}

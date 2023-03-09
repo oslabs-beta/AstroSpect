@@ -31,5 +31,11 @@ body {
   background-color: #3d424a;
 }
 
+@media (max-width: 599px) {
+  #main-container {
+    flex-wrap: wrap;
+  }
+}
+
 // to do: media queries for side view, bottom view, size changes
 // when too narrow, put sidepane underneath

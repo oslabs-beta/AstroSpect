@@ -77,18 +77,17 @@
 
       // to avoid vertical scrolling due to list items taking up too much space
       li {
-        width: 54vw;
+        width: 95%;
       }
     }
   }
 }
 
-// @media (max-width: 599px) {
-//   // height is 100vh - 56px - 85px
-//   #panel-container {
-//     height: calc(100vh - 142px) !important;
-//   }
-// }
+@media (max-width: 599px) {
+  #panel-container {
+    width: 100%;
+  }
+}
 
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
