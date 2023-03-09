@@ -15,7 +15,11 @@
 
     // to avoid horizontal scrolling due to list items taking up too much space
     li {
-      width: 35vw;
+      width: 33vw;
+
+      ul li {
+        width: 30vw;
+      }
     }
   }
 }
