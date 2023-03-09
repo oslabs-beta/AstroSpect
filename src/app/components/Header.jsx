@@ -15,8 +15,9 @@ export default function Header() {
       <AppBar position="static" sx={{ background: '#152642' }}>
         <Toolbar>
           <Typography
-            variant="h6"
-            component="div"
+            variant='h6'
+            component='div'
+            className='astrospect'
             sx={{
               display: 'flex',
               gap: '8px',

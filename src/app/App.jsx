@@ -33,7 +33,7 @@ const App = () => {
     if (!idSet.has(id)) {
       setIdSet(new Set(idSet.add(id)));
       const idArray = Array.from(idSet);
-      console.log('this is idArray in addId', idArray);
+      // console.log('this is idArray in addId', idArray);
       setIdArray([...idArray]);
     }
   };

@@ -26,7 +26,7 @@ const SidePane = (props) => {
       }
       topLevel.push(elem);
     }
-    console.log('this is topLevel', topLevel);
+    // console.log('this is topLevel', topLevel);
     return topLevel;
   };
 
