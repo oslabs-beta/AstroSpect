@@ -4,6 +4,7 @@ import ReactFooter from '../components/ReactFooter.jsx';
 import ReactStatic from '../components/ReactStatic.jsx';
 import ReactComponent from '../components/ReactComponent.jsx';
 import SvelteComponent from '../components/SvelteComponent.svelte';
+import NoteAddButton from '../components/NoteAddButton.jsx'
 
 let password = 'iloveobiwankenobi'
 ---
@@ -16,6 +17,7 @@ let password = 'iloveobiwankenobi'
 		<title>Astro</title>
 	</head>
 	<body>
+		
 		<header style={{textAlign: 'center'}}>
 		</header>
 		<div id='row'>
@@ -28,6 +30,7 @@ let password = 'iloveobiwankenobi'
 			<ReactComponent client:load password={password} isDarkSide='true' yodaRules='false' palpatineRules='true' planetsDestroyed='9,184,090,402,693'/>
 			<ReactStatic />
 	</div>
+	<NoteAddButton client:load/>
 	</body>
 </html>
 
