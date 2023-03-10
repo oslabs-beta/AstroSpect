@@ -9,16 +9,15 @@ const App = () => {
   const [bodyData, setBodyData] = useState(null);
   const [currentComp, setCurrentComp] = useState(null);
   const [islandData, setIslandData] = useState({});
+  const [elementData, setElementData] = useState({});
   const [idSet, setIdSet] = useState(new Set());
   const [idArray, setIdArray] = useState([]);
   
   const handleClick = function (e, nodeId) {
-    // function gets data after running it in panel.jsx
     // get the id of the treeItem clicked
     const id = nodeId;
-
-    // check for id of astro
     if (islandData[id]) setCurrentComp(islandData[id]);
+    else if (elementData[id]) setCurrentComp(elementData[id]);
     else setCurrentComp(null);
   };
 
@@ -26,6 +25,12 @@ const App = () => {
   const addIslandData = (astroIsland, key) => {
     if (!islandData[key]) {
       setIslandData({ ...islandData, [key]: astroIsland });
+    }
+  };
+
+  const addElementData = (element, key) => {
+    if (!elementData[key]) {
+      setElementData({ ...elementData, [key]: element });
     }
   };
 
@@ -57,17 +62,19 @@ const App = () => {
   return (
     <>
       <Header />
-      <div id="main-container">
+      <div id='main-container'>
+        {!bodyData && <div>Loading...</div>}
         {bodyData && (
           <Panel
             handleClick={handleClick}
             html={bodyData}
             addIslandData={addIslandData}
+            addElementData={addElementData}
             addId={addId}
             idArray={idArray}
           />
         )}
-        <SidePane currentComp={currentComp} />
+        {bodyData && <SidePane currentComp={currentComp} />}
       </div>
     </>
   );
