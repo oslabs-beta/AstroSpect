@@ -47,7 +47,7 @@ const App = () => {
       setBodyData(data);
     }
     fetchData();
-  }, [bodyData]);
+  }, []);
 
   //place all astro islands in an object with a unique id (ex A1, A2, A3)
   // iterate through each island object to find props and client directive
