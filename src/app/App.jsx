@@ -11,7 +11,7 @@ const App = () => {
   const [islandData, setIslandData] = useState({});
   const [idSet, setIdSet] = useState(new Set());
   const [idArray, setIdArray] = useState([]);
-
+  
   const handleClick = function (e, nodeId) {
     // function gets data after running it in panel.jsx
     // get the id of the treeItem clicked

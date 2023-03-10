@@ -35,10 +35,9 @@ h3 {
   // text-shadow: 0 0 0.5px gray;
 }
 
-@media (max-width: 599px) {
+@media (max-width: $panel-breakpoint) {
   #sidepane-container {
     width: 100%;
-    // height: 35vh;
     height: calc(50vh - 49px);
     border-top: 1px solid #3d424a;
   }

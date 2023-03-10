@@ -83,7 +83,7 @@
   }
 }
 
-@media (max-width: 599px) {
+@media (max-width: $panel-breakpoint) {
   #panel-container {
     width: 100%;
     height: calc(50vh - 49px);
