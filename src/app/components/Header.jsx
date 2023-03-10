@@ -15,16 +15,11 @@ export default function Header() {
       <AppBar position="static" sx={{ background: '#152642' }}>
         <Toolbar>
           <Typography
-            variant="h6"
-            component="div"
-            sx={{
-              display: 'flex',
-              gap: '8px',
-              flexGrow: 1,
-              alignItems: 'center',
-            }}
+            variant='h6'
+            component='div'
+            className='astrospect-wrapper'
           >
-            AstroSpect
+            <div class="astrospect-text">AstroSpect</div>
             <img
               width="28px"
               src={Logo}

@@ -1,3 +1,7 @@
+html {
+  background-color: $darkestBlue;
+}
+
 body {
   color: whitesmoke;
   font-family: 'Roboto Mono';
@@ -31,5 +35,8 @@ body {
   background-color: #3d424a;
 }
 
-// to do: media queries for side view, bottom view, size changes
-// when too narrow, put sidepane underneath
+@media (max-width: $panel-breakpoint) {
+  #main-container {
+    flex-wrap: wrap;
+  }
+}
