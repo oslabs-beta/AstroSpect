@@ -87,8 +87,13 @@
   #panel-container {
     width: 100%;
     height: calc(50vh - 49px);
-    // height: 35vh;
     overflow: hidden;
+
+    .element {
+      .MuiTreeView-root {
+        height: calc(50vh - 160px);
+      }
+    }
   }
 }
 
