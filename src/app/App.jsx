@@ -9,16 +9,15 @@ const App = () => {
   const [bodyData, setBodyData] = useState(null);
   const [currentComp, setCurrentComp] = useState(null);
   const [islandData, setIslandData] = useState({});
+  const [elementData, setElementData] = useState({});
   const [idSet, setIdSet] = useState(new Set());
   const [idArray, setIdArray] = useState([]);
-
+  
   const handleClick = function (e, nodeId) {
-    // function gets data after running it in panel.jsx
     // get the id of the treeItem clicked
     const id = nodeId;
-
-    // check for id of astro
     if (islandData[id]) setCurrentComp(islandData[id]);
+    else if (elementData[id]) setCurrentComp(elementData[id]);
     else setCurrentComp(null);
   };
 
@@ -29,11 +28,17 @@ const App = () => {
     }
   };
 
+  const addElementData = (element, key) => {
+    if (!elementData[key]) {
+      setElementData({ ...elementData, [key]: element });
+    }
+  };
+
   const addId = (id) => {
     if (!idSet.has(id)) {
       setIdSet(new Set(idSet.add(id)));
       const idArray = Array.from(idSet);
-      console.log('this is idArray in addId', idArray);
+      // console.log('this is idArray in addId', idArray);
       setIdArray([...idArray]);
     }
   };
@@ -47,7 +52,7 @@ const App = () => {
       setBodyData(data);
     }
     fetchData();
-  }, [bodyData]);
+  }, []);
 
   //place all astro islands in an object with a unique id (ex A1, A2, A3)
   // iterate through each island object to find props and client directive
@@ -64,6 +69,7 @@ const App = () => {
             handleClick={handleClick}
             html={bodyData}
             addIslandData={addIslandData}
+            addElementData={addElementData}
             addId={addId}
             idArray={idArray}
           />

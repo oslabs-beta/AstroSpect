@@ -31,27 +31,27 @@ const astroIslands = [];
 
 // parse through a tree of nodes and return a nested JSX structure that we can plug in to MUI
 const createTree = (node, id, astroCount = 0) => {
-  console.log(node);
+  // console.log(node);
   const children = Array.from(node.children);
-  console.log(children);
+  // console.log(children);
   if (node.nodeName === 'ASTRO-ISLAND') {
     let componentFile = node.attributes['component-url'].value;
     for (let i = componentFile.length - 1; i > 0; i--) {
       let lastIndex = null;
-      console.log(componentFile[i]);
+      // console.log(componentFile[i]);
       if (componentFile[i] === '.') {
-        console.log(i);
+        // console.log(i);
         lastIndex = i;
-        console.log(lastIndex);
+        // console.log(lastIndex);
       }
       if (componentFile[i] === '/') {
-        console.log(lastIndex);
+        // console.log(lastIndex);
         if (lastIndex) componentFile = componentFile.slice(i + 1, lastIndex);
         else componentFile = componentFile.slice(i + 1);
         break;
       }
     }
-    console.log(componentFile);
+    // console.log(componentFile);
     astroIslands.push(node);
     astroCount++;
   }

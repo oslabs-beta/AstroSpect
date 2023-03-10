@@ -26,7 +26,7 @@ const SidePane = (props) => {
       }
       topLevel.push(elem);
     }
-    console.log('this is topLevel', topLevel);
+    // console.log('this is topLevel', topLevel);
     return topLevel;
   };
 
@@ -41,7 +41,9 @@ const SidePane = (props) => {
       {/* // when component is not astro island */}
       {!currentComp && (
         <>
-          <p>No hydrated component selected</p>
+          <h3>Type: </h3>
+          <p>Static HTML</p>
+          <hr />
         </>
       )}
 

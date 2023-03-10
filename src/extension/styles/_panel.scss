@@ -3,9 +3,10 @@
 }
 
 #panel-container {
+  // set height of panel to all available vertical space minus the height of the header
+  height: calc(100vh - 65px);
   background-color: $darkestBlue;
-  width: 60%;
-  height: 100%;
+  width: 59%;
   overflow-x: none;
   overflow-y: auto;
   border-right: 1px solid #3d424a;
@@ -65,6 +66,32 @@
         border: none;
         margin: 5px;
         padding-left: 10px;
+      }
+    }
+  }
+
+  .element {
+    .MuiTreeView-root {
+      // set the tree display height to the full available space minus the search bar and header
+      height: calc(100vh - 160px);
+
+      // to avoid vertical scrolling due to list items taking up too much space
+      li {
+        width: 95%;
+      }
+    }
+  }
+}
+
+@media (max-width: $panel-breakpoint) {
+  #panel-container {
+    width: 100%;
+    height: calc(50vh - 49px);
+    overflow: hidden;
+
+    .element {
+      .MuiTreeView-root {
+        height: calc(50vh - 160px);
       }
     }
   }
