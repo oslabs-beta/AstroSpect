@@ -1,0 +1,42 @@
+html {
+  background-color: $darkestBlue;
+}
+
+body {
+  color: whitesmoke;
+  font-family: 'Roboto Mono';
+  margin: 0;
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  overflow: none;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: row;
+  background-color: $darkestBlue;
+  overflow: none;
+  border-top: 1px solid #3d424a;
+}
+
+.container {
+  padding-top: 10px;
+}
+
+.separator {
+  height: 20px;
+  width: 1px;
+  flex: 0 0 1px;
+  margin: 0 0.5rem;
+  background-color: #3d424a;
+}
+
+@media (max-width: $panel-breakpoint) {
+  #main-container {
+    flex-wrap: wrap;
+  }
+}

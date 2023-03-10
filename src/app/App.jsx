@@ -1,9 +1,9 @@
 import React from 'react';
-import Panel from './Panel';
-import SidePane from './SidePane';
+import Panel from './containers/Panel';
+import SidePane from './containers/SidePane';
 import { useState, useEffect } from 'react';
-import parseData from './parseData.js';
-import Header from './Header';
+import parseData from './algorithms/parseData.js';
+import Header from './components/Header';
 
 const App = () => {
   const [bodyData, setBodyData] = useState(null);
@@ -12,7 +12,7 @@ const App = () => {
   const [elementData, setElementData] = useState({});
   const [idSet, setIdSet] = useState(new Set());
   const [idArray, setIdArray] = useState([]);
-
+  
   const handleClick = function (e, nodeId) {
     // get the id of the treeItem clicked
     const id = nodeId;
@@ -38,7 +38,7 @@ const App = () => {
     if (!idSet.has(id)) {
       setIdSet(new Set(idSet.add(id)));
       const idArray = Array.from(idSet);
-      console.log('this is idArray in addId', idArray);
+      // console.log('this is idArray in addId', idArray);
       setIdArray([...idArray]);
     }
   };
@@ -63,6 +63,7 @@ const App = () => {
     <>
       <Header />
       <div id='main-container'>
+        {!bodyData && <div>Loading...</div>}
         {bodyData && (
           <Panel
             handleClick={handleClick}
@@ -73,7 +74,7 @@ const App = () => {
             idArray={idArray}
           />
         )}
-        <SidePane currentComp={currentComp} />
+        {bodyData && <SidePane currentComp={currentComp} />}
       </div>
     </>
   );
