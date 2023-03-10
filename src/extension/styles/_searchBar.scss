@@ -11,5 +11,9 @@
     &:active {
       color: $lightBlue;
     }
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
