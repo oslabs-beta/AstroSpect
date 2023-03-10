@@ -10,29 +10,37 @@ const SidePane = (props) => {
   const { currentComp } = props;
   //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
   const createPropsDisplay = (obj, id) => {
+    // creates array of parent props
     const topLevel = [];
+    // loops through props in currentComp obj
     for (const propName in obj) {
       let elem;
       let newId = String(id++);
       const propLabel = `${propName}: ${obj[propName]}`;
+      // checks if there is a nested prop, create a child tree item
       if (typeof obj[propName] === 'object') {
+        // if so, tree item is created, with recursive processing of children
         elem = (
           <TreeItem key={newId} nodeId={newId} label={propName}>
             {createPropsDisplay(obj[propName], `${++newId}`)}
           </TreeItem>
         );
       } else {
+        // otherwise lead tree item is created
         elem = <TreeItem key={newId} nodeId={newId} label={propLabel} />;
       }
+      // the result is then pushed to the array of parent tree items
       topLevel.push(elem);
     }
-    // console.log('this is topLevel', topLevel);
+    // returns array of parent tree items, with nested children (if any)
     return topLevel;
   };
 
   let propsDisplay = [];
 
+  // if astro-island is selected in Panel, a new propsDisplay is created
   if (currentComp) {
+    // propsDisplay updates to result of calling CPD on that astro-island's props
     propsDisplay = createPropsDisplay(currentComp.props, '99');
   }
 

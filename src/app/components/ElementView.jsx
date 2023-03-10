@@ -17,6 +17,7 @@ const ElementView = (props) => {
   };
 
   //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
+  // TS: node is ______, id: string, fontColor: string/#F5F5F5
   const createTree = (node, id, fontColor = '#F5F5F5') => {
     //Inputs all child elements of current node into array
     const children = Array.from(node.children);

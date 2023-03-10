@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
 // search bar in panel
 const SearchBar = (props) => {
   const { handleExpandClick, expanded } = props;
@@ -56,6 +59,7 @@ const SearchBar = (props) => {
     found[current].scrollIntoView();
   };
 
+  // searchs when input field is updated
   const handleInputChange = () => {
     search();
   };
@@ -64,22 +68,26 @@ const SearchBar = (props) => {
     <div id='search-bar'>
       <SearchIcon className='search-icon' />
       <input
+        className="search-bar-text"
         type='text'
         id='text-to-search'
         placeholder='Filter...'
         onChange={handleInputChange}
-        style={styles.searchbar}
         onClick={handleExpandClick}
       />
       <div>
         {searchVal.length > 0 && (
-          <>
-            <button onClick={scrollPrev}>Prev</button>
-            <button onClick={scrollNext}>Next</button>
+          <div className="prev-next">
+            <KeyboardArrowUpIcon
+              onClick={scrollPrev}
+            />
+            <KeyboardArrowDownIcon
+              onClick={scrollNext}
+            />
             <div>
               {current + 1}/{found.length}
             </div>
-          </>
+          </div>
         )}
       </div>
       <div className='separator' />
@@ -90,12 +98,4 @@ const SearchBar = (props) => {
   );
 };
 
-const styles = {
-  searchbar: {
-    width: '100%',
-    fontSize: '14px',
-  },
-};
 export default SearchBar;
-
-// <button onClick={search}>Search</button>
