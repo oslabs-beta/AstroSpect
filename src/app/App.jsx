@@ -57,7 +57,8 @@ const App = () => {
   return (
     <>
       <Header />
-      <div id="main-container">
+      <div id='main-container'>
+        {!bodyData && <div>Loading...</div>}
         {bodyData && (
           <Panel
             handleClick={handleClick}
@@ -67,7 +68,7 @@ const App = () => {
             idArray={idArray}
           />
         )}
-        <SidePane currentComp={currentComp} />
+        {bodyData && <SidePane currentComp={currentComp} />}
       </div>
     </>
   );
