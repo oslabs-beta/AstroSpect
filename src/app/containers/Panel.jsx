@@ -85,10 +85,10 @@ const Panel = (props) => {
             )}
           </TreeItem>
         );
+        
         componentData.push(islandTreeItem)
-        console.log('component data: ', componentData);
+
         //recurse through function with each child node
-//        addComponentData(islandTreeItem2);
         return islandTreeItem;
       }
     }
