@@ -1,10 +1,12 @@
+declare const chrome: any
+
 // parses html of target page in order to construct tree
-const parseData = async() => {
+const parseData = async(): Promise<{}> => {
   // gets html of target page using Chrome API methods
-  const html = await new Promise((resolve, reject) => {
+  const html: string = await new Promise((resolve, reject) => {
     chrome.devtools.inspectedWindow.eval(
       'document.documentElement.outerHTML',
-      (result, exception) => {
+      (result: string, exception: string) => {
         if (exception) {
           reject(exception);
         } else {
@@ -15,7 +17,7 @@ const parseData = async() => {
   });
   // parses HTML string into document object
   const parser = new DOMParser();
-  const stringToDoc = parser.parseFromString(html, 'text/html');
+  const stringToDoc: {} = parser.parseFromString(html, 'text/html');
   // returns document object
   return stringToDoc;
 }

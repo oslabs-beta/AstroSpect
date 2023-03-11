@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import SearchBar from '../components/SearchBar';
-import PanelViewToggle from '../components/PanelViewToggle';
+import SearchBar from '../components/SearchBar.jsx';
 import { useState } from 'react';
 import ElementView from '../components/ElementView';
 import ComponentView from '../components/ComponentView.jsx';
@@ -19,6 +18,7 @@ const Panel = (props) => {
 
   // returns the completed tree
   return (
+  
     <div id="panel-container">
       <div id="panel-header">
         <div id="panel-toggle">

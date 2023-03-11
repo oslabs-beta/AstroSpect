@@ -1,43 +1,40 @@
 import React from 'react';
+// @ts-ignore
 import Panel from './containers/Panel';
+// @ts-ignore
 import SidePane from './containers/SidePane';
 import { useState, useEffect } from 'react';
-import parseData from './algorithms/parseData.js';
+import parseData from './algorithms/parseData';
 import Header from './components/Header';
+import {CurrentComp, IslandData} from './types';
 
-const App = () => {
-  const [bodyData, setBodyData] = useState(null);
-  const [currentComp, setCurrentComp] = useState(null);
-  const [islandData, setIslandData] = useState({});
-  const [elementData, setElementData] = useState({});
-  const [idSet, setIdSet] = useState(new Set());
-  const [idArray, setIdArray] = useState([]);
+// ts types
+
+const App: React.FC = (): JSX.Element => {
+  const [bodyData, setBodyData] = useState<{} | null>(null);
+  const [currentComp, setCurrentComp] = useState<CurrentComp | null>(null);
+  const [islandData, setIslandData] = useState<IslandData>({});
+  const [idSet, setIdSet] = useState<Set<string>>(new Set<string>());
+  const [idArray, setIdArray] = useState<string[]>([]);
   
-  const handleClick = function (e, nodeId) {
+  const handleClick = (e: any, id: string): void => {
     // get the id of the treeItem clicked
-    const id = nodeId;
     if (islandData[id]) setCurrentComp(islandData[id]);
-    else if (elementData[id]) setCurrentComp(elementData[id]);
     else setCurrentComp(null);
   };
 
   //function to add astro island nodes to state when parsing dom
-  const addIslandData = (astroIsland, key) => {
-    if (!islandData[key]) {
-      setIslandData({ ...islandData, [key]: astroIsland });
+  const addIslandData = (astroIsland: CurrentComp, id: string): void => {
+    if (!islandData[id]) {
+      setIslandData({ ...islandData, [id]: astroIsland });
     }
   };
 
-  const addElementData = (element, key) => {
-    if (!elementData[key]) {
-      setElementData({ ...elementData, [key]: element });
-    }
-  };
 
-  const addId = (id) => {
+  const addId = (id: string): void => {
     if (!idSet.has(id)) {
       setIdSet(new Set(idSet.add(id)));
-      const idArray = Array.from(idSet);
+      const idArray: string[] = Array.from(idSet);
       setIdArray([...idArray]);
     }
   };
@@ -45,7 +42,7 @@ const App = () => {
   // if id is not found, display 'this is static' on the side pane
   // set isClicked to True
 
-  useEffect(() => {
+  useEffect((): void => {
     async function fetchData() {
       const data = await parseData();
       setBodyData(data);
@@ -68,7 +65,6 @@ const App = () => {
             handleClick={handleClick}
             html={bodyData}
             addIslandData={addIslandData}
-            addElementData={addElementData}
             addId={addId}
             idArray={idArray}
           />

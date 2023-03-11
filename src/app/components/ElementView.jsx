@@ -3,7 +3,7 @@ import TreeView from '@mui/lab/TreeView';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import TreeItem from '@mui/lab/TreeItem';
-import parseProps from '../algorithms/parseProps.js';
+import parseProps from '../algorithms/parseProps';
 
 // create TS type for panel props
 
@@ -17,7 +17,7 @@ const ElementView = (props) => {
   };
 
   //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
-  // TS: node is ______, id: string, fontColor: string/#F5F5F5
+  // TS: node is any, id: string, fontColor: string/#F5F5F5
   const createTree = (node, id, fontColor = '#F5F5F5') => {
     //Inputs all child elements of current node into array
     const children = Array.from(node.children);
@@ -26,6 +26,7 @@ const ElementView = (props) => {
     //Stores ASTRO-ISLAND data in islandData state (from app)
     if (node.nodeName === 'ASTRO-ISLAND') {
       const parsedProps = parseProps(node.attributes.props.value);
+      
       const island = {
         client: node.attributes.client.value,
         props: parsedProps,

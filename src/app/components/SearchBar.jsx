@@ -20,10 +20,10 @@ const SearchBar = (props) => {
     let textToSearch = document.getElementById('text-to-search').value;
     setSearchVal(textToSearch);
     // assign the searched text (tree view) to a variable
-    let searchContents = document.querySelectorAll('.MuiTreeItem-label');
+    const searchContents = document.querySelectorAll('.MuiTreeItem-label');
     // changing textToSearch to be a string that can be used as literal string in a regular expression without any unintended special meaning
     textToSearch = textToSearch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    //object created which contains the escaped search string and flags 'gi' (means search is global and case sensitive)
+    // object created which contains the escaped search string and flags 'gi' (means search is global and case sensitive)
     let pattern = new RegExp(`${textToSearch}`, 'gi');
     // sets new array to be filled with matched elements
     const newArr = [];
@@ -73,17 +73,13 @@ const SearchBar = (props) => {
         id='text-to-search'
         placeholder='Filter...'
         onChange={handleInputChange}
-        onClick={handleExpandClick}
+        onClick={expanded.length === 0 && handleExpandClick}
       />
       <div>
         {searchVal.length > 0 && (
           <div className="prev-next">
-            <KeyboardArrowUpIcon
-              onClick={scrollPrev}
-            />
-            <KeyboardArrowDownIcon
-              onClick={scrollNext}
-            />
+            <KeyboardArrowUpIcon onClick={scrollPrev} />
+            <KeyboardArrowDownIcon onClick={scrollNext} />
             <div>
               {current + 1}/{found.length}
             </div>
