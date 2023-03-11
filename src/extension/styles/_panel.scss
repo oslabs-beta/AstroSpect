@@ -70,7 +70,7 @@
     }
   }
 
-  .element {
+  .element, .component {
     .MuiTreeView-root {
       // set the tree display height to the full available space minus the search bar and header
       height: calc(100vh - 160px);
@@ -89,7 +89,7 @@
     height: calc(50vh - 49px);
     overflow: hidden;
 
-    .element {
+    .element, .component {
       .MuiTreeView-root {
         height: calc(50vh - 160px);
       }
