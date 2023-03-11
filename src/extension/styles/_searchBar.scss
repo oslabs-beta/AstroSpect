@@ -1,0 +1,19 @@
+.search-bar-text {
+  font-size: 14px;
+  color: #fff;
+}
+
+.prev-next {
+  display: flex;
+  align-items: center;
+
+  .MuiSvgIcon-root {
+    &:active {
+      color: $lightBlue;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

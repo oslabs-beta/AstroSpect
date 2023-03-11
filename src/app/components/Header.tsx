@@ -7,7 +7,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import WebIcon from '@mui/icons-material/Web';
 import Logo from '../../extension/assets/astrospect-logo.png';
 
-export default function Header() {
+const Header: React.FC = (): JSX.Element => {
   return (
     // possibly pass in the system light/dark mode preferences into the props?
 
@@ -19,7 +19,7 @@ export default function Header() {
             component='div'
             className='astrospect-wrapper'
           >
-            <div class="astrospect-text">AstroSpect</div>
+            <div className="astrospect-text">AstroSpect</div>
             <img
               width="28px"
               src={Logo}
@@ -36,7 +36,7 @@ export default function Header() {
               
               <a href="https://github.com/oslabs-beta/AstroSpect/tree/main" target="_blank">
                 <Typography
-                  variant="p"
+                  variant="body1"
                   component="div"
                   sx={{ flexGrow: 1, fontFamily: 'sans-serif' }}
                 >
@@ -52,7 +52,7 @@ export default function Header() {
 
               <a href="https://github.com/oslabs-beta/AstroSpect/tree/main" target="_blank">
                 <Typography
-                  variant="p"
+                  variant="body1"
                   component="div"
                   sx={{ flexGrow: 1, fontFamily: 'sans-serif' }}
                 >
@@ -66,3 +66,5 @@ export default function Header() {
     </Box>
   );
 }
+
+export default Header;
