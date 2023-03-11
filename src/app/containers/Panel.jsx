@@ -14,6 +14,7 @@ const Panel = (props) => {
   const [selectedTab, setSelectedTab] = useState(0);
   // const [componentData, setComponentData] = useState([]);
   const componentData = [];
+
   // alternates between expanding and collapsing all nodes
   const handleExpandClick = () => {
     setExpanded((oldExpanded) => (oldExpanded.length === 0 ? idArray : []));
@@ -58,7 +59,7 @@ const Panel = (props) => {
       }
 
       if (!node.children) {
-        const islandTreeItem1 = (
+        const islandTreeItem = (
           <TreeItem
             key={id}
             nodeId={id}
@@ -66,22 +67,13 @@ const Panel = (props) => {
             sx={{ color: '#ff7300' }}
           />
         );
-        const islandTreeItem2 = (
-          <TreeItem
-            key={id}
-            nodeId={id}
-            label={`${node.nodeName.toLowerCase()} (${componentFile})`}
-            sx={{ color: '#ff7300' }}
-          />
-        );
-        componentData.push(islandTreeItem2)
-//         addComponentData(islandTreeItem2);
-        return islandTreeItem1;
+        componentData.push(islandTreeItem)
+        return islandTreeItem;
       } else {
         //Inputs all child elements of current node into array
         const children = Array.from(node.children);
 
-        const islandTreeItem1 = (
+        const islandTreeItem = (
           <TreeItem
             key={id}
             nodeId={id}
@@ -93,25 +85,11 @@ const Panel = (props) => {
             )}
           </TreeItem>
         );
-
-        const islandTreeItem2 = (
-          <TreeItem
-            key={id}
-            nodeId={id}
-            label={`${node.nodeName.toLowerCase()} (${componentFile})`}
-            sx={{ color: '#ff7300' }}
-          >
-            {children.map((child, index) =>
-              createTree(child, `${id}-${index}`, '#e29353')
-            )}
-          
-          </TreeItem>
-        );
-        componentData.push(islandTreeItem2)
+        componentData.push(islandTreeItem)
         console.log('component data: ', componentData);
         //recurse through function with each child node
 //        addComponentData(islandTreeItem2);
-        return islandTreeItem1;
+        return islandTreeItem;
       }
     }
 
@@ -193,30 +171,5 @@ const Panel = (props) => {
     </div>
   );
 };
-
-/* for future use: filtering out nodes we don't want */
-// const filterDom = () => {
-//   const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_ELEMENT);
-//   let node = walker.firstChild();
-//   while (node) {
-//     //filter out the all script elements
-//     if (node.tagName === 'script') {
-//       node.remove();
-//       continue;
-//     }
-//     //filter out style attributes
-//     if (node.hasAttribute('style')) {
-//       node.removeAttribute('style');
-//       continue;
-//     }
-
-//     //if the node has a child node, recurse?
-//     console.log('node:', node);
-//     node = walker.nextSibling();
-//   }
-// };
-
-// displays tree
-// must import MUI tree components
 
 export default Panel;
