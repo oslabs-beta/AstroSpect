@@ -5,7 +5,7 @@ const parseProps = (attribute: string): {[k: string]: any} => {
 
   // recursively parses nested props to get rid of unnecessary data from astro-island props
   // example of how the JSON is structured coming in: { "name": "[0, "Commander Roman"]" }
-  // output after running JSON object through parseProps: { name: Commander Roman }
+  // output after running JSON object through parseProps: { name: "Commander Roman" }
   const spreader = (obj: {[k: string]: any}): void => {
     for (const key in obj) {
       if (Array.isArray(obj[key])) {

@@ -8,7 +8,6 @@ import parseData from './algorithms/parseData';
 import Header from './components/Header';
 import {CurrentComp, IslandData} from './types';
 
-// ts types
 
 const App: React.FC = (): JSX.Element => {
   const [bodyData, setBodyData] = useState<{} | null>(null);
@@ -23,13 +22,12 @@ const App: React.FC = (): JSX.Element => {
     else setCurrentComp(null);
   };
 
-  //function to add astro island nodes to state when parsing dom
+  // function to add astro island nodes to state when parsing dom
   const addIslandData = (astroIsland: CurrentComp, id: string): void => {
     if (!islandData[id]) {
       setIslandData({ ...islandData, [id]: astroIsland });
     }
   };
-
 
   const addId = (id: string): void => {
     if (!idSet.has(id)) {
@@ -43,11 +41,10 @@ const App: React.FC = (): JSX.Element => {
   // set isClicked to True
 
   useEffect((): void => {
-    async function fetchData() {
-      const data = await parseData();
+    (async function fetchData(): Promise<void> {
+      const data: {} = await parseData();
       setBodyData(data);
-    }
-    fetchData();
+    })()
   }, []);
 
   //place all astro islands in an object with a unique id (ex A1, A2, A3)
@@ -69,7 +66,7 @@ const App: React.FC = (): JSX.Element => {
             idArray={idArray}
           />
         )}
-        {bodyData && <SidePane currentComp={currentComp} />}
+        {bodyData && <SidePane currentComp={currentComp}/>}
       </div>
     </>
   );

@@ -73,7 +73,7 @@ const SearchBar = (props) => {
         id='text-to-search'
         placeholder='Filter...'
         onChange={handleInputChange}
-        onClick={expanded.length === 0 && handleExpandClick}
+        onClick={expanded.length === 0 ? handleExpandClick : undefined}
       />
       <div>
         {searchVal.length > 0 && (

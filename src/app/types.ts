@@ -7,6 +7,6 @@ export type CurrentComp = {
 }
 
 export type IslandData = {
-    [index: string]: CurrentComp
+    [k: string]: CurrentComp
 }
 
