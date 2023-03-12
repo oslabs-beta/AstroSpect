@@ -19,7 +19,6 @@ const ComponentView = (props) => {
           flexGrow: 1,
           width: 'auto',
           overflowY: 'auto',
-          fontFamily: 'Roboto mono, monospace',
         }}
       >
         {componentData}
