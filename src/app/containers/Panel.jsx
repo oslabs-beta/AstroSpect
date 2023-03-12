@@ -7,7 +7,7 @@ import TreeItem from '@mui/lab/TreeItem';
 import parseProps from '../algorithms/parseProps.ts';
 
 // create TS type for panel props
-  
+
 const Panel = (props) => {
   const { html, handleClick, addIslandData, idArray, addId } = props;
   const [expanded, setExpanded] = useState([]);
@@ -45,11 +45,11 @@ const Panel = (props) => {
         client: node.attributes.client.value,
         props: parsedProps,
       };
-      
+
       addIslandData(island, id);
-        let componentFile = node.attributes['component-url'].value;
-        let lastIndex = null;
-        for (let i = componentFile.length - 1; i > 0; i--) {
+      let componentFile = node.attributes['component-url'].value;
+      let lastIndex = null;
+      for (let i = componentFile.length - 1; i > 0; i--) {
         if (componentFile[i] === '.') lastIndex = i;
         if (componentFile[i] === '/') {
           if (lastIndex) componentFile = componentFile.slice(i + 1, lastIndex);
@@ -67,10 +67,10 @@ const Panel = (props) => {
             sx={{ color: '#ff7300' }}
           />
         );
-        componentData.push(islandTreeItem)
+        componentData.push(islandTreeItem);
         return islandTreeItem;
       } else {
-        //Inputs all child elements of current node into array
+        // Inputs all child elements of current node into array
         const children = Array.from(node.children);
 
         const islandTreeItem = (
@@ -85,15 +85,15 @@ const Panel = (props) => {
             )}
           </TreeItem>
         );
-        
-        componentData.push(islandTreeItem)
 
-        //recurse through function with each child node
+        componentData.push(islandTreeItem);
+
+        // recurse through function with each child node
         return islandTreeItem;
       }
     }
 
-    //If node has no children, return node
+    // If node has no children, return node
     if (!node.children) {
       return (
         <TreeItem
@@ -105,7 +105,7 @@ const Panel = (props) => {
       );
     } else {
       const children = Array.from(node.children);
-      //If node has children, recurse through function with each child node
+      // If node has children, recurse through function with each child node
       return (
         <TreeItem
           key={id}
@@ -120,7 +120,7 @@ const Panel = (props) => {
       );
     }
   };
-  
+
   // returns the completed tree
   return (
     <div id="panel-container">
