@@ -3,6 +3,7 @@ import TreeView from '@mui/lab/TreeView';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import TreeItem from '@mui/lab/TreeItem';
+import { Typography } from '@mui/material';
 // import { CurrentComp } from '../types';
 
 // interface SidePaneProps {
@@ -21,18 +22,39 @@ const SidePane = (props) => {
     for (const propName in obj) {
       let elem;
       let newId = String(id++);
-      const propLabel = `${propName}: ${obj[propName]}`;
+      // const propLabel = `${propName}: ${obj[propName]}`;
+      const propValue = obj[propName];
       // checks if there is a nested prop, create a child tree item
       if (typeof obj[propName] === 'object') {
         // if so, tree item is created, with recursive processing of children
         elem = (
-          <TreeItem key={newId} nodeId={newId} label={propName}>
+          <TreeItem
+            key={newId}
+            nodeId={newId}
+            label={
+              <Typography component="div">
+                <span style={{ color: '#ff7300' }}>{propName}: </span>
+                {String(propValue)}
+              </Typography>
+            }
+          >
             {createPropsDisplay(obj[propName], `${++newId}`)}
           </TreeItem>
         );
       } else {
         // otherwise lead tree item is created
-        elem = <TreeItem key={newId} nodeId={newId} label={propLabel} />;
+        elem = (
+          <TreeItem
+            key={newId}
+            nodeId={newId}
+            label={
+              <Typography component="div">
+                <span style={{ color: '#ff7300' }}>{propName}: </span>
+                {String(propValue)}
+              </Typography>
+            }
+          />
+        );
       }
       // the result is then pushed to the array of parent tree items
       topLevel.push(elem);

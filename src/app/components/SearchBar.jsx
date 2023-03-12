@@ -24,7 +24,7 @@ const SearchBar = (props) => {
     // changing textToSearch to be a string that can be used as literal string in a regular expression without any unintended special meaning
     textToSearch = textToSearch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     // object created which contains the escaped search string and flags 'gi' (means search is global and case sensitive)
-    let pattern = new RegExp(`${textToSearch}`, 'gi');
+    const pattern = new RegExp(`${textToSearch}`, 'gi');
     // sets new array to be filled with matched elements
     const newArr = [];
     // loop through each element in searchContents
@@ -65,13 +65,13 @@ const SearchBar = (props) => {
   };
 
   return (
-    <div id='search-bar'>
-      <SearchIcon className='search-icon' />
+    <div id="search-bar">
+      <SearchIcon className="search-icon" />
       <input
         className="search-bar-text"
-        type='text'
-        id='text-to-search'
-        placeholder='Filter...'
+        type="text"
+        id="text-to-search"
+        placeholder="Filter..."
         onChange={handleInputChange}
         onClick={expanded.length === 0 ? handleExpandClick : undefined}
       />
@@ -86,7 +86,7 @@ const SearchBar = (props) => {
           </div>
         )}
       </div>
-      <div className='separator' />
+      <div className="separator" />
       <Button onClick={handleExpandClick}>
         {expanded.length === 0 ? 'Expand' : 'Collapse'}
       </Button>

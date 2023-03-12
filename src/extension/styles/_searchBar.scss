@@ -1,6 +1,9 @@
 .search-bar-text {
   font-size: 14px;
   color: #fff;
+  &:focus {
+    outline: none;
+  }
 }
 
 .prev-next {

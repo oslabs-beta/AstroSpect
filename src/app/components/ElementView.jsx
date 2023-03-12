@@ -24,7 +24,6 @@ const ElementView = (props) => {
           flexGrow: 1,
           width: 'auto',
           overflowY: 'auto',
-          fontFamily: 'Roboto mono, monospace',
         }}
       >
         {treeJSX.props.children}

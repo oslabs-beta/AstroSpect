@@ -8,7 +8,7 @@
   padding: 20px;
   color: whitesmoke;
   margin: 0;
-  font-size: 15px;
+  font-size: 1rem;
 
   .MuiTreeView-root {
     height: auto;
@@ -39,6 +39,6 @@ h3 {
   #sidepane-container {
     width: 100%;
     height: calc(50vh - 49px);
-    border-top: 1px solid #3d424a;
+    border-top: 3px solid #3d424a;
   }
 }

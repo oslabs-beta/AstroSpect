@@ -24,6 +24,7 @@
       border-bottom: 1px solid #3d424a;
       padding: 8px;
       .buttonToggle {
+        font-family: 'Figtree', sans-serif;
         background-color: $darkBlue;
         opacity: 0.5;
         color: lightgrey;
@@ -69,8 +70,16 @@
       }
     }
   }
-
-  .element, .component {
+  .MuiTreeItem-label {
+    font-family: 'Figtree', sans-serif;
+  }
+  .MuiTreeItem-content {
+    :hover {
+      background-color: #152642;
+    }
+  }
+  .element,
+  .component {
     .MuiTreeView-root {
       // set the tree display height to the full available space minus the search bar and header
       height: calc(100vh - 160px);
@@ -89,7 +98,8 @@
     height: calc(50vh - 49px);
     overflow: hidden;
 
-    .element, .component {
+    .element,
+    .component {
       .MuiTreeView-root {
         height: calc(50vh - 160px);
       }
