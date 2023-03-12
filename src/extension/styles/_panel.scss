@@ -24,6 +24,7 @@
       border-bottom: 1px solid #3d424a;
       padding: 8px;
       .buttonToggle {
+        font-family: 'Figtree', sans-serif;
         background-color: $darkBlue;
         opacity: 0.5;
         color: lightgrey;
@@ -71,6 +72,11 @@
   }
   .MuiTreeItem-label {
     font-family: 'Figtree', sans-serif;
+  }
+  .MuiTreeItem-content {
+    :hover {
+      background-color: #152642;
+    }
   }
   .element,
   .component {
