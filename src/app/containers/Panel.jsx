@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchBar from '../components/SearchBar';
-import { useState } from 'react';
 import ElementView from '../components/ElementView';
 import ComponentView from '../components/ComponentView.jsx';
 import TreeItem from '@mui/lab/TreeItem';
@@ -12,8 +11,9 @@ const Panel = (props) => {
   const { html, handleClick, addIslandData, idArray, addId } = props;
   const [expanded, setExpanded] = useState([]);
   const [selectedTab, setSelectedTab] = useState(0);
-  // const [componentData, setComponentData] = useState([]);
-  const componentData = [];
+  const [treeJSX, setTreeJSX] = useState(null);
+  const [componentData, setComponentData] = useState(null);
+  const componentArray = [];
 
   // alternates between expanding and collapsing all nodes
   const handleExpandClick = () => {
@@ -32,6 +32,11 @@ const Panel = (props) => {
   //     setComponentData([...componentData, item])
   //   }
   // }
+  useEffect(() => {
+    const newTreeJSX = createTree(html.body, '0');
+    setTreeJSX(newTreeJSX.props.children);
+    setComponentData([...componentArray]);
+  }, []);
 
   // Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
   const createTree = (node, id, fontColor = '#F5F5F5') => {
@@ -67,7 +72,7 @@ const Panel = (props) => {
             sx={{ color: '#ff7300' }}
           />
         );
-        componentData.push(islandTreeItem);
+        componentArray.push(islandTreeItem);
         return islandTreeItem;
       } else {
         // Inputs all child elements of current node into array
@@ -86,7 +91,7 @@ const Panel = (props) => {
           </TreeItem>
         );
 
-        componentData.push(islandTreeItem);
+        componentArray.push(islandTreeItem);
 
         // recurse through function with each child node
         return islandTreeItem;
@@ -145,28 +150,24 @@ const Panel = (props) => {
         </div>
         <SearchBar handleExpandClick={handleExpandClick} expanded={expanded} />
       </div>
-      <div
-        className="container element"
-        style={{ display: selectedTab === 0 ? 'flex' : 'none' }}
-      >
-        <ElementView
-          html={html}
-          handleClick={handleClick}
-          expanded={expanded}
-          handleToggle={handleToggle}
-          createTree={createTree}
-        />
-      </div>
-      <div
-        className="container component"
-        style={{ display: selectedTab === 1 ? 'flex' : 'none' }}
-      >
-        <ComponentView
-          componentData={componentData}
-          handleToggle={handleToggle}
-          handleClick={handleClick}
-          expanded={expanded}
-        />
+      <div className="container element" style={{ display: 'flex' }}>
+        {selectedTab === 0 && (
+          <ElementView
+            html={html}
+            handleClick={handleClick}
+            expanded={expanded}
+            handleToggle={handleToggle}
+            treeJSX={treeJSX}
+          />
+        )}
+        {selectedTab === 1 && (
+          <ComponentView
+            componentData={componentData}
+            handleToggle={handleToggle}
+            handleClick={handleClick}
+            expanded={expanded}
+          />
+        )}
       </div>
     </div>
   );

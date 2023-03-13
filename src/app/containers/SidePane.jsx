@@ -34,7 +34,6 @@ const SidePane = (props) => {
             label={
               <Typography component="div">
                 <span style={{ color: '#ff7300' }}>{propName}: </span>
-                {String(propValue)}
               </Typography>
             }
           >

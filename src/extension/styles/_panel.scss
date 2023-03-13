@@ -78,8 +78,7 @@
       background-color: #152642;
     }
   }
-  .element,
-  .component {
+  .element {
     .MuiTreeView-root {
       // set the tree display height to the full available space minus the search bar and header
       height: calc(100vh - 160px);
