@@ -65,28 +65,28 @@ const SearchBar = (props) => {
   };
 
   return (
-    <div id="search-bar">
-      <SearchIcon className="search-icon" />
+    <div id='search-bar'>
+      <SearchIcon className='search-icon' />
       <input
-        className="search-bar-text"
-        type="text"
-        id="text-to-search"
-        placeholder="Filter..."
+        className='search-bar-text'
+        type='text'
+        id='text-to-search'
+        placeholder='Filter...'
         onChange={handleInputChange}
         onClick={expanded.length === 0 ? handleExpandClick : undefined}
       />
       <div>
         {searchVal.length > 0 && (
-          <div className="prev-next">
+          <div className='prev-next'>
             <KeyboardArrowUpIcon onClick={scrollPrev} />
             <KeyboardArrowDownIcon onClick={scrollNext} />
             <div>
-              {current + 1}/{found.length}
+              {found.length === 0 ? 0 : current + 1}/{found.length}
             </div>
           </div>
         )}
       </div>
-      <div className="separator" />
+      <div className='separator' />
       <Button onClick={handleExpandClick}>
         {expanded.length === 0 ? 'Expand' : 'Collapse'}
       </Button>

@@ -5,10 +5,12 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const ComponentView = (props) => {
   const { componentData, handleToggle, expanded, handleClick } = props;
+  console.log('in Comp View');
+  console.log(componentData);
   return (
     <>
       <TreeView
-        aria-label="file system navigator"
+        aria-label='file system navigator'
         defaultCollapseIcon={<ExpandMoreIcon sx={{ color: '#d5bcef' }} />}
         defaultExpandIcon={<ChevronRightIcon sx={{ color: '#d5bcef' }} />}
         onNodeSelect={handleClick}
