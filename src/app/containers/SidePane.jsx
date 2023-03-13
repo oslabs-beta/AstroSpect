@@ -32,9 +32,8 @@ const SidePane = (props) => {
             key={newId}
             nodeId={newId}
             label={
-              <Typography component="div">
+              <Typography component='div'>
                 <span style={{ color: '#ff7300' }}>{propName}: </span>
-                {String(propValue)}
               </Typography>
             }
           >
@@ -48,7 +47,7 @@ const SidePane = (props) => {
             key={newId}
             nodeId={newId}
             label={
-              <Typography component="div">
+              <Typography component='div'>
                 <span style={{ color: '#ff7300' }}>{propName}: </span>
                 {String(propValue)}
               </Typography>
@@ -72,7 +71,7 @@ const SidePane = (props) => {
   }
 
   return (
-    <div id="sidepane-container">
+    <div id='sidepane-container'>
       {/* // when component is not astro island */}
       {!currentComp && (
         <>
@@ -93,7 +92,7 @@ const SidePane = (props) => {
           <hr />
           <h3>Props: </h3>
           <TreeView
-            aria-label="file system navigator"
+            aria-label='file system navigator'
             defaultCollapseIcon={<ExpandMoreIcon />}
             defaultExpandIcon={<ChevronRightIcon />}
             sx={{

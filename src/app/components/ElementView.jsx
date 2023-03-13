@@ -5,15 +5,13 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 // create TS type for panel props
 
 const ElementView = (props) => {
-  const { html, handleClick, expanded, handleToggle, createTree } = props;
-
-  const treeJSX = createTree(html.body, '0');
+  const { handleClick, expanded, handleToggle, elementData } = props;
 
   // returns the completed tree
   return (
     <>
       <TreeView
-        aria-label="file system navigator"
+        aria-label='file system navigator'
         defaultCollapseIcon={<ExpandMoreIcon sx={{ color: '#d5bcef' }} />}
         defaultExpandIcon={<ChevronRightIcon sx={{ color: '#d5bcef' }} />}
         onNodeSelect={handleClick}
@@ -26,7 +24,7 @@ const ElementView = (props) => {
           overflowY: 'auto',
         }}
       >
-        {treeJSX.props.children}
+        {elementData}
       </TreeView>
     </>
   );

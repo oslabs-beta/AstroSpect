@@ -1,18 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
-import { useState } from 'react';
 import ElementView from '../components/ElementView';
 import ComponentView from '../components/ComponentView.jsx';
 import TreeItem from '@mui/lab/TreeItem';
 import parseProps from '../algorithms/parseProps.ts';
 
-// create TS type for panel props
-
 const Panel = (props) => {
   const { html, handleClick, addIslandData, idArray, addId } = props;
   const [expanded, setExpanded] = useState([]);
   const [selectedTab, setSelectedTab] = useState(0);
-  // const [componentData, setComponentData] = useState([]);
   const componentData = [];
 
   // alternates between expanding and collapsing all nodes
@@ -20,18 +17,10 @@ const Panel = (props) => {
     setExpanded((oldExpanded) => (oldExpanded.length === 0 ? idArray : []));
   };
 
-  // updates expanded nodes on toggle of particular nodes
+  // updates expanded nodes on toggle of individual nodes
   const handleToggle = (event, nodeIds) => {
     setExpanded(nodeIds);
   };
-
-  // checks if component is inside componentData
-  // const addComponentData = (item) => {
-  //   // if item is not in componentData
-  //   if (!componentData.includes(item)){
-  //     setComponentData([...componentData, item])
-  //   }
-  // }
 
   // Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
   const createTree = (node, id, fontColor = '#F5F5F5') => {
@@ -39,14 +28,16 @@ const Panel = (props) => {
     addId(id);
     // Stores ASTRO-ISLAND data in islandData state (from app)
     if (node.nodeName === 'ASTRO-ISLAND') {
+      // parse props attribute of astro-island element
       const parsedProps = parseProps(node.attributes.props.value);
-
+      // creates island object, with client and props info
       const island = {
         client: node.attributes.client.value,
         props: parsedProps,
       };
-
+      // saves island object to an object of all island objects
       addIslandData(island, id);
+      // parses component-url attrbute to give astro-island descriptive name
       let componentFile = node.attributes['component-url'].value;
       let lastIndex = null;
       for (let i = componentFile.length - 1; i > 0; i--) {
@@ -59,6 +50,7 @@ const Panel = (props) => {
       }
 
       if (!node.children) {
+        // if astro-island have no children, returns leaf TreeItem (orange)
         const islandTreeItem = (
           <TreeItem
             key={id}
@@ -67,10 +59,11 @@ const Panel = (props) => {
             sx={{ color: '#ff7300' }}
           />
         );
+        // adds island to array used for Component View
         componentData.push(islandTreeItem);
         return islandTreeItem;
       } else {
-        // Inputs all child elements of current node into array
+        // when astro island has children, returns parent TreeItem (orange)
         const children = Array.from(node.children);
 
         const islandTreeItem = (
@@ -86,9 +79,9 @@ const Panel = (props) => {
           </TreeItem>
         );
 
+        // adds island to array used for Component View
         componentData.push(islandTreeItem);
 
-        // recurse through function with each child node
         return islandTreeItem;
       }
     }
@@ -121,18 +114,20 @@ const Panel = (props) => {
     }
   };
 
+  const treeJSX = createTree(html.body, '0');
+
   // returns the completed tree
   return (
-    <div id="panel-container">
-      <div id="panel-header">
-        <div id="panel-toggle">
+    <div id='panel-container'>
+      <div id='panel-header'>
+        <div id='panel-toggle'>
           <button
             className={`buttonToggle button0 ${
               selectedTab === 0 ? 'active' : ''
             }`}
             onClick={() => setSelectedTab(0)}
           >
-            Elements
+            All Elements
           </button>
           <button
             className={`buttonToggle button1 ${
@@ -140,33 +135,30 @@ const Panel = (props) => {
             }`}
             onClick={() => setSelectedTab(1)}
           >
-            Components
+            Islands Only
           </button>
         </div>
         <SearchBar handleExpandClick={handleExpandClick} expanded={expanded} />
       </div>
-      <div
-        className="container element"
-        style={{ display: selectedTab === 0 ? 'flex' : 'none' }}
-      >
-        <ElementView
-          html={html}
-          handleClick={handleClick}
-          expanded={expanded}
-          handleToggle={handleToggle}
-          createTree={createTree}
-        />
-      </div>
-      <div
-        className="container component"
-        style={{ display: selectedTab === 1 ? 'flex' : 'none' }}
-      >
-        <ComponentView
-          componentData={componentData}
-          handleToggle={handleToggle}
-          handleClick={handleClick}
-          expanded={expanded}
-        />
+      <div className='container element' style={{ display: 'flex'}}>
+        {selectedTab === 0 && (
+          <ElementView
+            html={html}
+            handleClick={handleClick}
+            expanded={expanded}
+            handleToggle={handleToggle}
+            createTree={createTree}
+            elementData={treeJSX.props.children}
+          />
+        )}
+        {selectedTab === 1 && (
+          <ComponentView
+            componentData={componentData}
+            handleToggle={handleToggle}
+            handleClick={handleClick}
+            expanded={expanded}
+          />
+        )}
       </div>
     </div>
   );

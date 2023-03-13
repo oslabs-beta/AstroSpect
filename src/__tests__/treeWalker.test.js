@@ -21,7 +21,7 @@ describe('tree walker tests', () => {
 
     // populate the islands array
     const walker = document.createTreeWalker(document.documentElement);
-    console.log(walker.nextNode());
+    // console.log(walker.nextNode());
 
     const islands = [];
 
