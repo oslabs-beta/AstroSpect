@@ -1,5 +1,6 @@
-/// COLOR SCHEME VARIABLES
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+// COLOR SCHEME VARIABLES
+// @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
 
 // import from other scss files
 @import 'variables';
@@ -7,3 +8,4 @@
 @import 'header';
 @import 'panel';
 @import 'sidePane';
+@import 'searchBar';

@@ -1,12 +1,14 @@
 html {
   background-color: $darkestBlue;
+  overflow: hidden;
 }
 
 body {
   color: whitesmoke;
-  font-family: 'Roboto Mono';
+  font-family: 'Figtree', sans-serif;
   margin: 0;
   height: 100%;
+  scrollbar-color: dark;
 }
 
 #root {

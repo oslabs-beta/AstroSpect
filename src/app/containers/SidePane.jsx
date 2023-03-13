@@ -3,6 +3,12 @@ import TreeView from '@mui/lab/TreeView';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import TreeItem from '@mui/lab/TreeItem';
+import { Typography } from '@mui/material';
+// import { CurrentComp } from '../types';
+
+// interface SidePaneProps {
+//   currentComp: CurrentComp;
+// }
 
 // side pane for displaying props and client
 const SidePane = (props) => {
@@ -10,29 +16,58 @@ const SidePane = (props) => {
   const { currentComp } = props;
   //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
   const createPropsDisplay = (obj, id) => {
+    // creates array of parent props
     const topLevel = [];
+    // loops through props in currentComp obj
     for (const propName in obj) {
       let elem;
       let newId = String(id++);
-      const propLabel = `${propName}: ${obj[propName]}`;
+      // const propLabel = `${propName}: ${obj[propName]}`;
+      const propValue = obj[propName];
+      // checks if there is a nested prop, create a child tree item
       if (typeof obj[propName] === 'object') {
+        // if so, tree item is created, with recursive processing of children
         elem = (
-          <TreeItem key={newId} nodeId={newId} label={propName}>
+          <TreeItem
+            key={newId}
+            nodeId={newId}
+            label={
+              <Typography component="div">
+                <span style={{ color: '#ff7300' }}>{propName}: </span>
+                {String(propValue)}
+              </Typography>
+            }
+          >
             {createPropsDisplay(obj[propName], `${++newId}`)}
           </TreeItem>
         );
       } else {
-        elem = <TreeItem key={newId} nodeId={newId} label={propLabel} />;
+        // otherwise lead tree item is created
+        elem = (
+          <TreeItem
+            key={newId}
+            nodeId={newId}
+            label={
+              <Typography component="div">
+                <span style={{ color: '#ff7300' }}>{propName}: </span>
+                {String(propValue)}
+              </Typography>
+            }
+          />
+        );
       }
+      // the result is then pushed to the array of parent tree items
       topLevel.push(elem);
     }
-    // console.log('this is topLevel', topLevel);
+    // returns array of parent tree items, with nested children (if any)
     return topLevel;
   };
 
   let propsDisplay = [];
 
+  // if astro-island is selected in Panel, a new propsDisplay is created
   if (currentComp) {
+    // propsDisplay updates to result of calling CPD on that astro-island's props
     propsDisplay = createPropsDisplay(currentComp.props, '99');
   }
 

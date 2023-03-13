@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
 // search bar in panel
 const SearchBar = (props) => {
   const { handleExpandClick, expanded } = props;
@@ -17,11 +20,11 @@ const SearchBar = (props) => {
     let textToSearch = document.getElementById('text-to-search').value;
     setSearchVal(textToSearch);
     // assign the searched text (tree view) to a variable
-    let searchContents = document.querySelectorAll('.MuiTreeItem-label');
+    const searchContents = document.querySelectorAll('.MuiTreeItem-label');
     // changing textToSearch to be a string that can be used as literal string in a regular expression without any unintended special meaning
     textToSearch = textToSearch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    //object created which contains the escaped search string and flags 'gi' (means search is global and case sensitive)
-    let pattern = new RegExp(`${textToSearch}`, 'gi');
+    // object created which contains the escaped search string and flags 'gi' (means search is global and case sensitive)
+    const pattern = new RegExp(`${textToSearch}`, 'gi');
     // sets new array to be filled with matched elements
     const newArr = [];
     // loop through each element in searchContents
@@ -56,33 +59,34 @@ const SearchBar = (props) => {
     found[current].scrollIntoView();
   };
 
+  // searchs when input field is updated
   const handleInputChange = () => {
     search();
   };
 
   return (
-    <div id='search-bar'>
-      <SearchIcon className='search-icon' />
+    <div id="search-bar">
+      <SearchIcon className="search-icon" />
       <input
-        type='text'
-        id='text-to-search'
-        placeholder='Filter...'
+        className="search-bar-text"
+        type="text"
+        id="text-to-search"
+        placeholder="Filter..."
         onChange={handleInputChange}
-        style={styles.searchbar}
-        onClick={handleExpandClick}
+        onClick={expanded.length === 0 ? handleExpandClick : undefined}
       />
       <div>
         {searchVal.length > 0 && (
-          <>
-            <button onClick={scrollPrev}>Prev</button>
-            <button onClick={scrollNext}>Next</button>
+          <div className="prev-next">
+            <KeyboardArrowUpIcon onClick={scrollPrev} />
+            <KeyboardArrowDownIcon onClick={scrollNext} />
             <div>
               {current + 1}/{found.length}
             </div>
-          </>
+          </div>
         )}
       </div>
-      <div className='separator' />
+      <div className="separator" />
       <Button onClick={handleExpandClick}>
         {expanded.length === 0 ? 'Expand' : 'Collapse'}
       </Button>
@@ -90,12 +94,4 @@ const SearchBar = (props) => {
   );
 };
 
-const styles = {
-  searchbar: {
-    width: '100%',
-    fontSize: '14px',
-  },
-};
 export default SearchBar;
-
-// <button onClick={search}>Search</button>
