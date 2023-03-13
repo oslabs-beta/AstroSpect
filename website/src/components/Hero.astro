@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon'
 
-const { src = '/astronaut-hero-img.webp' } = Astro.props
+const { src = '/astrospect-logo.png' } = Astro.props
 ---
 
 <section class="hero my-24">
@@ -9,8 +9,11 @@ const { src = '/astronaut-hero-img.webp' } = Astro.props
     <div class="grid grid-cols-1 items-center gap-24 lg:grid-cols-2">
       <div class="flex flex-col items-center gap-8 md:items-start">
         <h1 class="text-center text-6xl md:text-left lg:text-8xl">
-          <slot><span class="text-gradient">Accessible</span> Starter for Astro</slot>
+          <slot><span class="text-gradient">AstroSpect</span></slot>
         </h1>
+        <h3 class="hero-subheading text-center text-6xl md:text-left lg:text-8xl">
+          A tool for Astro developers
+        </h3>
         <div class="flex flex-col gap-3 min-[500px]:flex-row">
           <a class="button has-icon" href="https://github.com/markteekman/accessible-astro-starter">
             <Icon pack="ion" name="star-outline" />
@@ -36,6 +39,17 @@ const { src = '/astronaut-hero-img.webp' } = Astro.props
     background-clip: border-box;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    line-height: 0;
+  }
+
+  .hero-subheading {
+    font-size: 4rem;
+  }
+
+  @media(max-width: 1024px) {
+    .hero-subheading {
+      font-size: 2.5rem;
+    }
   }
 
   :global(.darkmode .text-gradient) {
