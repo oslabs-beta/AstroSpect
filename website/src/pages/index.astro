@@ -8,6 +8,22 @@ import ContentMedia from '../components/ContentMedia.astro'
 
 <DefaultLayout title="Home">
   <Hero />
+  <ContentMedia imgSrc="/accessible-components.webp">
+    <h2>Inspect Astro Components on any page</h2>
+    <p class="text-2xl">
+      Astro shook up the development world when they introduced <a href="https://docs.astro.build/en/concepts/islands/"
+        >Astro Islands</a
+      >. AstroSpect gives you the specialized tools you've been waiting for, allowing you to get information about Astro Islands — and to filter out everything else.
+    </p>
+  </ContentMedia>
+  <ContentMedia imgSrc="/wcag-compliant.webp" reverseImg={true}>
+    <h2>WCAG 2.1 AA Compliant</h2>
+    <p class="text-2xl">
+      Using semantic HTML, landmarks, skip links, screen reader friendly content, aria-labels, keyboard accessible
+      navigation and components, clear outlines and tab indicators and the right color contrast, you're more certain of
+      reaching WCAG AA compliance.
+    </p>
+  </ContentMedia>
   <section class="my-64">
     <div class="container">
       <h2 class="mb-16 text-6xl">Features</h2>
@@ -42,23 +58,6 @@ import ContentMedia from '../components/ContentMedia.astro'
       </div>
     </div>
   </section>
-  <ContentMedia imgSrc="/accessible-components.webp">
-    <h2>Accessible Components</h2>
-    <p class="text-2xl">
-      This theme provides plenty of tried and tested Accessible Astro Components. Some are native to this theme and a
-      lot of others are integrated using a <a href="https://github.com/markteekman/accessible-astro-components"
-        >separate package</a
-      >. They'll get you up and running in building an accessible solution for your visitors.
-    </p>
-  </ContentMedia>
-  <ContentMedia imgSrc="/wcag-compliant.webp" reverseImg={true}>
-    <h2>WCAG 2.1 AA Compliant</h2>
-    <p class="text-2xl">
-      Using semantic HTML, landmarks, skip links, screen reader friendly content, aria-labels, keyboard accessible
-      navigation and components, clear outlines and tab indicators and the right color contrast, you're more certain of
-      reaching WCAG AA compliance.
-    </p>
-  </ContentMedia>
   <section class="mt-64 mb-32">
     <div class="container">
       <h2 class="mb-16 text-6xl">Counters</h2>
