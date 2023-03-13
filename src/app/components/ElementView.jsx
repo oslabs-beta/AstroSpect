@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import TreeView from '@mui/lab/TreeView';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 // create TS type for panel props
 
 const ElementView = (props) => {
-  const { html, handleClick, expanded, handleToggle, treeJSX } = props;
+  const { handleClick, expanded, handleToggle, elementData } = props;
 
   // returns the completed tree
   return (
@@ -24,7 +24,7 @@ const ElementView = (props) => {
           overflowY: 'auto',
         }}
       >
-        {treeJSX}
+        {elementData}
       </TreeView>
     </>
   );

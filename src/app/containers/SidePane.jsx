@@ -14,6 +14,7 @@ import { Typography } from '@mui/material';
 const SidePane = (props) => {
   // get the properties from current component
   const { currentComp } = props;
+  console.log('this is currentComp', currentComp);
   //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
   const createPropsDisplay = (obj, id) => {
     // creates array of parent props

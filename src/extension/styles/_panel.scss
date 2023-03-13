@@ -2,6 +2,11 @@
   width: 60%;
 }
 
+#no-islands {
+  margin: 10px;
+  font-size: 1rem;
+}
+
 #panel-container {
   // set height of panel to all available vertical space minus the height of the header
   height: calc(100vh - 64px);
@@ -78,7 +83,9 @@
       background-color: #152642;
     }
   }
-  .element {
+
+  .element,
+  .component {
     .MuiTreeView-root {
       // set the tree display height to the full available space minus the search bar and header
       height: calc(100vh - 160px);

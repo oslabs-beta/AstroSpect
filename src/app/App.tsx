@@ -6,8 +6,7 @@ import SidePane from './containers/SidePane';
 import { useState, useEffect } from 'react';
 import parseData from './algorithms/parseData';
 import Header from './components/Header';
-import {CurrentComp, IslandData} from './types';
-
+import { CurrentComp, IslandData } from './types';
 
 const App: React.FC = (): JSX.Element => {
   const [bodyData, setBodyData] = useState<{} | null>(null);
@@ -15,18 +14,25 @@ const App: React.FC = (): JSX.Element => {
   const [islandData, setIslandData] = useState<IslandData>({});
   const [idSet, setIdSet] = useState<Set<string>>(new Set<string>());
   const [idArray, setIdArray] = useState<string[]>([]);
-  
+
   const handleClick = (e: any, id: string): void => {
     // get the id of the treeItem clicked
-    if (islandData[id]) setCurrentComp(islandData[id]);
-    else setCurrentComp(null);
+    if (islandData[id]) {
+      setCurrentComp(islandData[id]);
+    } else setCurrentComp(null);
   };
 
   // function to add astro island nodes to state when parsing dom
   const addIslandData = (astroIsland: CurrentComp, id: string): void => {
-    if (!islandData[id]) {
-      setIslandData({ ...islandData, [id]: astroIsland });
-    }
+    console.log('in addIslandData: islandData', islandData);
+    // if (!islandData[id]) {
+    //   console.log('setting islandData in AID:', astroIsland);
+    setIslandData((prevIslandData) => ({
+      ...prevIslandData,
+      [id]: astroIsland,
+    }));
+    //   console.log('islandData:', islandData);
+    // }
   };
 
   const addId = (id: string): void => {
@@ -44,7 +50,7 @@ const App: React.FC = (): JSX.Element => {
     (async function fetchData(): Promise<void> {
       const data: {} = await parseData();
       setBodyData(data);
-    })()
+    })();
   }, []);
 
   //place all astro islands in an object with a unique id (ex A1, A2, A3)
@@ -55,7 +61,7 @@ const App: React.FC = (): JSX.Element => {
   return (
     <>
       <Header />
-      <div id='main-container'>
+      <div id="main-container">
         {!bodyData && <div>Loading...</div>}
         {bodyData && (
           <Panel
@@ -66,7 +72,7 @@ const App: React.FC = (): JSX.Element => {
             idArray={idArray}
           />
         )}
-        {bodyData && <SidePane currentComp={currentComp}/>}
+        {bodyData && <SidePane currentComp={currentComp} />}
       </div>
     </>
   );
