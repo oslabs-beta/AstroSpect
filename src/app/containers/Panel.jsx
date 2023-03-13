@@ -86,7 +86,6 @@ const Panel = (props) => {
       }
     }
 
-    console.log('comp Data in Panel', componentData);
     // If node has no children, return node
     if (!node.children) {
       return (
@@ -128,7 +127,7 @@ const Panel = (props) => {
             }`}
             onClick={() => setSelectedTab(0)}
           >
-            Elements
+            All Elements
           </button>
           <button
             className={`buttonToggle button1 ${
@@ -136,12 +135,12 @@ const Panel = (props) => {
             }`}
             onClick={() => setSelectedTab(1)}
           >
-            Components
+            Islands Only
           </button>
         </div>
         <SearchBar handleExpandClick={handleExpandClick} expanded={expanded} />
       </div>
-      <div className='container element' style={{ display: 'flex' }}>
+      <div className='container element' style={{ display: 'flex'}}>
         {selectedTab === 0 && (
           <ElementView
             html={html}
