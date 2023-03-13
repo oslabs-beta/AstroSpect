@@ -29,14 +29,6 @@ body {
   padding-top: 10px;
 }
 
-.separator {
-  height: 20px;
-  width: 1px;
-  flex: 0 0 1px;
-  margin: 0 0.5rem;
-  background-color: #3d424a;
-}
-
 @media (max-width: $panel-breakpoint) {
   #main-container {
     flex-wrap: wrap;

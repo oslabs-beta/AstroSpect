@@ -87,7 +87,7 @@ const SearchBar = (props) => {
         )}
       </div>
       <div className="separator" />
-      <Button onClick={handleExpandClick}>
+      <Button className="expand-collapse" onClick={handleExpandClick}>
         {expanded.length === 0 ? 'Expand' : 'Collapse'}
       </Button>
     </div>
