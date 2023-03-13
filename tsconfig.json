@@ -10,7 +10,11 @@
     // "allowJs": true,
     // "moduleResolution": "node",
     "esModuleInterop": true
-  }
+  },
+  "include": [
+    "src",
+    "types"
+  ]
   // "include": ["src/**/*"],
   // "exclude": ["node_modules"]
 }
