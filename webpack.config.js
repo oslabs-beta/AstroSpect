@@ -5,7 +5,6 @@ module.exports = {
   entry: {
     // entry point of our app
     app: './src/app/index.jsx',
-    content: './src/extension/main.js',
   },
   output: {
     path: path.resolve(__dirname, 'src/extension/bundles'),
