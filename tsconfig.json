@@ -2,7 +2,7 @@
   "compilerOptions": {
     // "outDir": "./src/",
     "noImplicitAny": true,
-    "noEmitOnError": true,
+    // "noEmitOnError": true,
     "module": "CommonJS",
     // "target": "es6",
     "watch": true,
