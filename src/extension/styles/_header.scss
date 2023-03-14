@@ -30,7 +30,7 @@
     display: inline-block;
     font-size: 1rem;
     padding: 6px 0;
-    background-image: linear-gradient(#ff7f33 0 0);
+    background-image: linear-gradient($tealAccent 0 0);
     background-position: 0 100%;
     background-size: 0% 3px;
     background-repeat: no-repeat;
@@ -42,7 +42,7 @@
   }
 
   a {
-    color: #fff;
+    color: whitesmoke;
   }
 
   &:hover {

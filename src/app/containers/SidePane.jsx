@@ -34,7 +34,7 @@ const SidePane = (props) => {
             nodeId={newId}
             label={
               <Typography component="div">
-                <span style={{ color: '#6befe0' }}>{propName}: </span>
+                <span style={{ color: '#d494ff' }}>{propName}: </span>
               </Typography>
             }
           >
@@ -49,7 +49,7 @@ const SidePane = (props) => {
             nodeId={newId}
             label={
               <Typography component="div">
-                <span style={{ color: '#6befe0' }}>{propName}: </span>
+                <span style={{ color: '#d494ff' }}>{propName}: </span>
                 {String(propValue)}
               </Typography>
             }

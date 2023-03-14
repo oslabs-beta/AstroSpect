@@ -14,8 +14,8 @@ const ComponentView = (props) => {
       {componentData.length > 0 && (
         <TreeView
           aria-label="file system navigator"
-          defaultCollapseIcon={<ExpandMoreIcon sx={{ color: '#ffffff' }} />}
-          defaultExpandIcon={<ChevronRightIcon sx={{ color: '#ffffff' }} />}
+          defaultCollapseIcon={<ExpandMoreIcon sx={{ color: 'whitesmoke' }} />}
+          defaultExpandIcon={<ChevronRightIcon sx={{ color: 'whitesmoke' }} />}
           onNodeSelect={handleClick}
           onNodeToggle={handleToggle}
           expanded={expanded}

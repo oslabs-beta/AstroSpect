@@ -52,17 +52,11 @@ const Header: React.FC = (): JSX.Element => {
             </div>
 
             <div className="header-element">
-              <a
-                href="https://github.com/oslabs-beta/AstroSpect/tree/main"
-                target="_blank"
-              >
+              <a href="https://astrospect.dev" target="_blank">
                 <WebIcon />
               </a>
 
-              <a
-                href="https://github.com/oslabs-beta/AstroSpect/tree/main"
-                target="_blank"
-              >
+              <a href="https://astrospect.dev" target="_blank">
                 <Typography
                   variant="body1"
                   component="div"
