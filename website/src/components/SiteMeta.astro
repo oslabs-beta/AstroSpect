@@ -1,7 +1,5 @@
 ---
 const { title, description, url, image, author } = Astro.props
-
-let subtitle = 'Accessible Astro Starter'
 ---
 
 <!-- general meta -->
@@ -10,13 +8,13 @@ let subtitle = 'Accessible Astro Starter'
 <meta name="author" content={author} />
 
 <!-- open graph -->
-<meta property="og:title" content={`${title} - ${subtitle}`} />
+<meta property="og:title" content={'AstroSpect — A developer tool for Astro'} />
 <meta property="og:description" content={description} />
 <meta property="og:type" content="website" />
 <meta property="og:url" content={url} />
-<meta property="og:image" content={Astro.site ? `${Astro.site}${image}` : image} />
+<meta property="og:image" content={image} />
 
 <!-- twitter card -->
 
 <!-- page title -->
-<title>{title} - {subtitle}</title>
+<title>AstroSpect — A developer tool for Astro</title>

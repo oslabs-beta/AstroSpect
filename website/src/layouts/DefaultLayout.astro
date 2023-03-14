@@ -6,10 +6,10 @@ import Footer from '../components/Footer.astro'
 
 const {
   title = 'Astro',
-  description = 'A starter project with accessibility features using Astro static site builder. Contains accessible landmarks, skip links, a dark mode color scheme, better focus outline and keyboard menu navigation.',
+  description = 'A tool for Astro developers for inspecting props and hydration directives for any Astro Island.',
   url,
-  image = '/social-preview-image.png',
-  author = 'Mark Teekman',
+  image = '/astrospect-logo.png',
+  author = 'Jackson Ta, John Roman, Nicholas Park, and Evan Jones',
 } = Astro.props
 ---
 
@@ -27,7 +27,7 @@ const {
       description={description.substring(0, 100)}
       url={Astro.site
         ? `${Astro.site}/${title.toLowerCase().replaceAll(' ', '-')}`
-        : `https://accessible-astro.dev/${title.toLowerCase().replaceAll(' ', '-')}`}
+        : `https://astrospect.dev/${title.toLowerCase().replaceAll(' ', '-')}`}
       image={image}
       author={author}
     />
