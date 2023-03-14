@@ -1,6 +1,6 @@
 .search-bar-text {
   font-size: 14px;
-  color: #fff;
+  color: whitesmoke;
   &:focus {
     outline: none;
   }
@@ -12,7 +12,7 @@
 
   .MuiSvgIcon-root {
     &:active {
-      color: $lightBlue;
+      color: $tealAccent;
     }
 
     &:hover {
@@ -32,5 +32,11 @@
 #search-bar {
   .expand-collapse {
     min-width: auto;
+    color: lightgrey;
   }
+}
+.MuiButton-root.expand-collapse:hover {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background-color: #6befe087;
 }

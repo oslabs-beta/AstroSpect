@@ -14,7 +14,7 @@ const Header: React.FC = (): JSX.Element => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
         position="static"
-        sx={{ background: '#152642', fontFamily: 'Figtree sans-serif' }}
+        sx={{ backgroundColor: '#202427', fontFamily: 'Figtree sans-serif' }}
       >
         <Toolbar>
           <Typography
@@ -52,17 +52,11 @@ const Header: React.FC = (): JSX.Element => {
             </div>
 
             <div className="header-element">
-              <a
-                href="https://github.com/oslabs-beta/AstroSpect/tree/main"
-                target="_blank"
-              >
+              <a href="https://astrospect.dev" target="_blank">
                 <WebIcon />
               </a>
 
-              <a
-                href="https://github.com/oslabs-beta/AstroSpect/tree/main"
-                target="_blank"
-              >
+              <a href="https://astrospect.dev" target="_blank">
                 <Typography
                   variant="body1"
                   component="div"
