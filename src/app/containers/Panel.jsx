@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import SearchBar from '../components/SearchBar';
 import ElementView from '../components/ElementView';
 import ComponentView from '../components/ComponentView.jsx';
@@ -10,7 +9,9 @@ const Panel = (props) => {
   const { html, handleClick, addIslandData, idArray, addId } = props;
   const [expanded, setExpanded] = useState([]);
   const [selectedTab, setSelectedTab] = useState(0);
-  const componentData = [];
+  const [elementData, setElementData] = useState(null);
+  const [componentData, setComponentData] = useState(null);
+  const componentArray = [];
 
   // alternates between expanding and collapsing all nodes
   const handleExpandClick = () => {
@@ -21,6 +22,19 @@ const Panel = (props) => {
   const handleToggle = (event, nodeIds) => {
     setExpanded(nodeIds);
   };
+
+  // checks if component is inside componentData
+  // const addComponentData = (item) => {
+  //   // if item is not in componentData
+  //   if (!componentData.includes(item)){
+  //     setComponentData([...componentData, item])
+  //   }
+  // }
+  useEffect(() => {
+    const newTreeJSX = createTree(html.body, '0');
+    setElementData(newTreeJSX.props.children);
+    setComponentData([...componentArray]);
+  }, []);
 
   // Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
   const createTree = (node, id, fontColor = '#F5F5F5') => {
@@ -59,8 +73,7 @@ const Panel = (props) => {
             sx={{ color: '#ff7300' }}
           />
         );
-        // adds island to array used for Component View
-        componentData.push(islandTreeItem);
+        componentArray.push(islandTreeItem);
         return islandTreeItem;
       } else {
         // when astro island has children, returns parent TreeItem (orange)
@@ -79,8 +92,7 @@ const Panel = (props) => {
           </TreeItem>
         );
 
-        // adds island to array used for Component View
-        componentData.push(islandTreeItem);
+        componentArray.push(islandTreeItem);
 
         return islandTreeItem;
       }
@@ -114,13 +126,11 @@ const Panel = (props) => {
     }
   };
 
-  const treeJSX = createTree(html.body, '0');
-
   // returns the completed tree
   return (
-    <div id='panel-container'>
-      <div id='panel-header'>
-        <div id='panel-toggle'>
+    <div id="panel-container">
+      <div id="panel-header">
+        <div id="panel-toggle">
           <button
             className={`buttonToggle button0 ${
               selectedTab === 0 ? 'active' : ''
@@ -140,15 +150,14 @@ const Panel = (props) => {
         </div>
         <SearchBar handleExpandClick={handleExpandClick} expanded={expanded} />
       </div>
-      <div className='container element' style={{ display: 'flex'}}>
+      <div className="container element" style={{ display: 'flex' }}>
         {selectedTab === 0 && (
           <ElementView
             html={html}
             handleClick={handleClick}
             expanded={expanded}
             handleToggle={handleToggle}
-            createTree={createTree}
-            elementData={treeJSX.props.children}
+            elementData={elementData}
           />
         )}
         {selectedTab === 1 && (
