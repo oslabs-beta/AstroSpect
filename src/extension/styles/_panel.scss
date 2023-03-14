@@ -10,7 +10,7 @@
 #panel-container {
   // set height of panel to all available vertical space minus the height of the header
   height: calc(100vh - 64px);
-  background-color: $darkestBlue;
+  background-color: $softBlack;
   width: 59%;
   overflow-x: none;
   overflow-y: auto;
@@ -18,7 +18,7 @@
 
   #panel-header {
     display: flex;
-    background-color: $darkBlue;
+    background-color: $softerBlack;
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
@@ -30,7 +30,7 @@
       padding: 8px;
       .buttonToggle {
         font-family: 'Figtree', sans-serif;
-        background-color: $darkBlue;
+        background-color: $softerBlack;
         opacity: 0.5;
         color: lightgrey;
         padding: 5px 15px;
@@ -40,7 +40,7 @@
         box-shadow: 1px 1px grey;
         transition: ease background-color 250ms;
         &:hover {
-          background-color: rgb(57, 71, 94);
+          background-color: #d494ff63;
         }
         &:disabled {
           cursor: default;
@@ -48,6 +48,7 @@
         }
         &.active {
           opacity: 1;
+          background-color: #d494ff63;
         }
       }
       .buttonToggle.button0 {
@@ -67,7 +68,7 @@
         scale: 0.8;
       }
       #text-to-search {
-        background-color: $darkBlue;
+        background-color: $softerBlack;
         width: 100%;
         border: none;
         margin: 5px;
@@ -80,7 +81,10 @@
   }
   .MuiTreeItem-content {
     :hover {
-      background-color: #152642;
+      background-color: #d494ff21;
+    }
+    :selected {
+      background-color: #4b146aba;
     }
   }
 

@@ -8,12 +8,14 @@ const ComponentView = (props) => {
 
   return (
     <>
-      {componentData.length === 0 && <div id="no-islands">No Astro Islands found.</div>}
+      {componentData.length === 0 && (
+        <div id="no-islands">No Astro Islands found.</div>
+      )}
       {componentData.length > 0 && (
         <TreeView
-          aria-label='file system navigator'
-          defaultCollapseIcon={<ExpandMoreIcon sx={{ color: '#d5bcef' }} />}
-          defaultExpandIcon={<ChevronRightIcon sx={{ color: '#d5bcef' }} />}
+          aria-label="file system navigator"
+          defaultCollapseIcon={<ExpandMoreIcon sx={{ color: '#ffffff' }} />}
+          defaultExpandIcon={<ChevronRightIcon sx={{ color: '#ffffff' }} />}
           onNodeSelect={handleClick}
           onNodeToggle={handleToggle}
           expanded={expanded}

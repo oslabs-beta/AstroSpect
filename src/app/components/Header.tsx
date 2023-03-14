@@ -14,7 +14,7 @@ const Header: React.FC = (): JSX.Element => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
         position="static"
-        sx={{ background: '#152642', fontFamily: 'Figtree sans-serif' }}
+        sx={{ backgroundColor: '#202427', fontFamily: 'Figtree sans-serif' }}
       >
         <Toolbar>
           <Typography

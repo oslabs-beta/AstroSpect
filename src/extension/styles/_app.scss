@@ -1,5 +1,5 @@
 html {
-  background-color: $darkestBlue;
+  background-color: $softBlack;
   overflow: hidden;
 }
 
@@ -20,7 +20,7 @@ body {
 #main-container {
   display: flex;
   flex-direction: row;
-  background-color: $darkestBlue;
+  background-color: $softBlack;
   overflow: none;
   border-top: 1px solid #3d424a;
 }

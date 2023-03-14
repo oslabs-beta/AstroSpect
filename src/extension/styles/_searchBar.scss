@@ -12,7 +12,7 @@
 
   .MuiSvgIcon-root {
     &:active {
-      color: $lightBlue;
+      color: $tealAccent;
     }
 
     &:hover {
@@ -32,5 +32,12 @@
 #search-bar {
   .expand-collapse {
     min-width: auto;
+    color: lightgrey;
   }
+}
+
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root:hover {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background-color: #6befe087;
 }
