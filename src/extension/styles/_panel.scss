@@ -32,7 +32,7 @@
         font-family: 'Figtree', sans-serif;
         background-color: $softerBlack;
         opacity: 0.5;
-        color: lightgrey;
+        color: whitesmoke;
         padding: 5px 15px;
         border-color: rgb(211, 211, 211);
         border: 1px solid grey;
@@ -48,7 +48,7 @@
         }
         &.active {
           opacity: 1;
-          background-color: #d494ff63;
+          background-color: #72329d;
         }
       }
       .buttonToggle.button0 {
@@ -83,8 +83,8 @@
     :hover {
       background-color: #d494ff21;
     }
-    :selected {
-      background-color: #4b146aba;
+    &.Mui-selected {
+      background-color: #8c4ab821;
     }
   }
 
