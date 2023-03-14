@@ -70,7 +70,7 @@ const Panel = (props) => {
             key={id}
             nodeId={id}
             label={`${node.nodeName.toLowerCase()} (${componentFile})`}
-            sx={{ color: '#ff7300' }}
+            sx={{ color: '#d494ff' }}
           />
         );
         componentArray.push(islandTreeItem);
@@ -84,10 +84,10 @@ const Panel = (props) => {
             key={id}
             nodeId={id}
             label={`${node.nodeName.toLowerCase()} (${componentFile})`}
-            sx={{ color: '#ff7300' }}
+            sx={{ color: '#d494ff' }}
           >
             {children.map((child, index) =>
-              createTree(child, `${id}-${index}`, '#e29353')
+              createTree(child, `${id}-${index}`, '#d494ffa6')
             )}
           </TreeItem>
         );
