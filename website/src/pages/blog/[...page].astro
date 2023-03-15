@@ -11,7 +11,7 @@ export async function getStaticPaths({ paginate }) {
   return paginate(data, { pageSize: 6 })
 }
 
-const { jackson = '/jackson.png', page } = Astro.props
+const { jackson = '/jackson.png', nick = '/nick.png', john = '/john.png', evan = '/evan.png', page } = Astro.props
 ---
 
 <DefaultLayout
@@ -54,14 +54,26 @@ const { jackson = '/jackson.png', page } = Astro.props
           src={jackson}
         />
 
-        <!-- <AboutCard
-        /> -->
-        <li>
-          <Card />
-        </li>
-        <li>
-          <Card />
-        </li>
+        <AboutCard
+          name='John Roman'
+          linkedin='https://www.linkedin.com/in/john-m-roman/'
+          github='https://github.com/jm-roman'
+          src={john}
+        />
+
+        <AboutCard
+          name='Nicholas Park'
+          linkedin='https://www.linkedin.com/in/parknicholas/'
+          github='https://github.com/npark009'
+          src={nick}
+        />
+
+        <AboutCard
+          name='Evan Jones'
+          linkedin='https://www.linkedin.com/in/evan-jones-dev/'
+          github='https://github.com/evanjones125'
+          src={evan}
+        />
       </ul>
     </div>
   </section>

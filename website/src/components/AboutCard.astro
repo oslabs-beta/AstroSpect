@@ -7,9 +7,9 @@ const { src, name, linkedin, github } = Astro.props;
 <li class="profile-card">
   <img src={src} class="profile-image">
 
-  <h2>
+  <h3>
     {name}
-  </h2>
+  </h3>
 
   <div class="socials">
     <div class="social-icons">
@@ -58,8 +58,8 @@ const { src, name, linkedin, github } = Astro.props;
     padding: 10px 20px 25px 20px;
   }
 
-  h2 {
-    padding: 10px 20px;
+  h3 {
+    padding: 10px 0 10px 20px;
     &:hover {
       cursor: default;
     }
