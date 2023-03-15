@@ -1,49 +1,30 @@
 # AstroSpect
 
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-
 <a name="readme-top"></a>
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-
 <div align="center">
-<!-- astroSpeed is a performance monitor for your AstroJS & Next.js codebase. -->
+
 <!-- PROJECT LOGO -->
-<br />
+<br>
 <div align="center">
   <a href="https://github.com/oslabs-beta/AstroSpect">
-    <img src="https://i.ibb.co/Z8x7YGP/IMG-1412-3.png" alt="Logo" width="400" height="400">
+    <img src="https://i.ibb.co/bLgvG5b/IMG-1412-4.png" alt="Logo" width="400" height="400">
   </a>
 
   <h2 align="center">
-    A Dev Tool Extension For Astro Island Architecture
-    <br />
-    <a href="https://astro-spect-mhv1d8zly-astrospect.vercel.app/"><strong>Explore AstroSpect »</strong></a>
-    <br />
-    <br />
-    <a href="http://www.astrospeed.io/watchdemo">View Demo</a>
-    ·
-    <a href="https://github.com/oslabs-beta/astrospeed/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/oslabs-beta/astrospeed/issues">Request Feature</a>
-  </h2>
+    A Chrome Dev Tool Extension For Astro Developers
+    <br>
+    <a href="https://www.astrospect.dev/"><strong>Explore AstroSpect »</strong></a>
+    </h2>
 </div>
-<br></br>
+<br>
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![MIT License][license-shield]][license-url]
 [![Issues][issues-shield]][issues-url]
-![LinkedIn][linkedin-shield]
-![Website][website-shield]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- [linkedin-url] -->
 
@@ -54,7 +35,7 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#summary">About The Project</a>
+      <a href="#summary">Summary</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -63,150 +44,213 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#prerequisites">Installation</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#usage">Usage</a></li>
       </ul>
     </li>
     <li><a href="#about">About</a></li>
         <ul>
-        <li><a href="#google-lighthouse">Google Lighthouse</a></li>
-        <li><a href="#git-post-commit-hook-details">Git post-hook Details</a></li>
+        <li><a href="#astro">Astro</a></li>
       </ul>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing & Contacts</a></li>
-    <li><a href="#contributing">Acknowledgments & License</a></li>
+    <li><a href="#contributions">Contributions</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+            <ul>
+        <li><a href="#community">Community</a></li>
+                <li><a href="#authors">Authors</a></li>
+      </ul>
   </ol>
 </details>
 
-<!-- ABOUT THE PROJECT -->
-<br />
+<hr>
 
 ## Summary
 
-astroSpeed is a data collection and reporting suite that uses the Google Lighthouse SDK to automatically collect application metrics such as Performance and SEO in the background during the development process, after each commit.
+AstroSpect (Astro Inspection) is a Chrome Developer Tool Extension that allows developers to inspect and debug Astro websites more efficiently. With AstroSpect, developers can display a tree diagram of all elements on a page, including static HTML files and hydrated components known as Astro Islands, on a panel. The "All Elements" tab shows all elements, while the "Islands Only" tab displays only Astro Islands. Clicking on an Astro Island reveals information about the component, such as its type, client directive, and props, in a side-pane. AstroSpect features expand and collapse options to open and close tree nodes and a search function for quicker navigation and debugging.
 
-  <a href="https://i.ibb.co/JRFktyR/Screen-Shot-2022-10-13-at-11-53-58-AM.png">
-    <img src="https://i.ibb.co/JRFktyR/Screen-Shot-2022-10-13-at-11-53-58-AM.png" alt="sample" width="" height="100">
-  </a>
+### - Built With
 
-### Built With
+<div align='center'>
 
-- [![Astro][astro-shield]][astro-url]
-- [![React][react.js]][react-url]
-- [![Google LightHouse][glh-shield]][glh-url]
-- [![TypeScript][typescript-shield]][typescript-url]
-- [![Tailwind][tailwind-shield]][tailwind-url]
+[![Astro][astro-shield]][astro-url]
+[![React][react-shield]][react-url]
+[![Sass][sass-shield]][sass-url]
+[![TypeScript][typescript-shield]][typescript-url]
+[![Webpack][webpack-shield]][webpack-url]
 
+</div>
+<hr>
 <!-- GETTING STARTED -->
 
 ## Getting Started
 
-astroSpeed is available in Node Package Manager and Github. The following steps detail installation from NPM.
+AstroSpect is available for download as a Google Chrome Extension. You can also clone or fork this repo and add it as your own extension manually.
 
-### Prerequisites
+### - Prerequisites
 
-- Node.js - 14.18.0 or higher.
-- Astro - 1.2.0 or higher.
-- Git
+- Chrome Browser
+- Astro 2.0
+- VS Code
 
-### Installation & Usage
+### - Installation
 
-·
-watch the <a href="https://github.com/oslabs-beta/astrospeed/watchdemo">install demo here</a> -or- follow instructions below...
+Option 1: Download as a <a href="">chrome extension</a> (coming soon!)
+
+Option 2: Manually Download
+
+<ol>
+<li>Fork or Clone this repo</li>
+<li>In the terminal: npm run build</li>
+<li>Navigate to chrome://extensions/</li>
+<li>Click Load unpacked button</li>
+<li>Upload the extension folder</li>
+</ol>
+
+### - Usage
 
 1. Start or open an Astro project.
-2. Install astroSpeed into the project as a dev dependency.
-   ```sh
-   npm install astrospeed --save-dev
-   ```
-3. Optional - create astrospeed.config.json in your project's root directory if you want to manually configure astroSpeed. Add 1 or more of the below configurables to the config file, below values indicate the default.
-   ```json
-   {
-     "endpoints": ["/"],
-     "port": 3000,
-     "buildCommand": "npm run build",
-     "outputDir": "dist",
-     "useVite": 1
-   }
-   ```
-4. Commit new changes to your project's git repository. The post-commit Git hook will automatically start the astroSpeed report generation.
-   ```sh
-   git commit -a -m "your commit message here"
-   ```
-5. The path to the newly generated astroSpeed report is written to stdout in your terminal (by default under the "astrospeed" folder in your project's root directory).
-   ```sh
-   git commit -a -m "your commit message here"
-   [main 5958617] your commit message here
-   1 files changed, 3 insertions(+), 2 deletions(-)
-   Astrospeed report in progress...
-   Astrospeed report available at <project-directory>/astrospeed/index.html
-   ```
-6. You've launched! Open the report in a web browser to review the latest Google Lighthouse findings and compare them to previous commits.
+2. Inspect the Astro webpage
+3. Open the AstroSpect Tab
+4. "ALL ELEMENTS" displays every element on the page
+5. "ISLANDS ONLY" displays hydrated components with client directives
+<div align='center'>
+<h3>Inspect</h3>
 
-7. Each commit will regenerate the astroSpeed report, appending the latest Google Lighthouse scores to the report.
+![](./assets/astro-inspection.gif)
+
+<h3>Expand & Collapse</h3>
+
+![](./assets/astro-expand-collapse.gif)
+
+<h3>Search</h3>
+
+![](./assets/astro-search.gif)
+
+</div>
+<hr>
 
 ## About
 
-### Google Lighthouse
+### - Astro
 
-Google Lighthouse is an open-source tool developed by Google for understanding the performance, quality, and correctness of your web apps ([see Google Lighthouse on Github](https://github.com/GoogleChrome/lighthouse)). astroSpeed uses Google Lighthouse metrics for Performance, Search Engine Optimization, Best Practices, and Accessibility diagnostics.
+Astro is the all-in-one web framework designed for speed. Pull your content from anywhere and deploy everywhere, all powered by your favorite UI components and libraries. AstroSpect allow developers to inspect the Island Architecture of Astro websites in conjunction with other frameworks (React, Preact, Svelte, Vue, Solid, Lit and more). [Check out Astro to build your next website](https://astro.build/).
 
-### Git post-commit hook details
-
-astroSpeed is configured to create a report after every commit using a git hook. astroSpeed's installation script attempts to add a post-commit hook. The installation script will notify you via the terminal if the attempt was successful or not. If successful, the the following line will be added to the file ./.git/hooks/post-commit.
-
-```sh
-npx astrospeed-snap
-```
-
-npx astrospeed-snap can also be used to generate a new report manually whenever you want. If you would would like to remove the post-commit hook, please don't uninstall astroSpeed. Simply remove the hook by using
-
-```sh
-npx astrospeed-hookuninstall
-```
-
-If you change your mind later and wish to reinstate the post-commit hook, you can add it back using
-
-```sh
-npx astrospeed-hookinstall
-```
-
-If you unfortunately decided to stop using astroSpeed, please uninstall the hook BEFORE uninstalling astroSpeed. Failure to do so will result in error messages after every commit about not being able to find astroSpeed. Your commits should still be successful, however. This unfortunate behavior is due to Node Package Manager removing the ability to create post uninstall scripts.
+<hr>
 
 ## Roadmap
 
-- [ ] Upload report to astroSpeed.io and receive a shareable link.
-- [ ] Add Deep-dive performance metrics.
-- [ ] Create user authentication on astroSpeed.io.
+- [x] Inspect Astro Websites with AstroSpect Chrome Extension
+- [x] Display all HTML elements in "All Elements" tab
+- [x] Display Hydrated Components in "Islands Only" tab
+- [x] Display Component's Type, Client Directive, and Props in side pane
+- [x] Expand and Collapse feature opens and closes all tree nodes
+- [x] Search feature highlights the inputted text
+- [x] Tracking buttons that directs user to every highlighted word
+- [_] Auto-reload when navigating to a different page
+- [_] Display state of components in side pane
+- [_] Access nanostores of all components
+- [_] Highlight over islands when clicked in the panel
 
-See the [open issues](https://github.com/oslabs-beta/astrospeed/issues) for a full list of proposed features (and known issues).
+Check out the [open issues](https://github.com/oslabs-beta/AstroSpect/issues) for a full list of proposed features (and known issues).
 
-## Contributing
+<hr>
 
-Contributions are welcome! For feature requests, please create a new issue with the "enhancement" tag.
+## Contributions
 
-To contribute:
+All contributions are hightly welcomed and appreciated here at AstroSpect. We are open to suggestions so please submit an issue and the AstroSpect team will get back to you as soon as possible. If you would like to add a new feature, please follow the steps below.
 
-1. Fork the Project.
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`). Be sure to Lint your code!
-4. Push to the Branch (`git push origin feature/AmazingFeature`).
-5. Open a Pull Request to [https://github.com/oslabs-beta/astrospeed/](https://github.com/oslabs-beta/astrospeed/).
+#### STEP 1 — Fork and Clone the repository
 
-Join astroSpeed contributors on [LinkedIn](https://linkedin.com/in/astrospeed).
+```
+git clone https://github.com/oslabs-beta/AstroSpect.git
+```
 
-## Acknowledgments & License
+#### STEP 2 — Create a Feature Branch
+
+```
+git checkout -b [name]/[feature-name]
+```
+
+#### STEP 3 — Install Dependencies
+
+```
+npm install
+```
+
+#### STEP 4 — Bundle the Code
+
+```
+npm run build
+```
+
+#### STEP 5 — Upload Extension Folder to Chrome
+
+    1. Navigate to chrome://extensions/ using chrome
+    2. Click Load unpacked button
+    3. Upload extension folder
+    4. Test Extension by inspecting an Astro webpage
+
+#### STEP 6 — Add and Commit
+
+```
+git add [file-name]
+git commit -m "describe your new feature"
+```
+
+#### STEP 7 — Submit a Pull Request
+
+    Merge your feature branch into dev
+
+#### STEP 8 — Create an Issue
+
+    Click the Issues tab and create a new issue
+
+<hr>
+
+## Acknowledgments
+
+### - Community
 
 - [OpenSource Labs](https://opensourcelabs.io/)
-- [Astro Community](https://discord.com/invite/grF4GTXXYm)
-- [You, our users <3](http://www.astrospeed.io)
+- [Astro Discord](https://discord.com/invite/grF4GTXXYm)
+- [AstroSpect Users](https://www.astrospect.dev/)
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
+### - Authors
+
+<table align="center">
+  <tr>
+    <td align="center">
+      <h4><strong>Evan Jones</h4>
+      <a href="https://www.linkedin.com/in/evan-jones-dev/"><img src="https://img.shields.io/badge/-LinkedIn-0072b1?logo=linkedin" /></a>
+      <br>
+          <a href="https://github.com/evanjones125"><img src="https://img.shields.io/badge/-Github-808080?logo=github" /></a>
+    </td>
+        <td align="center">
+      <h4><strong>Nicholas Park</h4>
+      <a href="https://www.linkedin.com/in/parknicholas/"><img src="https://img.shields.io/badge/-LinkedIn-0072b1?logo=linkedin" /></a>
+      <br>
+          <a href="https://github.com/npark009"><img src="https://img.shields.io/badge/-Github-808080?logo=github" /></a>
+    </td>
+        <td align="center">
+      <h4><strong>John Roman</h4>
+      <a href="https://www.linkedin.com/in/john-m-roman/"><img src="https://img.shields.io/badge/-LinkedIn-0072b1?logo=linkedin" /></a>
+      <br>
+          <a href="https://github.com/jm-roman"><img src="https://img.shields.io/badge/-Github-808080?logo=github" /></a>
+    </td>
+        <td align="center">
+      <h4><strong>Jackson Ta</h4>
+      <a href="https://www.linkedin.com/in/jackson-ta/"><img src="https://img.shields.io/badge/-LinkedIn-0072b1?logo=linkedin" /></a>
+      <br>
+          <a href="https://github.com/Jackson2taLL"><img src="https://img.shields.io/badge/-Github-808080?logo=github" /></a>
+    </td>
+    </tr>
+  </table>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
+[github-shield]: https://img.shields.io/badge/-Github-808080?logo=github
 [contributors-shield]: https://img.shields.io/github/contributors/oslabs-beta/AstroSpect?color=navy&label=Contributors
 [contributors-url]: https://github.com/oslabs-beta/AstroSpect/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/oslabs-beta/AstroSpect?color=gold&label=Forks
@@ -216,20 +260,16 @@ Distributed under the MIT License. See `LICENSE` for more information.
 [issues-shield]: https://img.shields.io/github/issues/oslabs-beta/AstroSpect?color=%23483D8B&label=Issues
 [issues-url]: https://github.com/oslabs-beta/AstroSpect/issues
 [license-shield]: https://img.shields.io/github/license/oslabs-beta/AstroSpect?color=%09%23FF8C00&label=License
-[license-url]: https://github.com/oslabs-beta/AstroSpect/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-red
-
-<!-- [linkedin-url]: -->
-
-[website-shield]: https://img.shields.io/badge/-Website-%23191970
-[product-screenshot]: https://i.ibb.co/pz6nzrz/Screen-Shot-2022-10-12-at-3-20-46-PM.png
+[license-url]: https://github.com/oslabs-beta/AstroSpect/blob/master/LICENSE
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-0072b1?logo=linkedin
+[linkedin-url]: https://www.linkedin.com/company/astrospect
+[astro-shield]: https://img.shields.io/badge/-ASTRO-4c00b0?logo=astro
 [astro-url]: https://astro.build/
-[astro-shield]: https://i.ibb.co/F8HcbtD/Screen-Shot-2022-10-12-at-12-34-42-PM.png
-[react.js]: https://i.ibb.co/MBLkXB6/Screen-Shot-2022-10-12-at-12-21-22-PM.png
+[react-shield]: https://img.shields.io/badge/-REACT-333333?logo=react
 [react-url]: https://reactjs.org/
-[glh-shield]: https://i.ibb.co/LRZ9mgh/Screen-Shot-2022-10-12-at-12-23-35-PM.png
-[glh-url]: https://developers.google.com/web
-[typescript-shield]: https://i.ibb.co/7tT9vy1/Screen-Shot-2022-10-12-at-12-25-59-PM.png
+[sass-shield]: https://img.shields.io/badge/-SASS-FFC0CB?logo=sass
+[sass-url]: https://sass-lang.com/
+[typescript-shield]: https://img.shields.io/badge/-TYPESCRIPT-e6e6e6?logo=typescript
 [typescript-url]: https://www.typescriptlang.org
-[tailwind-url]: https://tailwindcss.com
-[tailwind-shield]: https://i.ibb.co/H7M7D3b/Screen-Shot-2022-10-12-at-12-32-22-PM.png
+[webpack-url]: https://webpack.js.org/
+[webpack-shield]: https://img.shields.io/badge/-WEBPACK-1e3f66?logo=webpack
