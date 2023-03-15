@@ -5,11 +5,11 @@ import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 
 const {
-  title = 'Astro',
-  description = 'A starter project with accessibility features using Astro static site builder. Contains accessible landmarks, skip links, a dark mode color scheme, better focus outline and keyboard menu navigation.',
+  title = 'AstroSpect',
+  description = 'A tool for Astro developers for inspecting props and hydration directives for any Astro Island.',
   url,
   image = '/social-preview-image.png',
-  author = 'Mark Teekman',
+  author = 'Jackson Ta, John Roman, Nicholas Park, and Evan Jones',
 } = Astro.props
 ---
 
@@ -20,14 +20,14 @@ const {
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <!-- favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/astrospect-logo.png" />
 
     <SiteMeta
       title={title}
       description={description.substring(0, 100)}
       url={Astro.site
         ? `${Astro.site}/${title.toLowerCase().replaceAll(' ', '-')}`
-        : `https://accessible-astro.dev/${title.toLowerCase().replaceAll(' ', '-')}`}
+        : `https://astrospect.dev/${title.toLowerCase().replaceAll(' ', '-')}`}
       image={image}
       author={author}
     />
