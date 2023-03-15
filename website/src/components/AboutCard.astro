@@ -1,0 +1,67 @@
+---
+import { Icon } from 'astro-icon'
+
+const { src, name, linkedin, github } = Astro.props;
+---
+
+<li class="profile-card">
+  <img src={src} class="profile-image">
+
+  <h2>
+    {name}
+  </h2>
+
+  <div class="socials">
+    <div class="social-icons">
+      <a href={linkedin} target="_blank">
+        <Icon pack="ion" name="logo-linkedin" />
+      </a>
+
+      <a href={github} target="_blank">
+        <Icon pack="ion" name="logo-github" />
+      </a>
+    </div>
+  </div>
+</li>
+
+<style lang="scss">
+  .profile-card {
+    border: 1px solid rgb(68, 68, 68);
+    border-radius: 8px;
+  }
+
+  .profile-image {
+    // width: 100px;
+    margin: auto;
+    border-radius: 8px 8px 0 0;
+  }
+
+  [astro-icon] {
+    margin-top: -4px;
+    width: 60px;
+
+    path {
+      fill: var(--action-color);
+      transition: fill 0.2s ease-in-out;
+    }
+
+    &:hover {
+      [astro-icon] path {
+        fill: var(--action-color-state);
+      }
+    }
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 15px;
+    padding: 10px 20px 25px 20px;
+  }
+
+  h2 {
+    padding: 10px 20px;
+    &:hover {
+      cursor: default;
+    }
+  }
+</style>
