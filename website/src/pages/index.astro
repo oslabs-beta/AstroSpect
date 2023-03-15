@@ -2,70 +2,47 @@
 import DefaultLayout from '../layouts/DefaultLayout.astro'
 import Hero from '../components/Hero.astro'
 import Feature from '../components/Feature.astro'
-import Counter from '../components/Counter.astro'
 import ContentMedia from '../components/ContentMedia.astro'
 ---
 
 <DefaultLayout title="Home">
   <Hero />
-  <ContentMedia imgSrc="/accessible-components.webp">
-    <h2>Inspect Astro Components on any page</h2>
+  <ContentMedia imgSrc="/demo.webp" reverseImg={true}>
+    <h2>Inspect Astro Islands on any page</h2>
     <p class="text-2xl">
       Astro shook up the development world when they introduced <a href="https://docs.astro.build/en/concepts/islands/"
         >Astro Islands</a
-      >. AstroSpect gives you the specialized tools you've been waiting for, allowing you to get information about Astro Islands — and to filter out everything else.
+      >. AstroSpect gives you the tools you need to get information about Astro Islands, including component props and hydration directives.
     </p>
   </ContentMedia>
-  <ContentMedia imgSrc="/wcag-compliant.webp" reverseImg={true}>
-    <h2>WCAG 2.1 AA Compliant</h2>
+  <ContentMedia imgSrc="/astrospect-feature.png">
+    <h2>Get only the information you need</h2>
     <p class="text-2xl">
-      Using semantic HTML, landmarks, skip links, screen reader friendly content, aria-labels, keyboard accessible
-      navigation and components, clear outlines and tab indicators and the right color contrast, you're more certain of
-      reaching WCAG AA compliance.
+      The "Islands Only" tab allows you to see a list of all the Astro Islands rendered to the target page — and nothing else. Click through on the dropdowns to see the HTML elements that comprise the Island.
     </p>
   </ContentMedia>
   <section class="my-64">
     <div class="container">
       <h2 class="mb-16 text-6xl">Features</h2>
       <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-        <Feature icon="mdi:tailwind" title="Tailwind CSS">
-          Use the power of Tailwind to greatly improve your productivity and enhance your developer workflow.
+        <Feature icon="mdi:family-tree" title="DOM View">
+          Look at a full representation of the DOM with the Astro Islands highlighted.
         </Feature>
-        <Feature icon="mdi:wheelchair-accessibility" title="a11y Components">
-          17 components and counting, all tried and tested for the most optimal accessible experience for your visitors.
+        <Feature icon="mdi:palm-tree" title="Islands View">
+          Look exclusively at the Astro Islands in the target page.
         </Feature>
-        <Feature icon="mdi:looks" title="Prettier">
-          Less worry about formatting your code, let the Astro Prettier integration do the heavy lifting.
+        <Feature icon="mdi:magnify" title="Search function">
+          Keyword search for any element in the DOM tree or any Astro Island name.
         </Feature>
-        <Feature icon="mdi:eslint" title="ESLint">
-          Lint your code with strict a11y settings to ensure you stay on track with the WCAG standards.
+        <Feature icon="mdi:arrow-expand" title="Expand & collapse">
+          Use the "Expand" and "Collapse" buttons to open or close all the dropdowns in either view.
         </Feature>
-        <Feature icon="mdi:book-open-page-variant" title="Blog">
-          This theme comes with a fully integrated blog, dynamic pages and SEO optimization.
+        <Feature icon="mdi:beaker" title="Props tab">
+          Click on any Astro Island dropdown to see all of its props.
         </Feature>
-        <Feature icon="mdi:language-markdown" title="Markdown & MDX">
-          Easily use .md and .mdx pages to build your websites or use it with Netlify CMS.
+        <Feature icon="mdi:water" title="Hydration">
+          Look above the props panel to see the hyrdation directive for the component.
         </Feature>
-        <Feature icon="mdi:theme-light-dark" title="Dark mode">
-          Fully integrated Dark mode gives your users the choice for their favorite viewing mode.
-        </Feature>
-        <Feature icon="mdi:cog" title="Design System">
-          The theme offers some very handy utilities to help you build your website faster.
-        </Feature>
-        <Feature icon="mdi:lighthouse" title="Lighthouse Scores">
-          Excellent lighthouse scores means your website will load faster and get better SEO rankings.
-        </Feature>
-      </div>
-    </div>
-  </section>
-  <section class="mt-64 mb-32">
-    <div class="container">
-      <h2 class="mb-16 text-6xl">Counters</h2>
-      <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-4">
-        <Counter count="130" title="Stars" sub="On GitHub" />
-        <Counter count="17" title="Accessible" sub="Components" />
-        <Counter count="500" title="Commits" sub="Merged" />
-        <Counter count="18+" title="Months" sub="Since launch" />
       </div>
     </div>
   </section>
