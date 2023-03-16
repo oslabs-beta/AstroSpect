@@ -94,7 +94,7 @@ AstroSpect is available for download as a Google Chrome Extension. You can also 
 
 ### - Installation
 
-Option 1: Download as a <a href="">chrome extension</a> (coming soon!)
+Option 1: Download as a <a href="https://chrome.google.com/webstore/detail/astrospect/pfefekfhnmbfcofpjojnpmhdakcadeil">chrome extension</a>
 
 Option 2: Manually Download
 
@@ -113,20 +113,25 @@ Option 2: Manually Download
 3. Open the AstroSpect Tab
 4. "ALL ELEMENTS" displays every element on the page
 5. "ISLANDS ONLY" displays hydrated components with client directives
+
 <div align='center'>
 <h3>Inspect</h3>
 
-![](./assets/astro-inspection.gif)
+<img src="./assets/astro-inspection.gif" alt="Astro Inspection" style="border: 5px solid #d494ff; border-radius: 10px
+">
 
 <h3>Expand & Collapse</h3>
 
-![](./assets/astro-expand-collapse.gif)
+<img src="./assets/astro-expand-collapse.gif" alt="Astro Expand and Collapse" style="border: 5px solid #202427; border-radius: 10px
+">
 
 <h3>Search</h3>
 
-![](./assets/astro-search.gif)
+<img src="./assets/astro-search.gif" alt="Astro Search" style="border: 5px solid #6befe0; border-radius: 10px
+">
 
 </div>
+
 <hr>
 
 ## About
@@ -146,10 +151,12 @@ Astro is the all-in-one web framework designed for speed. Pull your content from
 - [x] Expand and Collapse feature opens and closes all tree nodes
 - [x] Search feature highlights the inputted text
 - [x] Tracking buttons that directs user to every highlighted word
-- [_] Auto-reload when navigating to a different page
-- [_] Display state of components in side pane
-- [_] Access nanostores of all components
-- [_] Highlight over islands when clicked in the panel
+- [] Auto-reload when navigating to a different page
+- [] Display Framework associated with each island on side pane
+- [] Access nanostores of all components
+- [] Display state of components in side pane
+- [] Highlight over islands when clicked in the panel
+- [] Highlight over islands when clicked in the panel
 
 Check out the [open issues](https://github.com/oslabs-beta/AstroSpect/issues) for a full list of proposed features (and known issues).
 
@@ -222,24 +229,26 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <table align="center">
   <tr>
     <td align="center">
+      <h1>🧑🏻‍🚀</h1>
       <h4><strong>Evan Jones</h4>
       <a href="https://www.linkedin.com/in/evan-jones-dev/"><img src="https://img.shields.io/badge/-LinkedIn-0072b1?logo=linkedin" /></a>
       <br>
           <a href="https://github.com/evanjones125"><img src="https://img.shields.io/badge/-Github-808080?logo=github" /></a>
     </td>
         <td align="center">
+        <h1>🧑🏼‍🚀</h1>
       <h4><strong>Nicholas Park</h4>
       <a href="https://www.linkedin.com/in/parknicholas/"><img src="https://img.shields.io/badge/-LinkedIn-0072b1?logo=linkedin" /></a>
       <br>
           <a href="https://github.com/npark009"><img src="https://img.shields.io/badge/-Github-808080?logo=github" /></a>
     </td>
-        <td align="center">
+        <td align="center"><h1>👨🏻‍🚀</h1>
       <h4><strong>John Roman</h4>
       <a href="https://www.linkedin.com/in/john-m-roman/"><img src="https://img.shields.io/badge/-LinkedIn-0072b1?logo=linkedin" /></a>
       <br>
           <a href="https://github.com/jm-roman"><img src="https://img.shields.io/badge/-Github-808080?logo=github" /></a>
     </td>
-        <td align="center">
+        <td align="center"><h1>👩🏼‍🚀</h1>
       <h4><strong>Jackson Ta</h4>
       <a href="https://www.linkedin.com/in/jackson-ta/"><img src="https://img.shields.io/badge/-LinkedIn-0072b1?logo=linkedin" /></a>
       <br>
