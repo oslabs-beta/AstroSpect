@@ -1,0 +1,26 @@
+// Blues
+$lightestBlue: #f6fbff;
+$lightBlue: #8ab1cf;
+$darkBlue: #152642;
+$darkestBlue: #0f172a;
+
+// Purples
+$lightestPurple: #d5bcef;
+$lightPurple: #5965a4;
+$darkPurple: #372a48;
+$darkestPurple: #1a1429;
+
+// Oranges
+$primaryOrange: #ff7300;
+$lightOrange: lighten($primaryOrange, 40%);
+$lightestOrange: lighten($primaryOrange, 49.8%);
+
+// media query breakpoint values
+$panel-breakpoint: 599px;
+$header-breakpoint: 420px;
+
+$softerBlack: #202427;
+$softBlack: #161618;
+$tealAccent: #6befe0;
+$pinkAccent: #d494ff;
+$darkerPinkAccent: #d494ffa6;

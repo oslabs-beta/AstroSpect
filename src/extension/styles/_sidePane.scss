@@ -1,0 +1,44 @@
+#sidepane-container {
+  // i don't know why this works but it avoids weird scroll behavior; the 105px is a necessary and exact value
+  height: calc(100vh - 105px);
+  overflow-y: auto;
+
+  width: 39%;
+  background-color: $softBlack;
+  padding: 20px;
+  color: whitesmoke;
+  margin: 0;
+  font-size: 1rem;
+
+  .MuiTreeView-root {
+    height: auto;
+
+    // to avoid horizontal scrolling due to list items taking up too much space
+    li {
+      width: 33vw;
+
+      ul li {
+        width: 30vw;
+      }
+    }
+  }
+}
+
+hr {
+  margin: 30px -20px 30px;
+  border: 0;
+  border-top: 1px solid #3d424a;
+}
+
+h3 {
+  color: $tealAccent;
+  // text-shadow: 0 0 0.5px gray;
+}
+
+@media (max-width: $panel-breakpoint) {
+  #sidepane-container {
+    width: 100%;
+    height: calc(50vh - 49px);
+    border-top: 3px solid #3d424a;
+  }
+}

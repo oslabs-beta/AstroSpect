@@ -1,0 +1,55 @@
+.astrospect-wrapper {
+  display: flex;
+  gap: 8px;
+  flex-grow: 1;
+  align-items: center;
+
+  &:hover {
+    cursor: default;
+  }
+}
+
+@media (max-width: $header-breakpoint) {
+  .astrospect-text {
+    display: none;
+  }
+}
+
+.header-element-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-element {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .MuiTypography-root {
+    display: inline-block;
+    font-size: 1rem;
+    padding: 6px 0;
+    background-image: linear-gradient($tealAccent 0 0);
+    background-position: 0 100%;
+    background-size: 0% 3px;
+    background-repeat: no-repeat;
+  }
+
+  .MuiTypography-root,
+  a {
+    transition: color 0.2s, background-size 0.3s, background-position 0s 0.3s;
+  }
+
+  a {
+    color: whitesmoke;
+  }
+
+  &:hover {
+    .MuiTypography-root,
+    a {
+      background-position: 100% 100%;
+      background-size: 100% 3px;
+    }
+  }
+}

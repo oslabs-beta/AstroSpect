@@ -1,0 +1,47 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro'
+import Hero from '../components/Hero.astro'
+import Feature from '../components/Feature.astro'
+import ContentMedia from '../components/ContentMedia.astro'
+---
+
+<DefaultLayout title="Home">
+  <Hero />
+  <ContentMedia imgSrc="/demo.webp" reverseImg={true}>
+    <h2>Inspect Astro Islands on any page</h2>
+    <p class="text-2xl">
+      Astro shook up the development world with <a href="https://docs.astro.build/en/concepts/islands/" target="_blank">Astro Islands</a>. AstroSpect gives you the tools you need to get information about Astro Islands, including component props and hydration directives. Read our <a href="https://medium.com/@contact_33429/introducing-astrospect-4498d423b055" target="_blank">Medium Article</a> to learn more about why AstroSpect is needed.
+    </p>
+  </ContentMedia>
+  <ContentMedia imgSrc="/astrospect-feature.png">
+    <h2>Get only the information you need</h2>
+    <p class="text-2xl">
+      The "Islands Only" tab allows you to see a list of all the Astro Islands rendered to the target page — and nothing else. Click through on the dropdowns to see the HTML elements that comprise the Island.
+    </p>
+  </ContentMedia>
+  <section class="my-64">
+    <div class="container">
+      <h2 class="mb-16 text-6xl">Features</h2>
+      <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+        <Feature icon="mdi:family-tree" title="Elements View">
+          Look at a full representation of the DOM with the Astro Islands highlighted.
+        </Feature>
+        <Feature icon="mdi:palm-tree" title="Islands View">
+          Look exclusively at the Astro Islands in the target page.
+        </Feature>
+        <Feature icon="mdi:magnify" title="Search function">
+          Keyword search for any element in the DOM tree or any Astro Island name.
+        </Feature>
+        <Feature icon="mdi:arrow-expand" title="Expand & collapse">
+          Use the "Expand" and "Collapse" buttons to open or close all the dropdowns in either view.
+        </Feature>
+        <Feature icon="mdi:beaker" title="Props tab">
+          Click on any Astro Island dropdown to see all of its props.
+        </Feature>
+        <Feature icon="mdi:water" title="Hydration">
+          Look above the props panel to see the hydration directive for the component.
+        </Feature>
+      </div>
+    </div>
+  </section>
+</DefaultLayout>

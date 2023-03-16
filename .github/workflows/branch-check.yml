@@ -1,0 +1,27 @@
+# checks to see if a PR is being made into the main branch; if it is, GitHub throws an error if the PR is not from the dev branch
+name: branch-check
+
+# check the condition (merging into main)
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, edited, reopened]
+    
+# execute the workflow if the condition is met
+jobs:
+  branch-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v2
+
+      - name: Check branch name
+        run: |
+          if [[ "$GITHUB_HEAD_REF" == "dev" ]]; then
+            echo "Merging from dev branch is allowed"
+            exit 0
+          else
+            echo "Merging from branch other than dev is not allowed"
+            exit 1
+          fi

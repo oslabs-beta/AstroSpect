@@ -1,0 +1,36 @@
+html {
+  background-color: $softBlack;
+  overflow: hidden;
+}
+
+body {
+  color: whitesmoke;
+  font-family: 'Figtree', sans-serif;
+  margin: 0;
+  height: 100%;
+  scrollbar-color: dark;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  overflow: none;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: row;
+  background-color: $softBlack;
+  overflow: none;
+  border-top: 1px solid #3d424a;
+}
+
+.container {
+  padding-top: 10px;
+}
+
+@media (max-width: $panel-breakpoint) {
+  #main-container {
+    flex-wrap: wrap;
+  }
+}

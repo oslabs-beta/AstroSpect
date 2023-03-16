@@ -1,0 +1,73 @@
+{
+  "name": "astro-dev-tools",
+  "version": "1.0.0",
+  "description": "Astro Dev Tools OSP",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oslabs-beta/astro-dev-tools.git"
+  },
+  "author": "Evan Jones, Nicholas Park, John Roman, Jackson Ta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oslabs-beta/astro-dev-tools/issues"
+  },
+  "homepage": "https://github.com/oslabs-beta/astro-dev-tools#readme",
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.9",
+    "@mui/lab": "^5.0.0-alpha.120",
+    "@mui/material": "^5.11.10",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "file-loader": "^6.2.0",
+    "jsdom": "^21.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.9.0",
+    "ts-loader": "^9.4.2",
+    "url-loader": "^4.1.1",
+    "vite": "^4.1.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "babel-loader": "^9.1.2",
+    "babel-preset-react-app": "^10.0.1",
+    "css-loader": "^6.7.3",
+    "eslint": "^8.35.0",
+    "eslint-config-standard-with-typescript": "^34.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2",
+    "html-webpack-plugin": "^5.5.0",
+    "sass": "^1.58.3",
+    "sass-loader": "^13.2.0",
+    "style-loader": "^3.3.1",
+    "typescript": "^4.9.5",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "quokka": {
+    "plugins": [
+      "jsdom-quokka-plugin"
+    ],
+    "babel": {
+      "presets": [
+        "react-app"
+      ]
+    }
+  }
+}

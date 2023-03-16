@@ -1,0 +1,51 @@
+---
+import Navigation from '../components/Navigation.astro'
+import { SkipLinks } from 'accessible-astro-components'
+import { Icon } from 'astro-icon'
+---
+
+<header>
+  <SkipLinks />
+  <Navigation>
+    <li class="menu-item">
+      <a href="/">Home</a>
+    </li>
+    <li class="menu-item">
+      <a href="/about/">About</a>
+    </li>
+    <li class="menu-item">
+      <a href="https://chrome.google.com/webstore/detail/astrospect/pfefekfhnmbfcofpjojnpmhdakcadeil" title="external link" rel="external noopener noreferrer">Chrome Store</a>
+    </li>
+    <li class="menu-item type-icon">
+      <a href="https://github.com/oslabs-beta/AstroSpect" title="Go to the GitHub page" target="_blank">
+        <Icon pack="ion" name="logo-github" />
+      </a>
+    </li>
+  </Navigation>
+</header>
+
+<style lang="scss" is:global>
+  @use '../assets/scss/base/outline' as *;
+
+  header {
+    .type-icon a {
+      display: block;
+
+      [astro-icon] {
+        margin-top: -4px;
+        width: 30px;
+
+        path {
+          fill: var(--action-color);
+          transition: fill 0.2s ease-in-out;
+        }
+      }
+
+      &:hover {
+        [astro-icon] path {
+          fill: var(--action-color-state);
+        }
+      }
+    }
+  }
+</style>
