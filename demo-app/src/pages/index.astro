@@ -5,7 +5,8 @@ import ReactStatic from '../components/ReactStatic.jsx';
 import ReactComponent from '../components/ReactComponent.jsx';
 import SvelteComponent from '../components/SvelteComponent.svelte';
 
-let password = 'iloveobiwankenobi'
+let password1 = 'iloveobiwankenobi'
+let password2 ='darthvaderiscool'
 ---
 <html lang="en">
 	<head>
@@ -19,15 +20,137 @@ let password = 'iloveobiwankenobi'
 		<header style={{textAlign: 'center'}}>
 		</header>
 		<div id='row'>
-				<ReactStatic />
-				<ReactStatic />
-				<ReactStatic />
+			<ReactStatic />
+			<ReactStatic client:visible />
+			<ReactStatic />
+			<ReactStatic />
 		</div>
 		<div id='row'>
-			<SvelteComponent client:visible password='darthvaderiscool' darthVaderEnemy='Kirby'/>
-			<ReactComponent client:load password={password} isDarkSide='true' yodaRules='false' palpatineRules='true' planetsDestroyed='9,184,090,402,693'/>
 			<ReactStatic />
-	</div>
+			<ReactStatic client:visible />
+			<ReactComponent client:load password={password1} isDarkSide='true' yodaRules='false' palpatineRules='true' planetsDestroyed='9,184,090,402,693'/>
+			<ReactStatic />
+		</div>
+		<div id='row'>
+			<ReactStatic />
+			<ReactStatic client:visible />
+			<ReactStatic />
+			<ReactStatic client:visible />
+		</div>
+		<div id='row'>
+			<ReactStatic />
+			<ReactStatic client:visible />
+			<ReactStatic />
+			<ReactStatic />
+		</div>
+		<div id='row'>
+			<ReactStatic />
+			<ReactStatic client:visible />
+			<ReactComponent client:load password={password1} isDarkSide='true' yodaRules='false' palpatineRules='true' planetsDestroyed='9,184,090,402,693'/>
+			<ReactStatic />
+		</div>
+		<div id='row'>
+			<ReactStatic />
+			<ReactStatic client:visible />
+			<ReactStatic />
+			<ReactStatic client:visible />
+		</div>
+		<div id='row'>
+			<ReactStatic />
+			<ReactComponent client:load password={password1} isDarkSide='true' yodaRules='false' palpatineRules='true' planetsDestroyed='9,184,090,402,693'/>
+			<ReactComponent client:load password={password1} isDarkSide='true' yodaRules='false' palpatineRules='true' planetsDestroyed='9,184,090,402,693'/>
+			<ReactStatic />
+		</div>
+		<div id='row'>
+			<ReactStatic />
+			<ReactStatic client:visible />
+			<ReactComponent client:load password={password1} isDarkSide='true' yodaRules='false' palpatineRules='true' planetsDestroyed='9,184,090,402,693'/>
+			<ReactStatic />
+		</div>
+		<div id='row'>
+			<ReactStatic />
+			<ReactStatic client:visible />
+			<ReactStatic />
+			<ReactStatic client:visible />
+		</div>
+		<div id='row'>
+			<ReactStatic />
+			<ReactStatic client:visible />
+			<ReactStatic />
+			<ReactStatic />
+		</div>
+		<div id='row'>
+			<ReactStatic />
+			<ReactStatic client:visible />
+			<ReactComponent client:load password={password1} isDarkSide='true' yodaRules='false' palpatineRules='true' planetsDestroyed='9,184,090,402,693'/>
+			<ReactStatic />
+		</div>
+		<div id='row'>
+			<ReactStatic />
+			<ReactStatic client:visible />
+			<ReactStatic />
+			<ReactStatic client:visible />
+		</div>
+		<div id='row'>
+			<SvelteComponent client:visible params = '/deathstar' password={password2} darthVaderEnemy='Kirby'/>
+			<ReactStatic client:visible />
+			<ReactComponent client:load password={password1} isDarkSide='true' yodaRules='false' palpatineRules='true' planetsDestroyed='9,184,090,402,693'/>
+			<ReactStatic />
+		</div>
+		<div id='row'>
+			<ReactStatic />
+			<ReactStatic client:visible />
+			<ReactStatic />
+			<ReactStatic client:visible />
+		</div>
+		<div id='row'>
+			<ReactStatic client:visible />
+			<ReactStatic />
+			<ReactStatic />
+			<ReactStatic />
+		</div>
+		<div id='row'>
+			<ReactStatic />
+			<ReactStatic client:visible />
+			<ReactComponent client:load password={password1} isDarkSide='true' yodaRules='false' palpatineRules='true' planetsDestroyed='9,184,090,402,693'/>
+			<ReactStatic />
+		</div>
+		<div id='row'>
+			<ReactStatic />
+			<ReactStatic client:visible />
+			<ReactStatic />
+			<ReactStatic client:visible />
+		</div>
+		<div id='row'>
+			<ReactStatic />
+			<ReactStatic client:visible />
+			<ReactComponent client:load password={password1} isDarkSide='true' yodaRules='false' palpatineRules='true' planetsDestroyed='9,184,090,402,693'/>
+			<ReactStatic />
+		</div>
+		<div id='row'>
+			<ReactStatic />
+			<ReactStatic client:visible />
+			<ReactStatic />
+			<ReactStatic client:visible />
+		</div>
+		<div id='row'>
+			<ReactStatic />
+			<ReactStatic client:visible />
+			<ReactStatic />
+			<ReactStatic />
+		</div>
+		<div id='row'>
+			<ReactStatic />
+			<ReactStatic client:visible />
+			<ReactComponent client:load password={password1} isDarkSide='true' yodaRules='false' palpatineRules='true' planetsDestroyed='9,184,090,402,693'/>
+			<ReactStatic />
+		</div>
+		<div id='row'>
+			<ReactStatic />
+			<ReactStatic client:visible />
+			<ReactStatic />
+			<ReactStatic client:visible />
+		</div>
 	</body>
 </html>
 
