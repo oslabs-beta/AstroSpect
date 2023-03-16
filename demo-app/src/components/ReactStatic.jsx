@@ -24,7 +24,7 @@ function ReactStatic() {
           onChange={handleInputChange}
         />
         <button style={styles.submit} onClick={handleButtonClick}>
-          Enter Database
+          Enter
         </button>
       </div>
     </div>

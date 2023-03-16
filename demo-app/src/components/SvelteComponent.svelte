@@ -23,7 +23,7 @@
         on:input={handleInputChange}
       />
       <button id='submit' on:click={handleButtonClick}>
-        Enter Database
+        Enter
       </button>
     </div>
   </div>

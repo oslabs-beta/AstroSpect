@@ -1,0 +1,36 @@
+---
+import ReactCounter from '../components/ReactCounter.jsx';
+import ReactFooter from '../components/ReactFooter.jsx';
+import ReactStatic from '../components/ReactStatic.jsx';
+import ReactComponent from '../components/ReactComponent.jsx';
+import SvelteComponent from '../components/SvelteComponent.svelte';
+
+let password = 'darthvaderiscool'
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/kirby-icon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<header style={{textAlign: 'center'}}>
+		</header>
+		<div id='row'>
+			<SvelteComponent client:visible params = '/deathstar' password={password} darthVaderEnemy='Kirby'/>
+	</div>
+	</body>
+</html>
+
+<style>
+	body {
+		margin-top: 100px;
+		background: url(/space-background.jpeg)
+	}
+	#row {
+		display: flex;
+		justify-content: center;
+	}
+</style>
