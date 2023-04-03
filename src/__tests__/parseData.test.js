@@ -1,3 +1,4 @@
+// tests parseData algorithm
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
