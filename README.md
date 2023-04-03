@@ -15,7 +15,9 @@
     A Chrome Dev Tool Extension For Astro Developers
     <br>
     <a href="https://www.astrospect.dev/"><strong>Explore AstroSpect »</strong></a>
-    </h2>
+    <br>
+    <a href="https://medium.com/@contact_33429/introducing-astrospect-4498d423b055"><strong>Read our Medium Article »</strong></a>
+  </h2>
 </div>
 <br>
 
@@ -151,12 +153,12 @@ Astro is the all-in-one web framework designed for speed. Pull your content from
 - [x] Expand and Collapse feature opens and closes all tree nodes
 - [x] Search feature highlights the inputted text
 - [x] Tracking buttons that directs user to every highlighted word
-- [] Auto-reload when navigating to a different page
-- [] Display Framework associated with each island on side pane
-- [] Access nanostores of all components
-- [] Display state of components in side pane
-- [] Highlight over islands when clicked in the panel
-- [] Highlight over islands when clicked in the panel
+- [ ] Auto-reload when navigating to a different page
+- [ ] Display Framework associated with each island on side pane
+- [ ] Access nanostores of all components
+- [ ] Display state of components in side pane
+- [ ] Highlight over islands when clicked in the panel
+- [ ] Highlight over islands when clicked in the panel
 
 Check out the [open issues](https://github.com/oslabs-beta/AstroSpect/issues) for a full list of proposed features (and known issues).
 
