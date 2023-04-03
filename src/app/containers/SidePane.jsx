@@ -14,7 +14,6 @@ import { Typography } from '@mui/material';
 const SidePane = (props) => {
   // get the properties from current component
   const { currentComp } = props;
-  console.log('this is currentComp', currentComp);
   //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
   const createPropsDisplay = (obj, id) => {
     // creates array of parent props
@@ -33,7 +32,7 @@ const SidePane = (props) => {
             key={newId}
             nodeId={newId}
             label={
-              <Typography component="div">
+              <Typography component='div'>
                 <span style={{ color: '#d494ff' }}>{propName}: </span>
               </Typography>
             }
@@ -48,7 +47,7 @@ const SidePane = (props) => {
             key={newId}
             nodeId={newId}
             label={
-              <Typography component="div">
+              <Typography component='div'>
                 <span style={{ color: '#d494ff' }}>{propName}: </span>
                 {String(propValue)}
               </Typography>
@@ -72,7 +71,7 @@ const SidePane = (props) => {
   }
 
   return (
-    <div id="sidepane-container">
+    <div id='sidepane-container'>
       {/* // when component is not astro island */}
       {!currentComp && (
         <>
@@ -93,7 +92,7 @@ const SidePane = (props) => {
           <hr />
           <h3>Props: </h3>
           <TreeView
-            aria-label="file system navigator"
+            aria-label='file system navigator'
             defaultCollapseIcon={<ExpandMoreIcon />}
             defaultExpandIcon={<ChevronRightIcon />}
             sx={{
