@@ -24,14 +24,11 @@ const App: React.FC = (): JSX.Element => {
 
   // function to add astro island nodes to state when parsing dom
   const addIslandData = (astroIsland: CurrentComp, id: string): void => {
-    console.log('in addIslandData: islandData', islandData);
     // if (!islandData[id]) {
-    //   console.log('setting islandData in AID:', astroIsland);
     setIslandData((prevIslandData) => ({
       ...prevIslandData,
       [id]: astroIsland,
     }));
-    //   console.log('islandData:', islandData);
     // }
   };
 
@@ -61,7 +58,7 @@ const App: React.FC = (): JSX.Element => {
   return (
     <>
       <Header />
-      <div id="main-container">
+      <div id='main-container'>
         {!bodyData && <div>Loading...</div>}
         {bodyData && (
           <Panel

@@ -21,7 +21,6 @@ describe('tree walker tests', () => {
 
     // populate the islands array
     const walker = document.createTreeWalker(document.documentElement);
-    // console.log(walker.nextNode());
 
     const islands = [];
 
@@ -53,8 +52,6 @@ describe('tree walker tests', () => {
         });
       }
     }
-
-    // console.log(islands);
 
     expect(islands).toHaveLength(3);
     expect(islands[0].framework).not.toBe(null);
