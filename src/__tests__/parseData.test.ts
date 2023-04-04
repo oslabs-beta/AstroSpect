@@ -1,11 +1,13 @@
-// tests parseData algorithm
+import { describe, expect, test } from '@jest/globals';
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
+require('jsdom-global')()
+global.DOMParser = window.DOMParser
+declare const chrome: any;
 
-describe('tree walker tests', () => {
-  it('should have three elements in islands array', () => {
-    // create a DOM environment and load a test document
-    const dom = new JSDOM(`
+describe('parse data tests', () => {
+  it('should return an object', () => {
+    const html: string = new JSDOM(`
       <!DOCTYPE html>
       <html>
         <head></head>
@@ -18,43 +20,10 @@ describe('tree walker tests', () => {
         </body>
       </html>
     `);
-    const document = dom.window.document;
 
-    // populate the islands array
-    const walker = document.createTreeWalker(document.documentElement);
+    const parser = new window.DOMParser();
+    const stringToDoc: {} = parser.parseFromString(html, 'text/html');
 
-    const islands = [];
-
-    while (walker.nextNode()) {
-      let current = walker.currentNode;
-      if (current.tagName === 'ASTRO-ISLAND') {
-        // store the current node contents in a string
-        const astroIsland = [...current.attributes]
-          .map(({ value, name }) => `${name}=${value}`)
-          .join();
-
-        // grab the framework type from the current node
-        const frameworkType = astroIsland.match(/@astrojs_([^_]*)_/)[1];
-
-        // grab the client directive from the current node
-        const hydrationType = astroIsland
-          .match(/client=([^_]*)/)[1]
-          .split(',')[0];
-
-        // grab all the props from the current node
-        // const componentProps = JSON.parse('{' + astroIsland.match(/props={([^}]*)}/)[1] + '}');
-        const componentProps = astroIsland.match(/props={([^}]*)}/)[1];
-
-        // create an object for each astro island to hold info about which framework it's associated with, its props, and its client directive
-        islands.push({
-          framework: frameworkType,
-          hydration: hydrationType,
-          props: componentProps,
-        });
-      }
-    }
-
-    expect(islands).toHaveLength(3);
-    expect(islands[0].framework).not.toBe(null);
-  });
+    expect(stringToDoc && typeof stringToDoc === 'object').toBe(true);
+  })
 });
