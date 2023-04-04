@@ -1,4 +1,4 @@
-declare const chrome: any
+declare const chrome: any;
 
 // parses html of target page in order to construct tree
 const parseData = async(): Promise<{}> => {
@@ -15,9 +15,11 @@ const parseData = async(): Promise<{}> => {
       }
     );
   });
+
   // parses HTML string into document object
   const parser = new DOMParser();
   const stringToDoc: {} = parser.parseFromString(html, 'text/html');
+
   // returns document object
   return stringToDoc;
 }
