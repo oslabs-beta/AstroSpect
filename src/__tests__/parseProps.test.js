@@ -2,8 +2,6 @@
 const parseProps = require('../app/algorithms/parseProps').default;
 
 describe('parseProps ', () => {
-  console.log(parseProps);
-
   it('returns object for one prop', () => {
     const unparsedProps = '{"hello": "world"}';
 
