@@ -1,12 +1,12 @@
 // parses props of astro islands for display in side pane
-const parseProps = (attribute: string): {[k: string]: any} => {
+const parseProps = (attribute: string): { [k: string]: any } => {
   // parses JSON string of props attribute
-  const parsed: {[k: string]: any} = JSON.parse(attribute);
+  const parsed: { [k: string]: any } = JSON.parse(attribute);
 
   // recursively parses nested props to get rid of unnecessary data from astro-island props
   // example of how the JSON is structured coming in: { "name": "[0, "Commander Roman"]" }
   // output after running JSON object through parseProps: { name: "Commander Roman" }
-  const spreader = (obj: {[k: string]: any}): void => {
+  const spreader = (obj: { [k: string]: any }): void => {
     for (const key in obj) {
       if (Array.isArray(obj[key])) {
         let newVal: any[] = obj[key].slice(1);
