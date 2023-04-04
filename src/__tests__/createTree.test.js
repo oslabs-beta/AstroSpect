@@ -1,8 +1,25 @@
 // tests createTree algorithm
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
+import { TreeItem } from '@mui/lab';
+import createTree from '../app/algorithms/createTree';
 
-describe('tree walker tests', () => {
+describe('createTree', () => {
+  beforeEach(() => {
+    // Reset any side effects from previous tests.
+    // Assumes you have reset functions implemented for addId and addIslandData.
+    addId.reset();
+    addIslandData.reset();
+  });
+
+  test('creates a leaf tree item for a node without children', () => {
+    const node = document.createElement('div');
+    const result = createTree(node, '0');
+    const { getByText } = render(result);
+
+    expect(getByText('div')).toBeInTheDocument();
+  });
+
   it('should have three elements in islands array', () => {
     // create a DOM environment and load a test document
     const dom = new JSDOM(`
@@ -19,40 +36,6 @@ describe('tree walker tests', () => {
       </html>
     `);
     const document = dom.window.document;
-
-    // populate the islands array
-    const walker = document.createTreeWalker(document.documentElement);
-
-    const islands = [];
-
-    while (walker.nextNode()) {
-      let current = walker.currentNode;
-      if (current.tagName === 'ASTRO-ISLAND') {
-        // store the current node contents in a string
-        const astroIsland = [...current.attributes]
-          .map(({ value, name }) => `${name}=${value}`)
-          .join();
-
-        // grab the framework type from the current node
-        const frameworkType = astroIsland.match(/@astrojs_([^_]*)_/)[1];
-
-        // grab the client directive from the current node
-        const hydrationType = astroIsland
-          .match(/client=([^_]*)/)[1]
-          .split(',')[0];
-
-        // grab all the props from the current node
-        // const componentProps = JSON.parse('{' + astroIsland.match(/props={([^}]*)}/)[1] + '}');
-        const componentProps = astroIsland.match(/props={([^}]*)}/)[1];
-
-        // create an object for each astro island to hold info about which framework it's associated with, its props, and its client directive
-        islands.push({
-          framework: frameworkType,
-          hydration: hydrationType,
-          props: componentProps,
-        });
-      }
-    }
 
     expect(islands).toHaveLength(3);
     expect(islands[0].framework).not.toBe(null);
