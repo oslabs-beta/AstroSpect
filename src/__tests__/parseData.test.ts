@@ -1,12 +1,12 @@
-import { describe, expect, test } from '@jest/globals';
+import { describe, expect } from '@jest/globals';
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
-require('jsdom-global')()
-global.DOMParser = window.DOMParser
-declare const chrome: any;
+require('jsdom-global')();
+global.DOMParser = window.DOMParser;
 
 describe('parse data tests', () => {
   it('should return an object', () => {
+    // create fake DOM tree string that would be returned from Chrome API
     const html: string = new JSDOM(`
       <!DOCTYPE html>
       <html>
@@ -25,5 +25,5 @@ describe('parse data tests', () => {
     const stringToDoc: {} = parser.parseFromString(html, 'text/html');
 
     expect(stringToDoc && typeof stringToDoc === 'object').toBe(true);
-  })
+  });
 });
