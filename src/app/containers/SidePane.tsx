@@ -4,18 +4,18 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import TreeItem from '@mui/lab/TreeItem';
 import { Typography } from '@mui/material';
-// import { CurrentComp } from '../types';
+import { CurrentComp } from '../types';
 
-// interface SidePaneProps {
-//   currentComp: CurrentComp;
-// }
+type SidePaneProps = {
+  currentComp: CurrentComp;
+};
 
 // side pane for displaying props and client
-const SidePane = (props) => {
+const SidePane = (props: SidePaneProps) => {
   // get the properties from current component
   const { currentComp } = props;
   //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
-  const createPropsDisplay = (obj, id) => {
+  const createPropsDisplay = (obj: CurrentComp, id: string) => {
     // creates array of parent props
     const topLevel = [];
     // loops through props in currentComp obj

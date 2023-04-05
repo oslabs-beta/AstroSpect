@@ -1,10 +1,22 @@
 import React from 'react';
 import TreeItem from '@mui/lab/TreeItem';
-import parseProps from '../algorithms/parseProps.ts';
+import parseProps from './parseProps';
 
-const createTree = (node, id, addId, addIslandData, fontColor = '#F5F5F5') => {
-  const allIslands = [];
-  const inner = (node, id, addId, addIslandData, fontColor = '#F5F5F5') => {
+const createTree = (
+  node: any,
+  id: string,
+  addId: () => void,
+  addIslandData: () => void,
+  fontColor = '#F5F5F5'
+) => {
+  const allIslands: JSX.Element[] = [];
+  const inner = (
+    node: any,
+    id: string,
+    addId: (id: string) => void,
+    addIslandData: (island: any, id: string) => void,
+    fontColor: string = '#F5F5F5'
+  ) => {
     // adds id to idArray, required for expandAll functionality
     addId(id);
     // Stores ASTRO-ISLAND data in islandData state (from app)
