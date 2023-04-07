@@ -3,13 +3,14 @@ import SearchBar from '../components/SearchBar';
 import ElementView from '../components/ElementView';
 import ComponentView from '../components/ComponentView.jsx';
 import createTree from '../algorithms/createTree';
+import { PanelProps } from '../types';
 
-const Panel = (props) => {
+const Panel = (props: PanelProps): JSX.Element => {
   const { html, handleClick, addIslandData, idArray, addId } = props;
-  const [expanded, setExpanded] = useState([]);
-  const [selectedTab, setSelectedTab] = useState(0);
-  const [elementData, setElementData] = useState(null);
-  const [componentData, setComponentData] = useState(null);
+  const [expanded, setExpanded] = useState<string[]>([]);
+  const [selectedTab, setSelectedTab] = useState<number>(0);
+  const [elementData, setElementData] = useState<JSX.Element[]>(null);
+  const [componentData, setComponentData] = useState<JSX.Element[]>(null);
 
   // alternates between expanding and collapsing all nodes
   const handleExpandClick = () => {

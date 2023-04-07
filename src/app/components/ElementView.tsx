@@ -2,9 +2,9 @@ import React from 'react';
 import TreeView from '@mui/lab/TreeView';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-// create TS type for panel props
+import { ElementViewProps } from '../types';
 
-const ElementView = (props) => {
+const ElementView: React.FC = (props: ElementViewProps): JSX.Element => {
   const { handleClick, expanded, handleToggle, elementData } = props;
 
   // returns the completed tree
