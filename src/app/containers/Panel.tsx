@@ -4,21 +4,22 @@ import ElementView from '../components/ElementView';
 import ComponentView from '../components/ComponentView.jsx';
 import createTree from '../algorithms/createTree';
 import { PanelProps } from '../types';
+import type { HandleToggle } from '../types';
 
 const Panel = (props: PanelProps): JSX.Element => {
   const { html, handleClick, addIslandData, idArray, addId } = props;
   const [expanded, setExpanded] = useState<string[]>([]);
   const [selectedTab, setSelectedTab] = useState<number>(0);
-  const [elementData, setElementData] = useState<JSX.Element[]>(null);
-  const [componentData, setComponentData] = useState<JSX.Element[]>(null);
+  const [elementData, setElementData] = useState<JSX.Element[]>([]);
+  const [componentData, setComponentData] = useState<JSX.Element[]>([]);
 
   // alternates between expanding and collapsing all nodes
-  const handleExpandClick = () => {
+  const handleExpandClick = (): void => {
     setExpanded((oldExpanded) => (oldExpanded.length === 0 ? idArray : []));
   };
 
   // updates expanded nodes on toggle of individual nodes
-  const handleToggle = (event, nodeIds) => {
+  const handleToggle: HandleToggle = (event, nodeIds) => {
     setExpanded(nodeIds);
   };
 
@@ -61,18 +62,17 @@ const Panel = (props: PanelProps): JSX.Element => {
       <div className='container element' style={{ display: 'flex' }}>
         {selectedTab === 0 && (
           <ElementView
-            html={html}
-            handleClick={handleClick}
-            expanded={expanded}
-            handleToggle={handleToggle}
             elementData={elementData}
+            handleClick={handleClick}
+            handleToggle={handleToggle}
+            expanded={expanded}
           />
         )}
         {selectedTab === 1 && (
           <ComponentView
             componentData={componentData}
-            handleToggle={handleToggle}
             handleClick={handleClick}
+            handleToggle={handleToggle}
             expanded={expanded}
           />
         )}
