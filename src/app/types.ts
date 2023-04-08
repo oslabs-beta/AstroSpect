@@ -9,15 +9,19 @@ export type IslandData = {
   [k: string]: CurrentComp;
 };
 
-type HandleToggle = (
+export type HandleToggle = (
   event: React.MouseEvent<Element, MouseEvent>,
   nodeIds: string[]
 ) => void;
 
-type HandleClick = (
+export type HandleClick = (
   event: React.MouseEvent<Element, MouseEvent>,
   nodeIds: string
 ) => void;
+
+export type AddIslandData = (astroIsland: CurrentComp, id: string) => void;
+
+export type AddId = (id: string) => void;
 
 export type ComponentViewProps = {
   componentData: JSX.Element[];
@@ -39,9 +43,13 @@ export type SearchBarProps = {
 };
 
 export type PanelProps = {
-    html: string;
-    handleClick: HandleClick;
-    addIslandData: (astroIsland: CurrentComp, id: string) => void;
-    addId: Set<string>;
-    idArray: string[];
-}
+  html: Document;
+  handleClick: HandleClick;
+  addIslandData: AddIslandData;
+  addId: AddId;
+  idArray: string[];
+};
+
+export type SidePaneProps = {
+  currentComp: CurrentComp;
+};
