@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import SearchBar from '../components/SearchBar';
 import ElementView from '../components/ElementView';
-import ComponentView from '../components/ComponentView.jsx';
+import ComponentView from '../components/ComponentView';
 import createTree from '../algorithms/createTree';
-import { PanelProps } from '../types';
-import type { HandleToggle } from '../types';
+import { HandleExpandClick, PanelProps } from '../types/types';
+import type { HandleToggle } from '../types/types';
 
 const Panel = (props: PanelProps): JSX.Element => {
   const { html, handleClick, addIslandData, idArray, addId } = props;
@@ -14,7 +14,7 @@ const Panel = (props: PanelProps): JSX.Element => {
   const [componentData, setComponentData] = useState<JSX.Element[]>([]);
 
   // alternates between expanding and collapsing all nodes
-  const handleExpandClick = (): void => {
+  const handleExpandClick: HandleExpandClick = () => {
     setExpanded((oldExpanded) => (oldExpanded.length === 0 ? idArray : []));
   };
 

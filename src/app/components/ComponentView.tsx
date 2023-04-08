@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import TreeView from '@mui/lab/TreeView';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { ComponentViewProps } from '../types';
+import { ComponentViewProps } from '../types/types';
 
 const ComponentView: React.FC<ComponentViewProps> = (props): JSX.Element => {
   const { componentData, handleToggle, expanded, handleClick } = props;

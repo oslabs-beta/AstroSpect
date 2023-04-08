@@ -1,7 +1,7 @@
 import React from 'react';
 import TreeItem from '@mui/lab/TreeItem';
 import parseProps from './parseProps';
-import { CurrentComp } from '../types';
+import { CurrentComp } from '../types/types';
 
 const createTree = (
   node: any,
@@ -33,7 +33,7 @@ const createTree = (
       addIslandData(island, id);
       // parses component-url attrbute to give astro-island descriptive name
       let componentFile = node.attributes['component-url'].value;
-      let lastIndex = null;
+      let lastIndex: number = NaN;
       for (let i = componentFile.length - 1; i > 0; i--) {
         if (componentFile[i] === '.') lastIndex = i;
         if (componentFile[i] === '/') {

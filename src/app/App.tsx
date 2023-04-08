@@ -6,16 +6,22 @@ import SidePane from './containers/SidePane';
 import { useState, useEffect } from 'react';
 import parseData from './algorithms/parseData';
 import Header from './components/Header';
-import { CurrentComp, IslandData } from './types';
+import {
+  CurrentComp,
+  IslandData,
+  AddIslandData,
+  HandleClick,
+  AddId,
+} from './types/types';
 
 const App: React.FC = (): JSX.Element => {
-  const [bodyData, setBodyData] = useState<{} | null>(null);
+  const [bodyData, setBodyData] = useState<Document | null>(null);
   const [currentComp, setCurrentComp] = useState<CurrentComp | null>(null);
   const [islandData, setIslandData] = useState<IslandData>({});
   const [idSet, setIdSet] = useState<Set<string>>(new Set<string>());
   const [idArray, setIdArray] = useState<string[]>([]);
 
-  const handleClick = (e: any, id: string): void => {
+  const handleClick: HandleClick = (event, id) => {
     // get the id of the treeItem clicked
     if (islandData[id]) {
       setCurrentComp(islandData[id]);
@@ -23,7 +29,7 @@ const App: React.FC = (): JSX.Element => {
   };
 
   // function to add astro island nodes to state when parsing dom
-  const addIslandData = (astroIsland: CurrentComp, id: string): void => {
+  const addIslandData: AddIslandData = (astroIsland, id) => {
     // if (!islandData[id]) {
     setIslandData((prevIslandData) => ({
       ...prevIslandData,
@@ -32,7 +38,7 @@ const App: React.FC = (): JSX.Element => {
     // }
   };
 
-  const addId = (id: string): void => {
+  const addId: AddId = (id) => {
     if (!idSet.has(id)) {
       setIdSet(new Set(idSet.add(id)));
       const idArray: string[] = Array.from(idSet);
@@ -45,7 +51,7 @@ const App: React.FC = (): JSX.Element => {
 
   useEffect((): void => {
     (async function fetchData(): Promise<void> {
-      const data: {} = await parseData();
+      const data: Document = await parseData();
       setBodyData(data);
     })();
   }, []);

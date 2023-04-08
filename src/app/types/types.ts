@@ -2,7 +2,7 @@
 
 export type CurrentComp = {
   client: string;
-  props: {};
+  props: Record<string, any>;
 };
 
 export type IslandData = {
@@ -10,14 +10,16 @@ export type IslandData = {
 };
 
 export type HandleToggle = (
-  event: React.MouseEvent<Element, MouseEvent>,
+  event: React.SyntheticEvent<Element, Event>,
   nodeIds: string[]
 ) => void;
 
 export type HandleClick = (
-  event: React.MouseEvent<Element, MouseEvent>,
-  nodeIds: string
+  event: React.SyntheticEvent<Element, Event>,
+  id: string
 ) => void;
+
+export type HandleExpandClick = () => void;
 
 export type AddIslandData = (astroIsland: CurrentComp, id: string) => void;
 
@@ -38,7 +40,7 @@ export type ElementViewProps = {
 };
 
 export type SearchBarProps = {
-  handleExpandClick: () => void;
+  handleExpandClick: HandleExpandClick;
   expanded: string[];
 };
 
@@ -51,5 +53,5 @@ export type PanelProps = {
 };
 
 export type SidePaneProps = {
-  currentComp: CurrentComp;
+  currentComp: CurrentComp | null;
 };
