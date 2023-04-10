@@ -1,12 +1,13 @@
 import React from 'react';
 import TreeItem from '@mui/lab/TreeItem';
 import parseProps from './parseProps';
+import { CurrentComp } from '../types/types';
 
 const createTree = (
   node: any,
   id: string,
-  addId: () => void,
-  addIslandData: () => void,
+  addId: (id: string) => void,
+  addIslandData: (astroIsland: CurrentComp, id: string) => void,
   fontColor = '#F5F5F5'
 ) => {
   const allIslands: JSX.Element[] = [];
@@ -32,7 +33,7 @@ const createTree = (
       addIslandData(island, id);
       // parses component-url attrbute to give astro-island descriptive name
       let componentFile = node.attributes['component-url'].value;
-      let lastIndex = null;
+      let lastIndex: number = NaN;
       for (let i = componentFile.length - 1; i > 0; i--) {
         if (componentFile[i] === '.') lastIndex = i;
         if (componentFile[i] === '/') {
@@ -83,7 +84,6 @@ const createTree = (
           sx={{ color: fontColor }}
         />
       );
-      return tree;
     } else {
       const children = Array.from(node.children);
       // If node has children, recurse through function with each child node

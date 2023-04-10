@@ -4,24 +4,20 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import TreeItem from '@mui/lab/TreeItem';
 import { Typography } from '@mui/material';
-import { CurrentComp } from '../types';
-
-type SidePaneProps = {
-  currentComp: CurrentComp;
-};
+import { SidePaneProps, CurrentComp } from '../types/types';
 
 // side pane for displaying props and client
-const SidePane = (props: SidePaneProps) => {
+const SidePane: React.FC<SidePaneProps> = (props): JSX.Element => {
   // get the properties from current component
   const { currentComp } = props;
   //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
-  const createPropsDisplay = (obj: CurrentComp, id: string) => {
+  const createPropsDisplay = (obj: Record<string, any>, id: number) => {
     // creates array of parent props
-    const topLevel = [];
+    const topLevel: JSX.Element[] = [];
     // loops through props in currentComp obj
     for (const propName in obj) {
-      let elem;
-      let newId = String(id++);
+      let elem: JSX.Element;
+      let newId: number = id++;
       // const propLabel = `${propName}: ${obj[propName]}`;
       const propValue = obj[propName];
       // checks if there is a nested prop, create a child tree item
@@ -30,14 +26,14 @@ const SidePane = (props: SidePaneProps) => {
         elem = (
           <TreeItem
             key={newId}
-            nodeId={newId}
+            nodeId={newId.toString()}
             label={
               <Typography component='div'>
                 <span style={{ color: '#d494ff' }}>{propName}: </span>
               </Typography>
             }
           >
-            {createPropsDisplay(obj[propName], `${++newId}`)}
+            {createPropsDisplay(obj[propName], newId + 1)}
           </TreeItem>
         );
       } else {
@@ -45,7 +41,7 @@ const SidePane = (props: SidePaneProps) => {
         elem = (
           <TreeItem
             key={newId}
-            nodeId={newId}
+            nodeId={newId.toString()}
             label={
               <Typography component='div'>
                 <span style={{ color: '#d494ff' }}>{propName}: </span>
@@ -62,12 +58,12 @@ const SidePane = (props: SidePaneProps) => {
     return topLevel;
   };
 
-  let propsDisplay = [];
+  let propsDisplay: JSX.Element[] = [];
 
   // if astro-island is selected in Panel, a new propsDisplay is created
   if (currentComp) {
     // propsDisplay updates to result of calling CPD on that astro-island's props
-    propsDisplay = createPropsDisplay(currentComp.props, '99');
+    propsDisplay = createPropsDisplay(currentComp.props, 99);
   }
 
   return (

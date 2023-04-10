@@ -3,10 +3,12 @@ import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { SearchBarProps } from '../types';
+import { SearchBarProps } from '../types/types';
 
 // search bar in panel
-const SearchBar: React.FC = (props: SearchBarProps): JSX.Element => {
+const SearchBar: React.FC<SearchBarProps> = (
+  props: SearchBarProps
+): JSX.Element => {
   const { handleExpandClick, expanded } = props;
   const [found, setFound] = useState<HTMLElement[]>([]);
   const [current, setCurrent] = useState<number>(0);
@@ -31,13 +33,15 @@ const SearchBar: React.FC = (props: SearchBarProps): JSX.Element => {
     // sets new array to be filled with matched elements
     const newArr: HTMLElement[] = [];
     // loop through each element in searchContents
-    searchContents.forEach((item: HTMLElement) => {
-      if (item.textContent.match(pattern)) {
-        newArr.push(item);
+    searchContents.forEach((item) => {
+      const htmlItem = item as HTMLElement;
+      if (htmlItem.textContent && htmlItem.textContent.match(pattern)) {
+        newArr.push(htmlItem);
       }
       // get the textContent inside each element
       // replace any matches of the pattern with a highlighted version of the match
-      const highlightedText: string = item.textContent.replace(
+      const content = htmlItem.textContent || '';
+      const highlightedText: string = content.replace(
         pattern,
         (match) => `<mark>${match}</mark>` // performs the highlighting
       );

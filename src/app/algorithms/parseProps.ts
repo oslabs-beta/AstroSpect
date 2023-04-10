@@ -1,5 +1,5 @@
 // parses props of astro islands for display in side pane
-const parseProps = (attribute: string): { [k: string]: any } => {
+const parseProps = (attribute: string): Record<string, any> => {
   // parses JSON string of props attribute
   const parsed: { [k: string]: any } = JSON.parse(attribute);
 
