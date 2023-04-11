@@ -13,37 +13,37 @@ const Header: React.FC = (): JSX.Element => {
 
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
-        position="static"
+        position='static'
         sx={{ backgroundColor: '#202427', fontFamily: 'Figtree sans-serif' }}
       >
         <Toolbar>
           <Typography
-            variant="h6"
-            component="div"
-            className="astrospect-wrapper"
+            variant='h6'
+            component='div'
+            className='astrospect-wrapper'
             sx={{ fontFamily: 'Figtree' }}
           >
-            <div className="astrospect-text">AstroSpect</div>
-            <img width="28px" src={Logo} alt="AstroSpect logo" />
+            <div className='astrospect-text'>AstroSpect</div>
+            <img width='28px' src={Logo} alt='AstroSpect logo' />
           </Typography>
 
           {/* media query that gets rid of the 'GitHub' and 'Site' text? */}
-          <div className="header-element-wrapper">
-            <div className="header-element">
+          <div className='header-element-wrapper'>
+            <div className='header-element'>
               <a
-                href="https://github.com/oslabs-beta/AstroSpect/tree/main"
-                target="_blank"
+                href='https://github.com/oslabs-beta/AstroSpect/tree/main'
+                target='_blank'
               >
                 <GitHubIcon />
               </a>
 
               <a
-                href="https://github.com/oslabs-beta/AstroSpect/tree/main"
-                target="_blank"
+                href='https://github.com/oslabs-beta/AstroSpect/tree/main'
+                target='_blank'
               >
                 <Typography
-                  variant="body1"
-                  component="div"
+                  variant='body1'
+                  component='div'
                   sx={{ flexGrow: 1, fontFamily: 'Figtree' }}
                 >
                   GitHub
@@ -51,15 +51,15 @@ const Header: React.FC = (): JSX.Element => {
               </a>
             </div>
 
-            <div className="header-element">
-              <a href="https://astrospect.dev" target="_blank">
+            <div className='header-element'>
+              <a href='https://astrospect.dev' target='_blank'>
                 <WebIcon />
               </a>
 
-              <a href="https://astrospect.dev" target="_blank">
+              <a href='https://astrospect.dev' target='_blank'>
                 <Typography
-                  variant="body1"
-                  component="div"
+                  variant='body1'
+                  component='div'
                   sx={{ flexGrow: 1, fontFamily: 'Figtree' }}
                 >
                   Website
