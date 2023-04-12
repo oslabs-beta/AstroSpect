@@ -64,7 +64,7 @@ const App: React.FC = (): JSX.Element => {
   return (
     <>
       <Header />
-      <div id='main-container'>
+      <div id="main-container">
         {!bodyData && <div>Loading...</div>}
         {bodyData && (
           <Panel
