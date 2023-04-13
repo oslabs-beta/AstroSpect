@@ -1,0 +1,46 @@
+name: Build
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+  push
+
+jobs:
+  # tests the webpack bundle to make sure that it can be compiled without any errors
+  build:
+    name: Build webpack bundle
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out repo
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build webpack bundle
+        run: npm run build
+
+  # run the testing suite
+  test:
+    name: Test application
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out repo
+        uses: actions/checkout@v2
+
+      - name: "set up node"
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 16
+
+      - name: "install npm@latest"
+        run: npm i -g npm@latest
+
+      - name: "install dependencies"
+        uses: bahmutov/npm-install@v1
+
+      - name: "run tests"
+        run: npm run test
