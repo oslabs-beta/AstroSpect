@@ -12,7 +12,7 @@
   </a>
 
   <h2 align="center">
-    A Chrome Dev Tool Extension For Astro Developers
+    A Chrome DevTools Extension For Astro Developers
     <br>
     <a href="https://www.astrospect.dev/"><strong>Explore AstroSpect »</strong></a>
     <br>
