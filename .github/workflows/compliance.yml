@@ -1,16 +1,14 @@
-# checks to see if a PR is being made into the main branch; if it is, GitHub throws an error if the PR is not from the dev branch
-name: branch-check
+name: Compliance
 
-# check the condition (merging into main)
 on:
   pull_request:
     branches:
       - main
-    types: [opened, edited, reopened]
-    
-# execute the workflow if the condition is met
+    types: [opened, edited, reopened, synchronize]
+
 jobs:
-  branch-check:
+  # check that the PR isn't being attempted from a feature branch to the main branch
+  branch-compliance-check:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the code
