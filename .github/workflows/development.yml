@@ -1,12 +1,12 @@
 name: Build
 
 on:
-  - pull_request:
+  pull_request:
     types:
       - opened
       - synchronize
       - reopened
-  - push
+  push:
 
 jobs:
   # tests the webpack bundle to make sure that it can be compiled without any errors
