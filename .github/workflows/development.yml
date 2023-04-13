@@ -1,12 +1,12 @@
 name: Build
 
 on:
-  pull_request:
+  - pull_request:
     types:
       - opened
       - synchronize
       - reopened
-  push
+  - push
 
 jobs:
   # tests the webpack bundle to make sure that it can be compiled without any errors
@@ -31,16 +31,16 @@ jobs:
       - name: check out repo
         uses: actions/checkout@v2
 
-      - name: "set up node"
+      - name: 'set up node'
         uses: actions/setup-node@v2.1.5
         with:
           node-version: 16
 
-      - name: "install npm@latest"
+      - name: 'install npm@latest'
         run: npm i -g npm@latest
 
-      - name: "install dependencies"
+      - name: 'install dependencies'
         uses: bahmutov/npm-install@v1
 
-      - name: "run tests"
+      - name: 'run tests'
         run: npm run test
