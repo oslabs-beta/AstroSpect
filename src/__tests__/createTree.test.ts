@@ -4,8 +4,9 @@ const createTree = require('../app/algorithms/createTree').default;
 
 describe('createTree', () => {
   //mock functions
-  const mockAddId = jest.fn();
-  const mockAddIslandData = jest.fn();
+  let mockAddId = jest.fn();
+  let mockAddIslandData = jest.fn();
+
   function countNodes(tree: JSX.Element) {
     let count = 1; // Count the current node
     for (const child of tree.props.children || []) {
@@ -13,6 +14,7 @@ describe('createTree', () => {
     }
     return count;
   }
+
   const dom = new JSDOM(`
   <!DOCTYPE html>
   <html>
@@ -29,6 +31,11 @@ describe('createTree', () => {
   const document = dom.window.document;
   afterEach(() => {
     jest.clearAllMocks();
+  });
+  beforeEach(() => {
+    // Reset mock functions before each test
+    mockAddId = jest.fn();
+    mockAddIslandData = jest.fn();
   });
   it('creates a leaf tree item for a node without children', () => {
     const node = document.createElement('div');
@@ -70,13 +77,9 @@ describe('createTree', () => {
       mockAddIslandData
     );
     const givenLength = countNodes(allElements);
+    //+ 1 to include body as well.
     const expectedLength =
       Array.from(document.body.querySelectorAll('*')).length + 1;
-    console.log('allElements', allElements.props.children);
-    console.log(
-      'queryselector:',
-      Array.from(document.body.querySelectorAll('*'))
-    );
     expect(givenLength).toEqual(expectedLength);
   });
 
@@ -89,5 +92,35 @@ describe('createTree', () => {
     );
     const expectedLength = document.querySelectorAll('astro-island').length;
     expect(allIslands.length).toEqual(expectedLength);
+  });
+
+  it('handles large documents efficiently', () => {
+    // Generate a large document with nested 'ASTRO-ISLAND' elements.
+    let largeHTMLString = '<div>';
+    for (let i = 0; i < 100; i++) {
+      largeHTMLString += `<ASTRO-ISLAND client="astro_client_${i}" props='{"propKey": "propValue"}' component-url="/path/to/component${i}">`;
+      for (let j = 0; j < 100; j++) {
+        largeHTMLString += `<p>Element ${i}-${j}</p>`;
+      }
+      largeHTMLString += '</ASTRO-ISLAND>';
+    }
+    largeHTMLString += '</div>';
+
+    const dom = new JSDOM(largeHTMLString);
+    const document = dom.window.document;
+
+    // Start the timer
+    const startTime = performance.now();
+
+    // Run the function
+    createTree(document, '0', mockAddId, mockAddIslandData);
+
+    // End the timer
+    const endTime = performance.now();
+    console.log('time:', endTime - startTime);
+
+    // Check the elapsed time. Update this number to whatever maximum
+    // time you consider acceptable.
+    expect(endTime - startTime).toBeLessThan(500); // 500 ms
   });
 });
