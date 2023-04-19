@@ -16,13 +16,14 @@ const SearchBar: React.FC<SearchBarProps> = (
 
   // searches through the tree to find text that matches the value of the text input
   const search = (): void => {
-    // resets found and current
+    // sets found and current to initial values of new search
     setFound([]);
     setCurrent(0);
-    // assign the text input value to a variable
+    // assigns the text input value to a variable
     let textToSearch: string = (
       document.getElementById('text-to-search') as HTMLInputElement
     ).value;
+    
     setSearchVal(textToSearch);
     // assign the searched text (tree view) to a variable
     const searchContents = document.querySelectorAll('.MuiTreeItem-label');

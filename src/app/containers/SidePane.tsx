@@ -4,25 +4,26 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import TreeItem from '@mui/lab/TreeItem';
 import { Typography } from '@mui/material';
-import { SidePaneProps, CurrentComp } from '../types/types';
+import { SidePaneProps } from '../types/types';
 
-// side pane for displaying props and client
+// Displays Side Pane of type, props, and client-directive of element clicked (in Panel)
 const SidePane: React.FC<SidePaneProps> = (props): JSX.Element => {
-  // get the properties from current component
+  // currentComp contains info on currently clicked element (ASTRO-ISLAND or null)
   const { currentComp } = props;
-  //Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
+  // creates a dropdown tree of currently clicked ASTRO-ISLAND's props 
   const createPropsDisplay = (obj: Record<string, any>, id: number) => {
-    // creates array of parent props
+    // initializes array of parent props
     const topLevel: JSX.Element[] = [];
     // loops through props in currentComp obj
     for (const propName in obj) {
+      // sets elem to be pushed to topLevel 
       let elem: JSX.Element;
+      // sets id to be assigned to elem
       let newId: number = id++;
-      // const propLabel = `${propName}: ${obj[propName]}`;
       const propValue = obj[propName];
-      // checks if there is a nested prop, create a child tree item
+      // if there are children props, creates a tree item with children
       if (typeof obj[propName] === 'object') {
-        // if so, tree item is created, with recursive processing of children
+        // sets elem to tree item with recursive call to create child item
         elem = (
           <TreeItem
             key={newId}
@@ -37,7 +38,7 @@ const SidePane: React.FC<SidePaneProps> = (props): JSX.Element => {
           </TreeItem>
         );
       } else {
-        // otherwise lead tree item is created
+        // sets elem as leaf tree item
         elem = (
           <TreeItem
             key={newId}
@@ -51,24 +52,25 @@ const SidePane: React.FC<SidePaneProps> = (props): JSX.Element => {
           />
         );
       }
-      // the result is then pushed to the array of parent tree items
+      // resulting elem is then pushed to the array of parent tree items
       topLevel.push(elem);
     }
     // returns array of parent tree items, with nested children (if any)
     return topLevel;
   };
 
+  // array that stores tree items of calling createPropsDisplay
   let propsDisplay: JSX.Element[] = [];
 
-  // if astro-island is selected in Panel, a new propsDisplay is created
+  // if an ASTRO-ISLAND is currently clicked, propsDisplay is updated
   if (currentComp) {
-    // propsDisplay updates to result of calling CPD on that astro-island's props
+    // propsDisplay updates to result of calling CPD on that ASTRO-ISLAND's props
     propsDisplay = createPropsDisplay(currentComp.props, 99);
   }
 
   return (
     <div id='sidepane-container'>
-      {/* // when component is not astro island */}
+      {/* // when element clicked is not an ASTRO-ISLAND */}
       {!currentComp && (
         <>
           <h3>Type: </h3>
@@ -77,7 +79,7 @@ const SidePane: React.FC<SidePaneProps> = (props): JSX.Element => {
         </>
       )}
 
-      {/* // when clicked is Astro Island */}
+      {/* // when element clicked is an ASTRO-ISLAND */}
       {currentComp && (
         <>
           <h3>Type: </h3>

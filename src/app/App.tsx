@@ -15,14 +15,17 @@ import {
 } from './types/types';
 
 const App: React.FC = (): JSX.Element => {
+  //body data raw document nodes from target html
   const [bodyData, setBodyData] = useState<Document | null>(null);
+  //prop info displayed in sidepane for the node that is clicked
   const [currentComp, setCurrentComp] = useState<CurrentComp | null>(null);
+  //An object with prop data that is referenced when setting current comp
   const [islandData, setIslandData] = useState<IslandData>({});
   const [idSet, setIdSet] = useState<Set<string>>(new Set<string>());
   const [idArray, setIdArray] = useState<string[]>([]);
 
+  // set the currentComp when a node is selected so we can display the Astro Island information if the node is an Island
   const handleClick: HandleClick = (event, id) => {
-    // get the id of the treeItem clicked
     if (islandData[id]) {
       setCurrentComp(islandData[id]);
     } else setCurrentComp(null);
@@ -30,12 +33,10 @@ const App: React.FC = (): JSX.Element => {
 
   // function to add astro island nodes to state when parsing dom
   const addIslandData: AddIslandData = (astroIsland, id) => {
-    // if (!islandData[id]) {
     setIslandData((prevIslandData) => ({
       ...prevIslandData,
       [id]: astroIsland,
     }));
-    // }
   };
 
   // adds id of each node in tree to an array of all ids
@@ -47,9 +48,7 @@ const App: React.FC = (): JSX.Element => {
     }
   };
 
-  // if id is not found, display 'this is static' on the side pane
-  // set isClicked to True
-
+  // parse the data from the DOM of the target page so we can pass in the DOM representation when creating the MUI tree
   useEffect((): void => {
     (async function fetchData(): Promise<void> {
       const data: Document = await parseData();
@@ -57,11 +56,7 @@ const App: React.FC = (): JSX.Element => {
     })();
   }, []);
 
-  //place all astro islands in an object with a unique id (ex A1, A2, A3)
-  // iterate through each island object to find props and client directive
-  //pass down to side pane only when that island is clicked
-  // when another element is clicked reset side pane and display a new one with the clicked element
-
+  // if bodyData is not fetched, renders Loading screen
   return (
     <>
       <Header />
