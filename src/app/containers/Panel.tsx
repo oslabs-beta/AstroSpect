@@ -39,9 +39,9 @@ const Panel = (props: PanelProps): JSX.Element => {
 
   // returns the panel with toggle buttons and the search bar, which displays either the element view or island view
   return (
-    <div id='panel-container'>
-      <div id='panel-header'>
-        <div id='panel-toggle'>
+    <div id="panel-container">
+      <div id="panel-header">
+        <div id="panel-toggle">
           <button
             className={`buttonToggle button0 ${
               selectedTab === 0 ? 'active' : ''
@@ -61,7 +61,7 @@ const Panel = (props: PanelProps): JSX.Element => {
         </div>
         <SearchBar handleExpandClick={handleExpandClick} expanded={expanded} />
       </div>
-      <div className='container element' style={{ display: 'flex' }}>
+      <div className="container element" style={{ display: 'flex' }}>
         {selectedTab === 0 && (
           <ElementView
             elementData={elementData}

@@ -3,14 +3,15 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["airbnb"],
+  "extends": ["eslint:recommended"],
   "overrides": [],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "import", "@typescript-eslint"],
   "rules": {
     "semi": ["off", "always"],
     "@typescript-eslint/semi": "off",
