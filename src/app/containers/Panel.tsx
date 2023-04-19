@@ -23,23 +23,25 @@ const Panel = (props: PanelProps): JSX.Element => {
     setExpanded(nodeIds);
   };
 
+  // creates a tree of target HTML DOM represenataion upon component render; uses MUI Tree-item components
   useEffect(() => {
-    // Creates a tree of target HTML DOM represenataion | Uses MUI Tree-item components
     const { allElements, allIslands } = createTree(
       html.body,
       '0',
       addId,
       addIslandData
     );
+
+    // set the state of the Panel component with the elements and islands returned from calling createTree
     setElementData(allElements.props.children);
     setComponentData([...allIslands]);
   }, []);
 
-  // returns the completed tree
+  // returns the panel with toggle buttons and the search bar, which displays either the element view or island view
   return (
-    <div id='panel-container'>
-      <div id='panel-header'>
-        <div id='panel-toggle'>
+    <div id="panel-container">
+      <div id="panel-header">
+        <div id="panel-toggle">
           <button
             className={`buttonToggle button0 ${
               selectedTab === 0 ? 'active' : ''
@@ -59,7 +61,7 @@ const Panel = (props: PanelProps): JSX.Element => {
         </div>
         <SearchBar handleExpandClick={handleExpandClick} expanded={expanded} />
       </div>
-      <div className='container element' style={{ display: 'flex' }}>
+      <div className="container element" style={{ display: 'flex' }}>
         {selectedTab === 0 && (
           <ElementView
             elementData={elementData}

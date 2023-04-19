@@ -11,7 +11,7 @@ const ElementView: React.FC<ElementViewProps> = (props): JSX.Element => {
   return (
     <>
       <TreeView
-        aria-label='file system navigator'
+        aria-label="file system navigator"
         defaultCollapseIcon={<ExpandMoreIcon sx={{ color: '#d5bcef' }} />}
         defaultExpandIcon={<ChevronRightIcon sx={{ color: '#d5bcef' }} />}
         onNodeSelect={handleClick}
