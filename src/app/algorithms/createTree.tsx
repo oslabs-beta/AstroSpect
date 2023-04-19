@@ -1,20 +1,20 @@
 import React from 'react';
 import TreeItem from '@mui/lab/TreeItem';
 import parseProps from './parseProps';
-import { CurrentComp } from '../types/types';
+import { AddId, AddIslandData } from '../types/types';
 
 const createTree = (
   node: any,
   id: string,
-  addId: (id: string) => void,
-  addIslandData: (astroIsland: CurrentComp, id: string) => void
+  addId: AddId,
+  addIslandData: AddIslandData
 ) => {
   //Recursive function to store tree structure in panel (all elements & all islands)
   const inner = (
     node: any,
     id: string,
-    addId: (id: string) => void,
-    addIslandData: (island: any, id: string) => void,
+    addId: AddId,
+    addIslandData: AddIslandData,
     fontColor: string = '#F5F5F5'
   ) => {
     // adds id to idArray, required for expandAll functionality

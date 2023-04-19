@@ -9,20 +9,6 @@ export type IslandData = {
   [k: string]: CurrentComp;
 };
 
-export type HandleToggle = (
-  event: React.SyntheticEvent<Element, Event>,
-  nodeIds: string[]
-) => void;
-
-export type HandleClick = (
-  event: React.SyntheticEvent<Element, Event>,
-  id: string
-) => void;
-
-export type HandleExpandClick = () => void;
-
-export type AddIslandData = (astroIsland: CurrentComp, id: string) => void;
-
 export type AddId = (id: string) => void;
 
 export type ComponentViewProps = {
@@ -55,3 +41,21 @@ export type PanelProps = {
 export type SidePaneProps = {
   currentComp: CurrentComp | null;
 };
+
+export type HandleExpandClick = () => void;
+
+/* eslint-disable */
+
+export type HandleToggle = (
+  event: React.SyntheticEvent<Element, Event>,
+  nodeIds: string[]
+) => void;
+
+export type HandleClick = (
+  event: React.SyntheticEvent<Element, Event>,
+  id: string
+) => void;
+
+export type AddIslandData = (astroIsland: CurrentComp, id: string) => void;
+
+/* eslint-enable */
