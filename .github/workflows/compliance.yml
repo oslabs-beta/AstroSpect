@@ -1,0 +1,29 @@
+name: Compliance
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  # check that the PR isn't being attempted from a feature branch to the main branch
+  branch-compliance-check:
+    name: Branch compliance check
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out repo
+        uses: actions/checkout@v2
+
+      - name: check branch name
+        run: |
+          if [[ "$GITHUB_HEAD_REF" == "dev" ]]; then
+            echo "Merging from dev branch is allowed"
+            exit 0
+          else
+            echo "Merging from branch other than dev is not allowed"
+            exit 1
+          fi
