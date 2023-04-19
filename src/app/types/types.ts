@@ -9,8 +9,6 @@ export type IslandData = {
   [k: string]: CurrentComp;
 };
 
-export type AddId = (id: string) => void;
-
 export type ComponentViewProps = {
   componentData: JSX.Element[];
   handleToggle: HandleToggle;
@@ -45,6 +43,8 @@ export type SidePaneProps = {
 export type HandleExpandClick = () => void;
 
 /* eslint-disable */
+
+export type AddId = (id: string) => void;
 
 export type HandleToggle = (
   event: React.SyntheticEvent<Element, Event>,

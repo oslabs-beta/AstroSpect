@@ -12,10 +12,11 @@
     "project": "./tsconfig.json"
   },
   "plugins": ["react", "import", "@typescript-eslint"],
+  "ignorePatterns": ["__tests__", "extension"],
   "rules": {
     "semi": ["off", "always"],
     "@typescript-eslint/semi": "off",
-    "no-unexpected-multiline": "error",
+    "no-unexpected-multiline": "error"
   },
   "globals": {
     "JSX": "readonly",

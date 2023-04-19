@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "AstroSpect",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "AstroSpect is a Chrome DevTools extension for Astro developers.",
   "icons": {
     "16": "assets/astrospect-logo-16.png",

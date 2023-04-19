@@ -10,13 +10,13 @@ import { SidePaneProps } from '../types/types';
 const SidePane: React.FC<SidePaneProps> = (props): JSX.Element => {
   // currentComp contains info on currently clicked element (ASTRO-ISLAND or null)
   const { currentComp } = props;
-  // creates a dropdown tree of currently clicked ASTRO-ISLAND's props 
+  // creates a dropdown tree of currently clicked ASTRO-ISLAND's props
   const createPropsDisplay = (obj: Record<string, any>, id: number) => {
     // initializes array of parent props
     const topLevel: JSX.Element[] = [];
     // loops through props in currentComp obj
     for (const propName in obj) {
-      // sets elem to be pushed to topLevel 
+      // sets elem to be pushed to topLevel
       let elem: JSX.Element;
       // sets id to be assigned to elem
       let newId: number = id++;
@@ -29,7 +29,7 @@ const SidePane: React.FC<SidePaneProps> = (props): JSX.Element => {
             key={newId}
             nodeId={newId.toString()}
             label={
-              <Typography component='div'>
+              <Typography component="div">
                 <span style={{ color: '#d494ff' }}>{propName}: </span>
               </Typography>
             }
@@ -44,7 +44,7 @@ const SidePane: React.FC<SidePaneProps> = (props): JSX.Element => {
             key={newId}
             nodeId={newId.toString()}
             label={
-              <Typography component='div'>
+              <Typography component="div">
                 <span style={{ color: '#d494ff' }}>{propName}: </span>
                 {String(propValue)}
               </Typography>
@@ -69,7 +69,7 @@ const SidePane: React.FC<SidePaneProps> = (props): JSX.Element => {
   }
 
   return (
-    <div id='sidepane-container'>
+    <div id="sidepane-container">
       {/* // when element clicked is not an ASTRO-ISLAND */}
       {!currentComp && (
         <>
@@ -90,7 +90,7 @@ const SidePane: React.FC<SidePaneProps> = (props): JSX.Element => {
           <hr />
           <h3>Props: </h3>
           <TreeView
-            aria-label='file system navigator'
+            aria-label="file system navigator"
             defaultCollapseIcon={<ExpandMoreIcon />}
             defaultExpandIcon={<ChevronRightIcon />}
             sx={{
