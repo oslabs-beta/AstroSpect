@@ -38,6 +38,7 @@ const App: React.FC = (): JSX.Element => {
     // }
   };
 
+  // adds id of each node in tree to an array of all ids
   const addId: AddId = (id) => {
     if (!idSet.has(id)) {
       setIdSet(new Set(idSet.add(id)));

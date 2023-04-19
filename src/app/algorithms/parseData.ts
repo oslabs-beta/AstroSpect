@@ -1,5 +1,3 @@
-import React from 'react';
-
 declare const chrome: any;
 
 // parses html of target page in order to construct tree
