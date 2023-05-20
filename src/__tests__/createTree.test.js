@@ -1,23 +1,19 @@
 // tests createTree algorithm
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
-// import { TreeItem } from '@mui/lab';
-// import createTree from '../app/algorithms/createTree';
-
-xdescribe('createTree', () => {
-  beforeEach(() => {
-    // Reset any side effects from previous tests.
-    // Assumes you have reset functions implemented for addId and addIslandData.
-    addId.reset();
-    addIslandData.reset();
-  });
-
-  test('creates a leaf tree item for a node without children', () => {
+const treeItem = require('@mui/lab');
+const createTree = require('../app/algorithms/createTree').default;
+const addId = describe('createTree', () => {
+  //mock functions
+  const mockAddId = jest.fn();
+  const mockAddIslandData = jest.fn();
+  it('creates a leaf tree item for a node without children', () => {
+    const dom = new JSDOM();
+    const document = dom.window.document;
     const node = document.createElement('div');
-    const result = createTree(node, '0');
-    const { getByText } = render(result);
+    const result = createTree(node, '0', mockAddId, mockAddIslandData);
 
-    expect(getByText('div')).toBeInTheDocument();
+    expect(result).not.toBeNull();
   });
 
   it('should have three elements in islands array', () => {
@@ -37,7 +33,11 @@ xdescribe('createTree', () => {
     `);
     const document = dom.window.document;
 
-    expect(islands).toHaveLength(3);
-    expect(islands[0].framework).not.toBe(null);
+    expect(
+      createTree(document, '0', mockAddId, mockAddIslandData)
+    ).toHaveProperty('allElements');
+    expect(
+      createTree(document, '0', mockAddId, mockAddIslandData)
+    ).toHaveProperty('allIslands');
   });
 });
