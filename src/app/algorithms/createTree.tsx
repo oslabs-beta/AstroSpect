@@ -59,8 +59,7 @@ const createTree = (
         return islandTreeItem;
       } else {
         // when astro island has children, returns parent TreeItem (orange) & recursively traverses through children
-        const children: JSX.Element[] = [];
-        Array.prototype.push.apply(children, node.children);
+        const children = Array.from(node.children);
         const islandTreeItem = (
           <TreeItem
             key={id}
@@ -89,8 +88,7 @@ const createTree = (
         />
       );
     } else {
-      const children: JSX.Element[] = [];
-      Array.prototype.push.apply(children, node.children);
+      const children = Array.from(node.children);
       // If node has children, recurse through function with each child node
       return (
         <TreeItem
