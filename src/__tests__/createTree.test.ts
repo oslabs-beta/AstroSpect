@@ -32,11 +32,6 @@ describe('createTree', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
-  beforeEach(() => {
-    // Reset mock functions before each test
-    mockAddId = jest.fn();
-    mockAddIslandData = jest.fn();
-  });
   it('creates a leaf tree item for a node without children', () => {
     const node = document.createElement('div');
     const result = createTree(node, '0', mockAddId, mockAddIslandData);
