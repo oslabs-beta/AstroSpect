@@ -6,6 +6,13 @@ describe('createTree', () => {
   //mock functions
   const mockAddId = jest.fn();
   const mockAddIslandData = jest.fn();
+  function countNodes(tree: JSX.Element) {
+    let count = 1; // Count the current node
+    for (const child of tree.props.children || []) {
+      count += countNodes(child); // Recursively count children
+    }
+    return count;
+  }
   const dom = new JSDOM(`
   <!DOCTYPE html>
   <html>
@@ -20,7 +27,6 @@ describe('createTree', () => {
   </html>
 `);
   const document = dom.window.document;
-  const { Node } = new JSDOM().window;
   afterEach(() => {
     jest.clearAllMocks();
   });
@@ -43,8 +49,45 @@ describe('createTree', () => {
     ).toHaveProperty('allIslands');
   });
 
-  it('calls addId and addIslandData the correct number of times', () => {
+  it('calls addId the correct number of times', () => {
+    createTree(document.body, '0', mockAddId, mockAddIslandData);
+    //+ 1 to include body element.
+    const expectedCalls = document.body.querySelectorAll('*').length + 1;
+    expect(mockAddId.mock.calls.length).toEqual(expectedCalls);
+  });
+
+  it('calls addId the correct number of times', () => {
     createTree(document, '0', mockAddId, mockAddIslandData);
-    expect(mockAddId.mock.calls.length).toEqual(27);
+    const expectedCalls = document.querySelectorAll('astro-island').length;
+    expect(mockAddIslandData.mock.calls.length).toEqual(expectedCalls);
+  });
+
+  it('returns the correct number of allElements', () => {
+    const { allElements } = createTree(
+      document.body,
+      '0',
+      mockAddId,
+      mockAddIslandData
+    );
+    const givenLength = countNodes(allElements);
+    const expectedLength =
+      Array.from(document.body.querySelectorAll('*')).length + 1;
+    console.log('allElements', allElements.props.children);
+    console.log(
+      'queryselector:',
+      Array.from(document.body.querySelectorAll('*'))
+    );
+    expect(givenLength).toEqual(expectedLength);
+  });
+
+  it('returns the correct number of allIslands', () => {
+    const { allIslands } = createTree(
+      document,
+      '0',
+      mockAddId,
+      mockAddIslandData
+    );
+    const expectedLength = document.querySelectorAll('astro-island').length;
+    expect(allIslands.length).toEqual(expectedLength);
   });
 });
