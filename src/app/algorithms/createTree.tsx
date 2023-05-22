@@ -17,9 +17,12 @@ const createTree = (
     addIslandData: AddIslandData,
     fontColor: string = '#F5F5F5'
   ) => {
+    if (node.nodeType === 3 || node.nodeName === '#text') {
+      return null;
+    }
     // adds id to idArray, required for expandAll functionality
     addId(id);
-    
+
     // Stores ASTRO-ISLAND data in islandData state (from app)
     if (node.nodeName === 'ASTRO-ISLAND') {
       // parse props attribute of astro-island element
@@ -56,7 +59,8 @@ const createTree = (
         return islandTreeItem;
       } else {
         // when astro island has children, returns parent TreeItem (orange) & recursively traverses through children
-        const children = Array.from(node.children);
+        const children: JSX.Element[] = [];
+        Array.prototype.push.apply(children, node.children);
         const islandTreeItem = (
           <TreeItem
             key={id}
@@ -85,7 +89,8 @@ const createTree = (
         />
       );
     } else {
-      const children = Array.from(node.children);
+      const children: JSX.Element[] = [];
+      Array.prototype.push.apply(children, node.children);
       // If node has children, recurse through function with each child node
       return (
         <TreeItem
@@ -101,16 +106,11 @@ const createTree = (
       );
     }
   };
-  
+
   // array of all islands (declared outside of the inner function because we don't want this array to be wiped with each recursive function call)
   const allIslands: JSX.Element[] = [];
   // invokes inner, which will return dom tree of all elements.
-  const allElements: JSX.Element = inner(
-    node,
-    id,
-    addId,
-    addIslandData
-  );
+  const allElements: JSX.Element = inner(node, id, addId, addIslandData);
   //return all elements (to be rendered in ElementsView) & all islands (to be rendered in ComponentView)
   return {
     allElements,
