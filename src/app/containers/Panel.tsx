@@ -10,8 +10,13 @@ const Panel = (props: PanelProps): JSX.Element => {
   const { html, handleClick, addIslandData, idArray, addId } = props;
   const [expanded, setExpanded] = useState<string[]>([]);
   const [selectedTab, setSelectedTab] = useState<number>(0);
-  const [elementData, setElementData] = useState<JSX.Element[]>([]);
-  const [componentData, setComponentData] = useState<JSX.Element[]>([]);
+  const [data, setData] = useState<{
+    elementData: JSX.Element[];
+    componentData: JSX.Element[];
+  }>({
+    elementData: [],
+    componentData: [],
+  });
 
   // alternates between expanding and collapsing all nodes
   const handleExpandClick: HandleExpandClick = () => {
@@ -33,8 +38,10 @@ const Panel = (props: PanelProps): JSX.Element => {
     );
 
     // set the state of the Panel component with the elements and islands returned from calling createTree
-    setElementData(allElements.props.children);
-    setComponentData([...allIslands]);
+    setData({
+      elementData: allElements.props.children,
+      componentData: [...allIslands],
+    });
   }, []);
 
   // returns the panel with toggle buttons and the search bar, which displays either the element view or island view
@@ -64,7 +71,7 @@ const Panel = (props: PanelProps): JSX.Element => {
       <div className="container element" style={{ display: 'flex' }}>
         {selectedTab === 0 && (
           <ElementView
-            elementData={elementData}
+            elementData={data.elementData}
             handleClick={handleClick}
             handleToggle={handleToggle}
             expanded={expanded}
@@ -72,7 +79,7 @@ const Panel = (props: PanelProps): JSX.Element => {
         )}
         {selectedTab === 1 && (
           <ComponentView
-            componentData={componentData}
+            componentData={data.componentData}
             handleClick={handleClick}
             handleToggle={handleToggle}
             expanded={expanded}
